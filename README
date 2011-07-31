@@ -8,7 +8,6 @@ http://www.wordreference.com/docs/APIregistration.aspx
 TODO
 ----
 
-- bash script + executable jar
-- EnvironmentApiProvider (used by default)
 - model + filtering 
-- terms of service: http://www.wordreference.com/docs/api.aspx#service
+- print terms of service: http://www.wordreference.com/docs/api.aspx#service
+- local caching via FileSystemRepository
