@@ -1,0 +1,2644 @@
+{
+    "term0" : {
+        "PrincipalTranslations" : {
+            "0" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "vi", 
+                    "sense" : "go quickly", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "correre", 
+                    "POS" : "vi", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "1" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "vtr", 
+                    "sense" : "operate", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "far andare, far funzionare", 
+                    "POS" : "vtr", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "2" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "vtr", 
+                    "sense" : "maintain", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "mantenere", 
+                    "POS" : "vtr", 
+                    "sense" : ""
+                }, 
+                "SecondTranslation" : {
+                    "term" : "gestire", 
+                    "POS" : "vtr", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "3" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "n", 
+                    "sense" : "jog", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "corsa", 
+                    "POS" : "nf", 
+                    "sense" : ""
+                }, 
+                "SecondTranslation" : {
+                    "term" : "jogging", 
+                    "POS" : "nm", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "4" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "n", 
+                    "sense" : "race", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "gara, competizione", 
+                    "POS" : "nf", 
+                    "sense" : "in favore di qualcosa"
+                }, 
+                "Note" : ""
+            },
+            "5" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "n", 
+                    "sense" : "series", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "serie", 
+                    "POS" : "nf", 
+                    "sense" : ""
+                }, 
+                "SecondTranslation" : {
+                    "term" : "periodo", 
+                    "POS" : "nm", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "6" :{
+                "OriginalTerm" : {
+                    "term" : "run", 
+                    "POS" : "n", 
+                    "sense" : "unravelling", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "smagliatura", 
+                    "POS" : "nf", 
+                    "sense" : "di tessuti"
+                }, 
+                "Note" : ""
+            }
+        },
+    "AdditionalTranslations" : {
+        "0" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "short trip", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "giro", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "gita", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "1" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "route", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "tragitto", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "percorso", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "2" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "series of cards", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scala", 
+                "POS" : "nf", 
+                "sense" : "gioco delle carte"
+            }, 
+            "Note" : ""
+        },
+        "3" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "cricket: score", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "punto", 
+                "POS" : "nm", 
+                "sense" : "cricket"
+            }, 
+            "Note" : ""
+        },
+        "4" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "pl: diarrhoea", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "diarrea", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "5" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "fleeing", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuga", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "6" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "election campaign", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "candidatura, corsa", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "7" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "fish: migration", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "risalita", 
+                "POS" : "nf", 
+                "sense" : "dei pesci"
+            }, 
+            "SecondTranslation" : {
+                "term" : "migrazione", 
+                "POS" : "nf", 
+                "sense" : "dei pesci"
+            }, 
+            "Note" : ""
+        },
+        "8" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "access", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "libero accesso", 
+                "POS" : "nm", 
+                "sense" : "disponibilità completa di qualcosa"
+            }, 
+            "SecondTranslation" : {
+                "term" : "libero uso", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "9" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "track", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "pista", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "10" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "print run", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "tiratura", 
+                "POS" : "nf", 
+                "sense" : "tipografia, pubblicazione"
+            }, 
+            "Note" : ""
+        },
+        "11" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "length", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "lunghezza", 
+                "POS" : "nf", 
+                "sense" : "quantità"
+            }, 
+            "Note" : ""
+        },
+        "12" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "fenced area", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "recinto", 
+                "POS" : "nm", 
+                "sense" : "pollaio, recinto per animali"
+            }, 
+            "Note" : ""
+        },
+        "13" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "music: roulade", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "volata", 
+                "POS" : "nf", 
+                "sense" : "musica, termine tecnico"
+            }, 
+            "Note" : ""
+        },
+        "14" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "strong demand", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "sfilza di richieste", 
+                "POS" : "nf", 
+                "sense" : "serie, periodo: informale"
+            }, 
+            "SecondTranslation" : {
+                "term" : "sequenza", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "15" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "direction of change", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "corso, andamento, sviluppo", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "16" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "n", 
+                "sense" : "typical kind", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "tipo", 
+                "POS" : "nm", 
+                "sense" : "varietà"
+            }, 
+            "SecondTranslation" : {
+                "term" : "genere", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "17" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "flee", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scappare, fuggire", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "18" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "have recourse to", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "rifugiarsi", 
+                "POS" : "v rif", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "19" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "spread", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "sciogliersi, spargersi, espandersi", 
+                "POS" : "vi", 
+                "sense" : "estendersi"
+            }, 
+            "SecondTranslation" : {
+                "term" : "fluire, gocciolare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "20" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "operate", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "funzionare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "21" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "keep company with", 
+                "usage" : "informal"
+            }, 
+            "FirstTranslation" : {
+                "term" : "girare, andare in giro", 
+                "POS" : "vi", 
+                "sense" : "colloquiale"
+            }, 
+            "Note" : ""
+        },
+        "22" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "migrate", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "risalire il fiume, migrare", 
+                "POS" : "vi", 
+                "sense" : "di pesci"
+            }, 
+            "Note" : ""
+        },
+        "23" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "race", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "partecipare, gareggiare, concorrere", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "24" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "horse racing: finish", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "arrivare", 
+                "POS" : "vi", 
+                "sense" : "in una gara, toccare il traguardo"
+            }, 
+            "Note" : ""
+        },
+        "25" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "transport: ply", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare servizio, passare, partire", 
+                "POS" : "vi", 
+                "sense" : "autobus, treni"
+            }, 
+            "Note" : ""
+        },
+        "26" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "climb", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passare, correre", 
+                "POS" : "vi", 
+                "sense" : "estendersi, svilupparsi"
+            }, 
+            "Note" : ""
+        },
+        "27" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "sail", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "navigare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "28" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "go with", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare un salto, fare un giro", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "29" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "be friends with", 
+                "usage" : "US"
+            }, 
+            "FirstTranslation" : {
+                "term" : "frequentare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "30" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "thread: unravel", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "smagliarsi", 
+                "POS" : "v rif", 
+                "sense" : "di tessuti"
+            }, 
+            "Note" : ""
+        },
+        "31" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "continue", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "durare", 
+                "POS" : "vi", 
+                "sense" : "continuare a essere attivo"
+            }, 
+            "SecondTranslation" : {
+                "term" : "essere in programmazione", 
+                "POS" : "vi", 
+                "sense" : "televisione, teatro"
+            }, 
+            "Note" : ""
+        },
+        "32" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "extend", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre, passare", 
+                "POS" : "vi", 
+                "sense" : "correre lungo"
+            }, 
+            "Note" : ""
+        },
+        "33" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "be worded", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "recitare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "34" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "stand for office", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "essere in gara, concorrere", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "35" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "transport: depart", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passare, partire", 
+                "POS" : "vi", 
+                "sense" : "di sevizio autobus, treno, etc."
+            }, 
+            "Note" : ""
+        },
+        "36" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "travel", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre, passare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "37" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "take a quick trip", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare una corsa, fare un salto", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "38" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "glide, pass freely", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scorrere", 
+                "POS" : "vi", 
+                "sense" : "scivolare, allungarsi"
+            }, 
+            "Note" : ""
+        },
+        "39" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "flow strongly", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "colare, scorrere", 
+                "POS" : "vi", 
+                "sense" : "di liquido che scende"
+            }, 
+            "Note" : ""
+        },
+        "40" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "empty", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fluire, scorrere", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "correre, andare, finire", 
+                "POS" : "vi", 
+                "sense" : "informale"
+            }, 
+            "Note" : ""
+        },
+        "41" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "range", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "spaziare", 
+                "POS" : "vi", 
+                "sense" : "allargarsi"
+            }, 
+            "Note" : ""
+        },
+        "42" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "discharge fluid", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "versare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "43" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "become", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "diventare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : "Quando il verbo \"run\"è seguito da un aggettivo allora si può tradurre con un verbo che indichi il significato di quell'aggettivo. Es. diventare secco: seccarsi, seccare; etc."
+        },
+        "44" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "continue to operate", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "tenere in attività, tenere in funzione, tenere in piedi", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "far andare, far girare", 
+                "POS" : "vtr", 
+                "sense" : "colloquiale"
+            }, 
+            "Note" : ""
+        },
+        "45" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "be printed", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "uscire", 
+                "POS" : "vi", 
+                "sense" : "essere pubblicato"
+            }, 
+            "Note" : ""
+        },
+        "46" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "be of a given dimension", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "venire, essere", 
+                "POS" : "vi", 
+                "sense" : "essere in un certo modo"
+            }, 
+            "Note" : ""
+        },
+        "47" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vi", 
+                "sense" : "travel into peril", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "finire nei guai", 
+                "POS" : "vi", 
+                "sense" : "correre un pericolo"
+            }, 
+            "Note" : ""
+        },
+        "48" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "livestock: make run", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dirigere, far andare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "portare, condurre", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "49" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "dash", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare una corsa, fare un salto", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "50" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "cover a distance", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "percorrere", 
+                "POS" : "vtr", 
+                "sense" : "compiere un tragitto, una distanza"
+            }, 
+            "SecondTranslation" : {
+                "term" : "fare", 
+                "POS" : "vtr", 
+                "sense" : "colloquiale"
+            }, 
+            "Note" : ""
+        },
+        "51" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "errand", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare, sbrigare, compiere", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "52" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "chase", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "rincorrere", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "inseguire", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "53" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "make compete", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "far correre, far concorrere", 
+                "POS" : "vtr", 
+                "sense" : "far gareggiare"
+            }, 
+            "Note" : ""
+        },
+        "54" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "cost", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "costare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "ammontare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "55" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "follow", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare, seguire", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "56" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "extend", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "posare, distendere, stendere", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "57" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "traverse", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "attraversare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "58" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "act unsupervised", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dirigere, amministrare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "59" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "cause to ply a route", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "far arrivare, far circolare, far passare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "mandare, portare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "60" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "convey", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "portare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "61" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "pass sthg quickly", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passarsi", 
+                "POS" : "v rif", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "62" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "get past", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "superare, oltrepassare, passare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "63" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "smuggle", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "trafficare, contrabbandare", 
+                "POS" : "vtr", 
+                "sense" : "far circolare"
+            }, 
+            "Note" : ""
+        },
+        "64" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "operate a machine", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "azionare, usare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "65" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "print, copy", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "stampare", 
+                "POS" : "vtr", 
+                "sense" : "fare copie"
+            }, 
+            "SecondTranslation" : {
+                "term" : "riportare", 
+                "POS" : "vtr", 
+                "sense" : "pubblicare"
+            }, 
+            "Note" : ""
+        },
+        "66" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "process", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "calcolare, elaborare, sviluppare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "67" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "sponsor a candidate", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "candidare", 
+                "POS" : "vtr", 
+                "sense" : "politica"
+            }, 
+            "Note" : ""
+        },
+        "68" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "manage, conduct", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "gestire, dirigere, amministrare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "fare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "69" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "expose oneself to danger", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre un rischio", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "SecondTranslation" : {
+                "term" : "rischiare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "70" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "let liquid flow", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "preparare un bagno", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "71" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "accumulate a debt", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "avere un conto, avere un conto aperto", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "72" :{
+            "OriginalTerm" : {
+                "term" : "run", 
+                "POS" : "vtr", 
+                "sense" : "add to an account", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "aggiungere al conto, segnare sul conto, mettere sul conto", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        }
+    }
+},
+"original" : {
+    "Compounds" : {
+        "0" :{
+            "OriginalTerm" : {
+                "term" : "average run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "distanza media", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "1" :{
+            "OriginalTerm" : {
+                "term" : "bank run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "assalto agli sportelli", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "2" :{
+            "OriginalTerm" : {
+                "term" : "bombing run", 
+                "POS" : "n", 
+                "sense" : "military outing to bomb a target", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "incursione  di bombardamento", 
+                "POS" : "nf", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "3" :{
+            "OriginalTerm" : {
+                "term" : "cut and run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "darsela a gambe", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "4" :{
+            "OriginalTerm" : {
+                "term" : "don't run", 
+                "POS" : "interj", 
+                "sense" : "do not run", 
+                "usage" : "informal"
+            }, 
+            "FirstTranslation" : {
+                "term" : "non correre", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "5" :{
+            "OriginalTerm" : {
+                "term" : "dry run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "prova generale", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "6" :{
+            "OriginalTerm" : {
+                "term" : "earned run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "punti guadagnati", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "7" :{
+            "OriginalTerm" : {
+                "term" : "earned run average", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "media punti guadagnati", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "8" :{
+            "OriginalTerm" : {
+                "term" : "end run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "corsa finale", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "9" :{
+            "OriginalTerm" : {
+                "term" : "first run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "prima visione", 
+                "POS" : "nf", 
+                "sense" : "film"
+            }, 
+            "Note" : ""
+        },
+        "10" :{
+            "OriginalTerm" : {
+                "term" : "full-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "di lunghezza totale", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "11" :{
+            "OriginalTerm" : {
+                "term" : "half-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "velocissimo", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "12" :{
+            "OriginalTerm" : {
+                "term" : "have a run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare un giro su", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "13" :{
+            "OriginalTerm" : {
+                "term" : "have a run in with, have a run-in with", 
+                "POS" : "vtr", 
+                "sense" : "quarrel with", 
+                "usage" : "informal"
+            }, 
+            "FirstTranslation" : {
+                "term" : "bisticciare, litigare, discutere", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "14" :{
+            "OriginalTerm" : {
+                "term" : "have run out", 
+                "POS" : "vi", 
+                "sense" : "have exhausted supply", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "avere finito, avere esaurito", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "15" :{
+            "OriginalTerm" : {
+                "term" : "have run out", 
+                "POS" : "vi", 
+                "sense" : "have exhausted supply", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "essere finito, essere terminato, essere esaurito", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "16" :{
+            "OriginalTerm" : {
+                "term" : "have run out", 
+                "POS" : "vtr", 
+                "sense" : "of sth: exhausted supply of", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "avere finito, avere terminato, avere esaurito", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "17" :{
+            "OriginalTerm" : {
+                "term" : "hit and run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "azione da pirata della strada", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "18" :{
+            "OriginalTerm" : {
+                "term" : "hit-and-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "azione da pirata della strada", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "19" :{
+            "OriginalTerm" : {
+                "term" : "hit-and-run accident", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "incidente con fuga, incidente con omissione di soccorso", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "20" :{
+            "OriginalTerm" : {
+                "term" : "hit-and-run driver", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "pirata della strada", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "21" :{
+            "OriginalTerm" : {
+                "term" : "hit-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "azione da pirata della strada", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "22" :{
+            "OriginalTerm" : {
+                "term" : "home run", 
+                "POS" : "n", 
+                "sense" : "baseball: run scored by batter on single hit", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "home run", 
+                "POS" : "nm", 
+                "sense" : "sport baseball"
+            }, 
+            "Note" : ""
+        },
+        "23" :{
+            "OriginalTerm" : {
+                "term" : "home run", 
+                "POS" : "n", 
+                "sense" : "baseball: run scored by batter on single hit", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuoricampo", 
+                "POS" : "nm", 
+                "sense" : "sport: baseball"
+            }, 
+            "Note" : ""
+        },
+        "24" :{
+            "OriginalTerm" : {
+                "term" : "in the long run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "a lungo andare", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "25" :{
+            "OriginalTerm" : {
+                "term" : "let your imagination run wild", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scatenare la fantasia", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "26" :{
+            "OriginalTerm" : {
+                "term" : "long run", 
+                "POS" : "n", 
+                "sense" : "long term", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "alla lunga", 
+                "POS" : "avv", 
+                "sense" : "colloquiale"
+            }, 
+            "Note" : ""
+        },
+        "27" :{
+            "OriginalTerm" : {
+                "term" : "long run", 
+                "POS" : "n", 
+                "sense" : "long term", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "sul lungo periodo, a lungo termine", 
+                "POS" : "avv", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "28" :{
+            "OriginalTerm" : {
+                "term" : "make a run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "buttarsi", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "29" :{
+            "OriginalTerm" : {
+                "term" : "make a run for", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "gettarsi su", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "30" :{
+            "OriginalTerm" : {
+                "term" : "mill run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "canale d'acqua", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "31" :{
+            "OriginalTerm" : {
+                "term" : "mill-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "canale d'acqua per il mulino", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "32" :{
+            "OriginalTerm" : {
+                "term" : "mine-run", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "ordinario", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "33" :{
+            "OriginalTerm" : {
+                "term" : "on the run", 
+                "POS" : "adv", 
+                "sense" : "evading capture", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "in fuga", 
+                "POS" : "avv", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "34" :{
+            "OriginalTerm" : {
+                "term" : "run a race", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "partecipare ad una gara", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "35" :{
+            "OriginalTerm" : {
+                "term" : "run about", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre qua e là", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "36" :{
+            "OriginalTerm" : {
+                "term" : "run across", 
+                "POS" : "vtr", 
+                "sense" : "encounter by chance", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "trovare, incontrare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "37" :{
+            "OriginalTerm" : {
+                "term" : "run after", 
+                "POS" : "vtr", 
+                "sense" : "chase", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "inseguire", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "38" :{
+            "OriginalTerm" : {
+                "term" : "run after", 
+                "POS" : "vtr", 
+                "sense" : "chase", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre dietro a", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "39" :{
+            "OriginalTerm" : {
+                "term" : "run against", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "andare contro", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "40" :{
+            "OriginalTerm" : {
+                "term" : "run against", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "imbattersi in", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "41" :{
+            "OriginalTerm" : {
+                "term" : "run against", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "urtare", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "42" :{
+            "OriginalTerm" : {
+                "term" : "run along", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre lungo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "43" :{
+            "OriginalTerm" : {
+                "term" : "run along", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "andate a giocare (children)", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "44" :{
+            "OriginalTerm" : {
+                "term" : "run along", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "essere disposti lungo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "45" :{
+            "OriginalTerm" : {
+                "term" : "run along", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scorrere lungo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "46" :{
+            "OriginalTerm" : {
+                "term" : "run amok", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "andare fuori controllo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "47" :{
+            "OriginalTerm" : {
+                "term" : "run around", 
+                "POS" : "vi", 
+                "sense" : "move around quickly", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre", 
+                "POS" : "vi", 
+                "sense" : "in spazio circoscritto"
+            }, 
+            "Note" : ""
+        },
+        "48" :{
+            "OriginalTerm" : {
+                "term" : "run at", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "assalire", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "49" :{
+            "OriginalTerm" : {
+                "term" : "run away", 
+                "POS" : "vi", 
+                "sense" : "flee, escape", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuggire, scappare", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "50" :{
+            "OriginalTerm" : {
+                "term" : "run away", 
+                "POS" : "vi", 
+                "sense" : "child: leave home", 
+                "usage" : "informal"
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuggire da casa, scappare da casa", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "51" :{
+            "OriginalTerm" : {
+                "term" : "run away from home", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scappare di casa", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "52" :{
+            "OriginalTerm" : {
+                "term" : "run away with", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuggire con", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "53" :{
+            "OriginalTerm" : {
+                "term" : "run away with", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "prendere la mano", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "54" :{
+            "OriginalTerm" : {
+                "term" : "run away with", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "mettersi in testa (un'idea)", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "55" :{
+            "OriginalTerm" : {
+                "term" : "run by", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passare davanti correndo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "56" :{
+            "OriginalTerm" : {
+                "term" : "run by", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passare rapidamente (di tempo)", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "57" :{
+            "OriginalTerm" : {
+                "term" : "run by", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "gestito da", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "58" :{
+            "OriginalTerm" : {
+                "term" : "run counter to", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "essere in conflitto", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "59" :{
+            "OriginalTerm" : {
+                "term" : "run down", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "catturare", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "60" :{
+            "OriginalTerm" : {
+                "term" : "run down", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "indebolirsi", 
+                "POS" : "v", 
+                "sense" : "scaricarsi, anche fig."
+            }, 
+            "Note" : ""
+        },
+        "61" :{
+            "OriginalTerm" : {
+                "term" : "run down", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scaricarsi", 
+                "POS" : "v", 
+                "sense" : "indebolirsi"
+            }, 
+            "Note" : ""
+        },
+        "62" :{
+            "OriginalTerm" : {
+                "term" : "run down", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "screditare", 
+                "POS" : "v", 
+                "sense" : "criticare"
+            }, 
+            "Note" : ""
+        },
+        "63" :{
+            "OriginalTerm" : {
+                "term" : "run down", 
+                "POS" : "", 
+                "sense" : "car", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "investire", 
+                "POS" : "vtr", 
+                "sense" : "macchina"
+            }, 
+            "Note" : ""
+        },
+        "64" :{
+            "OriginalTerm" : {
+                "term" : "run for", 
+                "POS" : "vtr", 
+                "sense" : "stand for: election", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "essere candidato a", 
+                "POS" : "vi", 
+                "sense" : "elezioni"
+            }, 
+            "Note" : ""
+        },
+        "65" :{
+            "OriginalTerm" : {
+                "term" : "run for", 
+                "POS" : "vtr", 
+                "sense" : "stand for: election", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "candidarsi a", 
+                "POS" : "v rif", 
+                "sense" : "elezioni"
+            }, 
+            "Note" : ""
+        },
+        "66" :{
+            "OriginalTerm" : {
+                "term" : "run for office", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "mettersi in lizza per una posizione", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "67" :{
+            "OriginalTerm" : {
+                "term" : "run for president", 
+                "POS" : "vi", 
+                "sense" : "stand for election", 
+                "usage" : "US"
+            }, 
+            "FirstTranslation" : {
+                "term" : "candidarsi per la presidenza, essere candidato alla presidenza", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "68" :{
+            "OriginalTerm" : {
+                "term" : "run in", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "combattere corpo a corpo", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "69" :{
+            "OriginalTerm" : {
+                "term" : "run in", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare una breve visita", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "70" :{
+            "OriginalTerm" : {
+                "term" : "run in", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "rodare", 
+                "POS" : "v", 
+                "sense" : "di auto"
+            }, 
+            "Note" : ""
+        },
+        "71" :{
+            "OriginalTerm" : {
+                "term" : "run in circles", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre in cerchio", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "72" :{
+            "OriginalTerm" : {
+                "term" : "run into", 
+                "POS" : "vtr", 
+                "sense" : "collide with, crash into", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scontrarsi", 
+                "POS" : "v rif", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "73" :{
+            "OriginalTerm" : {
+                "term" : "run into", 
+                "POS" : "vtr", 
+                "sense" : "encounter by chance", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "incontrare per caso", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "74" :{
+            "OriginalTerm" : {
+                "term" : "run its course", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fare il suo corso", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "75" :{
+            "OriginalTerm" : {
+                "term" : "run off", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "disputare", 
+                "POS" : "v", 
+                "sense" : "gara sportiva"
+            }, 
+            "Note" : ""
+        },
+        "76" :{
+            "OriginalTerm" : {
+                "term" : "run off", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "fuggire", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "77" :{
+            "OriginalTerm" : {
+                "term" : "run off", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scrivere di getto", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "78" :{
+            "OriginalTerm" : {
+                "term" : "run off with", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "vincere", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "79" :{
+            "OriginalTerm" : {
+                "term" : "run on", 
+                "POS" : "vtr", 
+                "sense" : "continue", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "andare avanti, continuare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "80" :{
+            "OriginalTerm" : {
+                "term" : "run out", 
+                "POS" : "vi", 
+                "sense" : "have none left", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "finire, terminare", 
+                "POS" : "vtr", 
+                "sense" : "essere a corto di"
+            }, 
+            "Note" : ""
+        },
+        "81" :{
+            "OriginalTerm" : {
+                "term" : "run out", 
+                "POS" : "vi", 
+                "sense" : "exit rapidly", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "uscire di corsa, correre via", 
+                "POS" : "vi", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "82" :{
+            "OriginalTerm" : {
+                "term" : "run out of", 
+                "POS" : "vtr", 
+                "sense" : "use up supplies of sth", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "finire, terminare", 
+                "POS" : "vtr", 
+                "sense" : "essere a corto di "
+            }, 
+            "Note" : ""
+        },
+        "83" :{
+            "OriginalTerm" : {
+                "term" : "run out of steam", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "esaurirsi", 
+                "POS" : "v", 
+                "sense" : "esaurire le forze"
+            }, 
+            "Note" : ""
+        },
+        "84" :{
+            "OriginalTerm" : {
+                "term" : "run out of time", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "scadere", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "85" :{
+            "OriginalTerm" : {
+                "term" : "run out of town", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "diffidare", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "86" :{
+            "OriginalTerm" : {
+                "term" : "run over", 
+                "POS" : "vtr", 
+                "sense" : "vehicle: knock down", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "investire", 
+                "POS" : "vtr", 
+                "sense" : "con un veicolo"
+            }, 
+            "Note" : ""
+        },
+        "87" :{
+            "OriginalTerm" : {
+                "term" : "run parallel to", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre parallelamente a", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "88" :{
+            "OriginalTerm" : {
+                "term" : "run the risk", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre il rischio", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "89" :{
+            "OriginalTerm" : {
+                "term" : "run the risk of", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre il rischio di", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "90" :{
+            "OriginalTerm" : {
+                "term" : "run through", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dare una scorsa", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "91" :{
+            "OriginalTerm" : {
+                "term" : "run through", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "sperperare", 
+                "POS" : "v", 
+                "sense" : "spendere"
+            }, 
+            "Note" : ""
+        },
+        "92" :{
+            "OriginalTerm" : {
+                "term" : "run through", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "trapassare", 
+                "POS" : "v", 
+                "sense" : "attraversare"
+            }, 
+            "Note" : ""
+        },
+        "93" :{
+            "OriginalTerm" : {
+                "term" : "run through", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "passare", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "94" :{
+            "OriginalTerm" : {
+                "term" : "run to", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "correre da", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "95" :{
+            "OriginalTerm" : {
+                "term" : "run to", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "portare a", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "96" :{
+            "OriginalTerm" : {
+                "term" : "run to", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "tendere", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "97" :{
+            "OriginalTerm" : {
+                "term" : "run up", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "crescere rapidamente", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "98" :{
+            "OriginalTerm" : {
+                "term" : "run up", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "erigere rapidamente", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "99" :{
+            "OriginalTerm" : {
+                "term" : "run up against", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "imbattersi in", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        }
+    }
+},
+"Lines" : "End Reached", 
+"END" : true
+}

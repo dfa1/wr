@@ -1,0 +1,110 @@
+{
+    "term0" : {
+        "PrincipalTranslations" : {
+            "0" :{
+                "OriginalTerm" : {
+                    "term" : "grin", 
+                    "POS" : "", 
+                    "sense" : "smile", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "sourire", 
+                    "POS" : "nm", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            },
+            "1" :{
+                "OriginalTerm" : {
+                    "term" : "grin", 
+                    "POS" : "", 
+                    "sense" : "", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "rictus", 
+                    "POS" : "nm", 
+                    "sense" : "sourire grimaçant"
+                }, 
+                "Note" : ""
+            },
+            "2" :{
+                "OriginalTerm" : {
+                    "term" : "grin", 
+                    "POS" : "", 
+                    "sense" : "smile", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "sourire", 
+                    "POS" : "vi", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            }
+        }
+    },
+"original" : {
+    "Compounds" : {
+        "0" :{
+            "OriginalTerm" : {
+                "term" : "broad grin", 
+                "POS" : "n", 
+                "sense" : "big smile", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "large sourire", 
+                "POS" : "nm", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "1" :{
+            "OriginalTerm" : {
+                "term" : "grin and bear it", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "prendre avec le sourire", 
+                "POS" : "v", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "2" :{
+            "OriginalTerm" : {
+                "term" : "grin at", 
+                "POS" : "vtr", 
+                "sense" : "smile broadly at", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "faire un grand, un large sourire à", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "3" :{
+            "OriginalTerm" : {
+                "term" : "grin at", 
+                "POS" : "vtr", 
+                "sense" : "smile broadly at", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "sourire à", 
+                "POS" : "vtr", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        }
+    }
+},
+"Lines" : "End Reached", 
+"END" : true
+}
