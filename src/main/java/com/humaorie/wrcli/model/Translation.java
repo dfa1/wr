@@ -6,15 +6,11 @@ import java.util.List;
 
 public class Translation {
 
-    private final Term originalTerm;
+    private final String note;
     private final List<Term> translations = new ArrayList<Term>();
 
-    public Translation(Term originalTerm) {
-        this.originalTerm = originalTerm;
-    }
-
-    public Term getOriginalTerm() {
-        return originalTerm;
+    public Translation(String note) {
+        this.note = note;
     }
 
     public List<Term> getTranslations() {

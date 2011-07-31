@@ -1,29 +1,25 @@
 package com.humaorie.wrcli;
 
+import com.humaorie.wrcli.model.Category;
 import java.io.Reader;
-import org.json.JSONObject;
+import java.util.List;
 
 public class WordReference {
 
     private final Repository repository;
     private Parser parser = new JSONParser();
-    private Outputter outputter = new WholeOutputter();
     
     public WordReference(Repository repository) {
         this.repository = repository;
     }
 
-    public void lookup(String dict, String word) {
+    public List<Category> lookup(String dict, String word) {
         Reader reader = repository.lookup(dict, word);
-        JSONObject result = parser.parseDefinition(reader);
-        outputter.output(result);
+        List<Category> categories = parser.parseDefinition(reader);
+        return categories;
     }
 
     public void setParser(Parser parser) {
         this.parser = parser;
-    }
-
-    public void setOutputter(Outputter outputter) {
-        this.outputter = outputter;
     }
 }

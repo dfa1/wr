@@ -1,9 +1,10 @@
 package com.humaorie.wrcli;
 
+import com.humaorie.wrcli.model.Category;
 import java.io.Reader;
-import org.json.JSONObject;
+import java.util.List;
 
 public interface Parser {
-    
-    JSONObject parseDefinition(Reader reader);
+
+    List<Category> parseDefinition(Reader reader);
 }

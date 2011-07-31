@@ -1,5 +1,7 @@
 package com.humaorie.wrcli;
 
+import com.humaorie.wrcli.model.Category;
+import java.util.List;
 import org.junit.Test;
 
 public class WordReferenceTest {
@@ -8,6 +10,10 @@ public class WordReferenceTest {
     public void integrationTest() {
         Repository repository = new FileSystemRepository();
         WordReference wordReference = new WordReference(repository);
-        wordReference.lookup("enit", "run");
+        List<Category> categories = wordReference.lookup("enit", "run");
+
+        for (Category category : categories) {
+            System.out.println(category.getName());
+        }
     }
 }
