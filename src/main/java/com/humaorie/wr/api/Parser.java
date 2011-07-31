@@ -1,6 +1,5 @@
-package com.humaorie.wrcli;
+package com.humaorie.wr.api;
 
-import com.humaorie.wrcli.model.Category;
 import java.io.Reader;
 import java.util.List;
 

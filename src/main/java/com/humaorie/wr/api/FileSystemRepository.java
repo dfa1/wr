@@ -1,4 +1,4 @@
-package com.humaorie.wrcli;
+package com.humaorie.wr.api;
 
 import java.io.InputStream;
 import java.io.InputStreamReader;

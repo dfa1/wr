@@ -1,4 +1,4 @@
-package com.humaorie.wrcli;
+package com.humaorie.wr.api;
 
 import org.junit.Ignore;
 import org.junit.Test;

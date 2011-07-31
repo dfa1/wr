@@ -1,4 +1,4 @@
-package com.humaorie.wrcli.model;
+package com.humaorie.wr.api;
 
 public class Term {
 

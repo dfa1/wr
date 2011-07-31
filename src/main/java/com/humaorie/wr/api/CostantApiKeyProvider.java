@@ -1,4 +1,4 @@
-package com.humaorie.wrcli;
+package com.humaorie.wr.api;
 
 public class CostantApiKeyProvider implements ApiKeyProvider {
 
