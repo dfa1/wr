@@ -7,8 +7,7 @@ public class EnviromentApiKeyProviderTest {
 
     @Test(expected = IllegalStateException.class)
     public void withoutEnvironmentVariableThrows() {
-        EnviromentApiKeyProvider provider = new EnviromentApiKeyProvider();
-        provider.provideKey();
+        new EnviromentApiKeyProvider();
     }
     
     @Test
