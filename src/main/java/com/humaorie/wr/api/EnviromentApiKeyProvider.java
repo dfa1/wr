@@ -2,7 +2,7 @@ package com.humaorie.wr.api;
 
 public class EnviromentApiKeyProvider implements ApiKeyProvider {
 
-    private final String ENVVAR = "WRCLI_API_KEY";
+    private final String ENVVAR = "WR_API_KEY";
 
     @Override
     public String provideKey() {
