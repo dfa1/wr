@@ -1,0 +1,86 @@
+{
+    "term0" : {
+        "PrincipalTranslations" : {
+            "0" :{
+                "OriginalTerm" : {
+                    "term" : "drago", 
+                    "POS" : "nm", 
+                    "sense" : "", 
+                    "usage" : ""
+                }, 
+                "FirstTranslation" : {
+                    "term" : "dragon", 
+                    "POS" : "", 
+                    "sense" : ""
+                }, 
+                "Note" : ""
+            }
+        }
+    },
+"term1" : {
+    "PrincipalTranslations" : {
+        "0" :{
+            "OriginalTerm" : {
+                "term" : "dragare", 
+                "POS" : "v", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dredge up", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        }
+    }
+},
+"original" : {
+    "Compounds" : {
+        "0" :{
+            "OriginalTerm" : {
+                "term" : "artiglio del drago", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dragon claw", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "1" :{
+            "OriginalTerm" : {
+                "term" : "drago volante", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "flying dragon", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        },
+        "2" :{
+            "OriginalTerm" : {
+                "term" : "testa del drago", 
+                "POS" : "", 
+                "sense" : "", 
+                "usage" : ""
+            }, 
+            "FirstTranslation" : {
+                "term" : "dragon's head", 
+                "POS" : "", 
+                "sense" : ""
+            }, 
+            "Note" : ""
+        }
+    }
+},
+"Lines" : "End Reached", 
+"END" : true
+}
