@@ -11,6 +11,25 @@ public class InternetJsonRepository implements Repository {
     private String apiVersion = "0.8";
     private ApiKeyProvider apiKeyProvider = new CostantApiKeyProvider("2");
 
+    @Override
+    public Reader lookup(String dict, String term) {
+        if (dict == null || dict.equals("")) {
+            throw new IllegalArgumentException("dictcannot be null or empty");
+        }
+
+        if (term == null || term.equals("")) {
+            throw new IllegalArgumentException("term cannot be null or empty");
+        }
+
+        String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
+        try {
+            URL url = new URL(path);
+            return new InputStreamReader(url.openStream());
+        } catch (IOException io) {
+            throw new RuntimeException(io);
+        }
+    }
+
     public void setBaseURL(String baseURL) {
         this.baseURL = baseURL;
     }
@@ -21,24 +40,5 @@ public class InternetJsonRepository implements Repository {
 
     public void setApiVersion(String apiVersion) {
         this.apiVersion = apiVersion;
-    }
-
-    @Override
-    public Reader lookup(String dict, String term) {
-        if (dict == null || dict.equals("")) {
-            throw new IllegalArgumentException("dictcannot be null or empty");
-        }
-        
-        if (term == null || term.equals("")) {
-            throw new IllegalArgumentException("term cannot be null or empty");
-        }
-        
-        String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
-        try {
-            URL url = new URL(path);
-            return new InputStreamReader(url.openStream());
-        } catch (IOException io) {
-            throw new RuntimeException(io);
-        }
     }
 }
