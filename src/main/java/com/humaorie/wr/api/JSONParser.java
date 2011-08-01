@@ -8,6 +8,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
+import sun.nio.cs.ext.ISCII91;
 
 public class JSONParser implements Parser {
 
@@ -16,16 +17,11 @@ public class JSONParser implements Parser {
         try {
             JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertContainsResults(rootJson);
+            assertNoRedirect(rootJson);
             return parseCategories(rootJson);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
-        } finally {
-            try {
-                reader.close();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-        }
+        } 
     }
 
     private List<Category> parseCategories(JSONObject rootJson) {
@@ -80,6 +76,12 @@ public class JSONParser implements Parser {
         String note = rootJson.optString("Note");
         if (note != null && note.contains("No translation was found for")) {
             throw new TermNotFoundException(note);
+        }
+    }
+
+    private void assertNoRedirect(JSONObject rootJson) {
+        if (!rootJson.optString("Response").isEmpty()) {
+            throw new RedirectException(rootJson.optString("URL")); 
         }
     }
 }

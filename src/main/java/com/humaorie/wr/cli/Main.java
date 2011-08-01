@@ -1,5 +1,6 @@
 package com.humaorie.wr.cli;
 
+import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
@@ -11,16 +12,36 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
+        EnviromentApiKeyProvider enviromentApiKeyProvider = null;
+        
+        try {
+            enviromentApiKeyProvider = new EnviromentApiKeyProvider();
+        } catch (IllegalArgumentException e) {
+            System.err.println(e.getMessage());
+            System.exit(1);
+        }
+
+        Main main = new Main(enviromentApiKeyProvider);
+        int status = main.run(args);
+        System.exit(status);
+    }
+    
+    private final ApiKeyProvider apiKeyProvider;
+
+    public Main(ApiKeyProvider apiKeyProvider) {
+        this.apiKeyProvider = apiKeyProvider;
+    }
+
+    public int run(String... args) {
         if (args.length != 2) {
             System.err.println("java -jar wr.jar dict term");
-            System.exit(1);
+            return 1;
         }
 
         String dict = args[0];
         String term = args[1];
         InternetJsonRepository repository = new InternetJsonRepository();
-        EnviromentApiKeyProvider enviromentApiKeyProvider = getAPIKeyProviderOrDie();
-        repository.setApiKeyProvider(enviromentApiKeyProvider);
+        repository.setApiKeyProvider(apiKeyProvider);
         WordReference wordReference = new WordReference(repository);
         List<Category> categories = wordReference.lookup(dict, term);
 
@@ -33,15 +54,7 @@ public class Main {
                 }
             }
         }
-    }
 
-    private static EnviromentApiKeyProvider getAPIKeyProviderOrDie() {
-        try {
-            return new EnviromentApiKeyProvider();
-        } catch (IllegalStateException exception) {
-            System.err.println(exception.getMessage());
-            System.exit(1);
-            return null; // makes javac happy
-        }
+        return 0;
     }
 }
