@@ -51,16 +51,16 @@ public class MainTest {
     }
 
     @Test
-    public void cannotQueryANonExistentWord() {
-        Main main = new Main(apiKeyProvider);
-        int status = main.run("enit", "asdasdasdhjgasdkjahsdkash");
-        Assert.assertEquals(0, status);
-    }
-
-    @Test
     public void cannotQueryAnInvalidDictionary() {
         Main main = new Main(apiKeyProvider);
         int status = main.run("asdasd", "grin");
+        Assert.assertEquals(1, status);
+    }
+
+    @Test
+    public void canHandleInvalidKey() {
+        Main main = new Main(apiKeyProvider);
+        int status = main.run("enfr", "foo");
         Assert.assertEquals(1, status);
     }
 }

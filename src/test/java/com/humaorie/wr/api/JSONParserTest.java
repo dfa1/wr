@@ -31,4 +31,12 @@ public class JSONParserTest {
             Assert.assertEquals("No translation was found for foo.", ex.getMessage());
         }
     }
+
+    @Test(expected=InvalidApiKeyException.class)
+    public void invalidApiKeyToException() {
+            InputStream inputStream = FileSystemRepository.class.getResourceAsStream("/data/invalidkey.json");
+            Reader reader = new InputStreamReader(inputStream);
+            JSONParser parser = new JSONParser();
+            parser.parseDefinition(reader);
+    }    
 }

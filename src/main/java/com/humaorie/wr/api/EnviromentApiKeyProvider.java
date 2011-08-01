@@ -9,7 +9,7 @@ public class EnviromentApiKeyProvider implements ApiKeyProvider {
         key = System.getenv(KEY);
 
         if (key == null) {
-            throw new IllegalStateException(String.format("please set the enviroment variable %s\nSee http://www.wordreference.com/docs/APIregistration.aspx", KEY));
+            throw new InvalidApiKeyException("please set the enviroment variable %s\nSee http://www.wordreference.com/docs/APIregistration.aspx", KEY);
         }
     }
 

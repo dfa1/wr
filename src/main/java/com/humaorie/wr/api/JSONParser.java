@@ -1,6 +1,5 @@
 package com.humaorie.wr.api;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +7,6 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-import sun.nio.cs.ext.ISCII91;
 
 public class JSONParser implements Parser {
 
@@ -16,12 +14,13 @@ public class JSONParser implements Parser {
     public List<Category> parseDefinition(Reader reader) {
         try {
             JSONObject rootJson = new JSONObject(new JSONTokener(reader));
+            assertValidApiKey(rootJson);
             assertContainsResults(rootJson);
             assertNoRedirect(rootJson);
             return parseCategories(rootJson);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
-        } 
+        }
     }
 
     private List<Category> parseCategories(JSONObject rootJson) {
@@ -81,7 +80,15 @@ public class JSONParser implements Parser {
 
     private void assertNoRedirect(JSONObject rootJson) {
         if (!rootJson.optString("Response").isEmpty()) {
-            throw new RedirectException(rootJson.optString("URL")); 
+            throw new RedirectException(rootJson.optString("URL"));
+        }
+    }
+
+    private void assertValidApiKey(JSONObject rootJson) {
+        String sorry = rootJson.optString("Sorry");
+
+        if (!sorry.isEmpty()) {
+            throw new InvalidApiKeyException(sorry);
         }
     }
 }
