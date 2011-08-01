@@ -7,13 +7,14 @@ import com.humaorie.wr.api.InternetJsonRepository;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
 import com.humaorie.wr.api.WordReference;
+import java.io.PrintStream;
 import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
         EnviromentApiKeyProvider enviromentApiKeyProvider = null;
-        
+
         try {
             enviromentApiKeyProvider = new EnviromentApiKeyProvider();
         } catch (IllegalArgumentException e) {
@@ -25,8 +26,9 @@ public class Main {
         int status = main.run(args);
         System.exit(status);
     }
-    
     private final ApiKeyProvider apiKeyProvider;
+    private PrintStream out = System.out;
+    private PrintStream err = System.err;
 
     public Main(ApiKeyProvider apiKeyProvider) {
         this.apiKeyProvider = apiKeyProvider;
@@ -34,7 +36,7 @@ public class Main {
 
     public int run(String... args) {
         if (args.length != 2) {
-            System.err.println("java -jar wr.jar dict term");
+            out.println("java -jar wr.jar dict term");
             return 1;
         }
 
@@ -50,11 +52,19 @@ public class Main {
             for (Translation translation : translations) {
                 List<Term> translations1 = translation.getTranslations();
                 for (Term term1 : translations1) {
-                    System.out.printf("%s %s %s %s\n", term1.getTerm(), term1.getPos(), term1.getSense(), term1.getUsage());
+                    out.printf("%s %s %s %s\n", term1.getTerm(), term1.getPos(), term1.getSense(), term1.getUsage());
                 }
             }
         }
 
         return 0;
+    }
+
+    public void setErr(PrintStream err) {
+        this.err = err;
+    }
+
+    public void setOut(PrintStream out) {
+        this.out = out;
     }
 }
