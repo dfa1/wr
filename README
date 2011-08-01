@@ -9,6 +9,7 @@ http://www.wordreference.com/docs/APIregistration.aspx
 TODO
 ----
 
+- handle redirects
 - improve error handling
 - filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service

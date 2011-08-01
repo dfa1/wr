@@ -15,6 +15,7 @@ public class JSONParser implements Parser {
     public List<Category> parseDefinition(Reader reader) {
         try {
             JSONObject rootJson = new JSONObject(new JSONTokener(reader));
+            assertContainsResults(rootJson);
             return parseCategories(rootJson);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
@@ -73,5 +74,12 @@ public class JSONParser implements Parser {
                 termJson.optString("POS"),
                 termJson.optString("sense"),
                 termJson.optString("usage"));
+    }
+
+    private void assertContainsResults(JSONObject rootJson) {
+        String note = rootJson.optString("Note");
+        if (note != null && note.contains("No translation was found for")) {
+            throw new TermNotFoundException(note);
+        }
     }
 }

@@ -10,6 +10,11 @@ public class FileSystemRepository implements Repository {
     public Reader lookup(String dict, String word) {
         String fileName = String.format("/data/%s-%s.json", dict, word);
         InputStream inputStream = FileSystemRepository.class.getResourceAsStream(fileName);
+
+        if (inputStream == null) {
+            inputStream = FileSystemRepository.class.getResourceAsStream("/data/notfound.json");
+        }
+        
         return new InputStreamReader(inputStream);
     }
 }
