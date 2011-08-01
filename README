@@ -1,5 +1,6 @@
 
-Doc:
+References
+----------
 
 http://www.wordreference.com/docs/api.aspx
 http://www.wordreference.com/docs/APIregistration.aspx
@@ -8,6 +9,6 @@ http://www.wordreference.com/docs/APIregistration.aspx
 TODO
 ----
 
-- model + filtering 
+- filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service
-- local caching via FileSystemRepository
+- caching via FileSystemRepository
