@@ -19,7 +19,7 @@ public class JSONParser implements Parser {
             JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             return parseCategories(rootJson);
         } catch (JSONException ex) {
-            throw new IllegalStateException("cannot parse JSON");
+            throw new IllegalStateException("cannot parse JSON", ex);
         } finally {
             try {
                 reader.close();
