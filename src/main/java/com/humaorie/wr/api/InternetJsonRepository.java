@@ -14,7 +14,7 @@ public class InternetJsonRepository implements Repository {
     @Override
     public Reader lookup(String dict, String term) {
         if (dict == null || dict.equals("")) {
-            throw new IllegalArgumentException("dictcannot be null or empty");
+            throw new IllegalArgumentException("dict cannot be null or empty");
         }
 
         if (term == null || term.equals("")) {
