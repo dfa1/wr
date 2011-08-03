@@ -4,6 +4,7 @@ import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
+import com.humaorie.wr.api.InvalidApiKeyException;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
 import com.humaorie.wr.api.WordReference;
@@ -13,19 +14,12 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) {
-        EnviromentApiKeyProvider enviromentApiKeyProvider = null;
-
-        try {
-            enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        } catch (IllegalArgumentException e) {
-            System.err.println(e.getMessage());
-            System.exit(1);
-        }
-
+        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
         Main main = new Main(enviromentApiKeyProvider);
         int status = main.run(args);
         System.exit(status);
     }
+
     private final ApiKeyProvider apiKeyProvider;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
@@ -42,10 +36,11 @@ public class Main {
 
         String dict = args[0];
         String term = args[1];
-        InternetJsonRepository repository = new InternetJsonRepository();
-        repository.setApiKeyProvider(apiKeyProvider);
-        WordReference wordReference = new WordReference(repository);
-        List<Category> categories = wordReference.lookup(dict, term);
+        List<Category> categories = lookup(dict, term);
+
+        if (categories == null) { // XXX: smell
+            return 1;
+        }
 
         for (Category category : categories) {
             List<Translation> translations = category.getTranslations();
@@ -58,6 +53,18 @@ public class Main {
         }
 
         return 0;
+    }
+
+    private List<Category> lookup(String dict, String term) {
+        try {
+            InternetJsonRepository repository = new InternetJsonRepository();
+            repository.setApiKeyProvider(apiKeyProvider);
+            WordReference wordReference = new WordReference(repository);
+            return wordReference.lookup(dict, term);
+        } catch (InvalidApiKeyException ex) {
+            err.println(ex.getMessage());
+            return null;
+        }
     }
 
     public void setErr(PrintStream err) {

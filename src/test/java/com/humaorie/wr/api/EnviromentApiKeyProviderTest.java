@@ -7,7 +7,8 @@ public class EnviromentApiKeyProviderTest {
 
     @Test(expected = InvalidApiKeyException.class)
     public void withoutEnvironmentVariableThrows() {
-        new EnviromentApiKeyProvider();
+        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
+        enviromentApiKeyProvider.provideKey();
     }
     
     @Test
