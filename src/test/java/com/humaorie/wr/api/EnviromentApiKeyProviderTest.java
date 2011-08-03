@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class EnviromentApiKeyProviderTest {
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = InvalidApiKeyException.class)
     public void withoutEnvironmentVariableThrows() {
         new EnviromentApiKeyProvider();
     }
