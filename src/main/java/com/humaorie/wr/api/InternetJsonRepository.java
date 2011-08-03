@@ -1,5 +1,6 @@
 package com.humaorie.wr.api;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -21,11 +22,15 @@ public class InternetJsonRepository implements Repository {
             throw new IllegalArgumentException("term cannot be null or empty");
         }
 
-        String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
         try {
+            String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
             URL url = new URL(path);
             return new InputStreamReader(url.openStream());
         } catch (IOException io) {
+            if (io.getCause() instanceof FileNotFoundException) {
+                throw new IllegalArgumentException("invalid dict");
+            }
+            
             throw new RuntimeException(io);
         }
     }

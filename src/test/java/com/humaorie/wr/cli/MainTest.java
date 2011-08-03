@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class MainTest {
 
-    private ApiKeyProvider apiKeyProvider = new CostantApiKeyProvider("1");
+    private ApiKeyProvider apiKeyProvider = new CostantApiKeyProvider("2");
 
     @Test
     public void cannotAcceptZeroArguments() {
@@ -28,19 +28,19 @@ public class MainTest {
     @Test
     public void canQueryAValidWordWithinAValidDictionary() {
         Main main = new Main(apiKeyProvider);
-        int status = main.run("enfr", "grind");
+        int status = main.run("enfr", "grin");
         Assert.assertEquals(0, status);
     }
 
     @Test
     public void canOutputAValidWordWithinAValidDictionary() {
-        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
-        PrintStream capturing = new PrintStream(outContent);
+        ByteArrayOutputStream content = new ByteArrayOutputStream();
+        PrintStream capturing = new PrintStream(content);
         Main main = new Main(apiKeyProvider);
         main.setOut(capturing);
         main.run("enit", "grin");
-        
-        Assert.assertTrue(capturing.toString().contains("rictus"));
+
+        Assert.assertTrue(content.toString().contains("ghignare"));
     }
 
     @Test
@@ -51,16 +51,29 @@ public class MainTest {
     }
 
     @Test
-    public void cannotQueryAnInvalidDictionary() {
+    public void returnErrorOnInvalidDictionary() {
         Main main = new Main(apiKeyProvider);
         int status = main.run("asdasd", "grin");
         Assert.assertEquals(1, status);
     }
 
     @Test
-    public void canHandleInvalidKey() {
-        Main main = new Main(apiKeyProvider);
-        int status = main.run("enfr", "foo");
+    public void returnErrorOnInvalidApiKey() {
+        // "1" is a DEMO api key and should not be used
+        final CostantApiKeyProvider invalidApiKey = new CostantApiKeyProvider("1");
+        Main main = new Main(invalidApiKey); // 
+        int status = main.run("enit", "foo");
         Assert.assertEquals(1, status);
+    }
+
+    @Test
+    public void showErrorOnInvalidApiKey() {
+        ByteArrayOutputStream content = new ByteArrayOutputStream();
+        PrintStream capturing = new PrintStream(content);
+        Main main = new Main(apiKeyProvider);
+        main.setErr(capturing);
+        main.run("enit", "dog");
+        System.out.println("error "+ content.toString());
+        Assert.assertTrue(content.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
     }
 }
