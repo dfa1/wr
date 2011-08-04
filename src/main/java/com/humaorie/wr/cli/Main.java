@@ -5,9 +5,11 @@ import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
 import com.humaorie.wr.api.InvalidApiKeyException;
+import com.humaorie.wr.api.NotFoundException;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
 import com.humaorie.wr.api.WordReference;
+import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.List;
 
@@ -62,6 +64,9 @@ public class Main {
             WordReference wordReference = new WordReference(repository);
             return wordReference.lookup(dict, term);
         } catch (InvalidApiKeyException ex) {
+            err.println(ex.getMessage());
+            return null;
+        } catch (NotFoundException ex) {
             err.println(ex.getMessage());
             return null;
         }

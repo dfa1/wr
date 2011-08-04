@@ -33,11 +33,11 @@ public class WordReference {
     private Reader retrieveDocument(String dict, String word) {
         try {
             return repository.lookup(dict, word);
-        } catch (RedirectException exception) { // TODO: using exception for flow-control
+        } catch (RedirectException exception) { // XXX: smess using exception for flow-control
             String redirectUrl = exception.getRedirectUrl();
             String[] dictAndWord = redirectUrl.split("/");
             return repository.lookup(dictAndWord[0], dictAndWord[1]);
-        }
+        } 
     }
 
     public void setParser(Parser parser) {

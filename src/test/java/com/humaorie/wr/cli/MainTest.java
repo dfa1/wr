@@ -44,13 +44,6 @@ public class MainTest {
     }
 
     @Test
-    public void cannotQueryAnEmptyWord() {
-        Main main = new Main(apiKeyProvider);
-        int status = main.run("enit", "");
-        Assert.assertEquals(1, status);
-    }
-
-    @Test
     public void returnErrorOnInvalidDictionary() {
         Main main = new Main(apiKeyProvider);
         int status = main.run("asdasd", "grin");
@@ -70,7 +63,7 @@ public class MainTest {
     public void showErrorOnInvalidApiKey() {
         ByteArrayOutputStream content = new ByteArrayOutputStream();
         PrintStream capturing = new PrintStream(content);
-        Main main = new Main(apiKeyProvider);
+        Main main = new Main(new CostantApiKeyProvider("invalidapikey"));
         main.setErr(capturing);
         main.run("enit", "dog");
         System.out.println("error "+ content.toString());

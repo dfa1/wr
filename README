@@ -9,8 +9,10 @@ http://www.wordreference.com/docs/APIregistration.aspx
 TODO
 ----
 
-- handle redirects
-- improve error handling
+- http://api.wordreference.com/0.8/enit/json/enit/ <-- handle missing word
+{
+	"Note" : "Please enter a word to search for. For example, http://api.wordreference.com/json/enfr/start."
+}
 - filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service
 - caching via FileSystemRepository

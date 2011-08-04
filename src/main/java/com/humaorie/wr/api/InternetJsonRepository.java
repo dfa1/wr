@@ -26,12 +26,10 @@ public class InternetJsonRepository implements Repository {
             String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
             URL url = new URL(path);
             return new InputStreamReader(url.openStream());
-        } catch (IOException io) {
-            if (io.getCause() instanceof FileNotFoundException) {
-                throw new IllegalArgumentException("invalid dict");
-            }
-            
-            throw new RuntimeException(io);
+        } catch (FileNotFoundException ex) {
+            throw new NotFoundException("dictionary '%s' not found", dict);
+        } catch (IOException ex) {
+            throw new RuntimeException(ex);
         }
     }
 
