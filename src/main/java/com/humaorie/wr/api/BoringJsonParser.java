@@ -12,6 +12,10 @@ public class BoringJsonParser implements Parser {
 
     @Override
     public Result parseDefinition(Reader reader) {
+        if (reader == null) {
+            throw new IllegalArgumentException("cannot use null as Reader");
+        }
+        
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertValidApiKey(rootJson);

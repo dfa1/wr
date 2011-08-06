@@ -8,10 +8,6 @@ import org.junit.Test;
 
 public class BoringJsonParserTest {
 
-    private Reader loadFile(String filename) {
-        final InputStream inputStream = BoringJsonParserTest.class.getResourceAsStream(filename);
-        return new InputStreamReader(inputStream);
-    }
 
     @Test
     public void canParseValidDocument() {
@@ -65,5 +61,16 @@ public class BoringJsonParserTest {
         } catch (RedirectException redirectException) {
             Assert.assertEquals("drago", redirectException.getNewWord());
         }
+    }
+
+    @Test(expected=IllegalArgumentException.class)
+    public void refuseToParseANullReader() {
+        final BoringJsonParser boringJsonParser = new BoringJsonParser();
+        boringJsonParser.parseDefinition(null);
+    }
+    
+    private Reader loadFile(String filename) {
+        final InputStream inputStream = BoringJsonParserTest.class.getResourceAsStream(filename);
+        return new InputStreamReader(inputStream);
     }
 }
