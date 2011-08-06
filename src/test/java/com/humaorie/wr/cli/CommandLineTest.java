@@ -15,9 +15,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class MainTest {
+public class CommandLineTest {
 
-    private Main main;
+    private CommandLineClient main;
     private ByteArrayOutputStream outContent;
     private ByteArrayOutputStream errContent;
 
@@ -26,7 +26,7 @@ public class MainTest {
         final LocalJsonRepository repository = new LocalJsonRepository();
         final JSONParser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        main = new Main(wordReference);
+        main = new CommandLineClient(wordReference);
         outContent = new ByteArrayOutputStream();
         main.setOut(new PrintStream(outContent));
         errContent = new ByteArrayOutputStream();
@@ -102,7 +102,7 @@ public class MainTest {
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        final Main main = new Main(wordReference);
+        final CommandLineClient main = new CommandLineClient(wordReference);
         int status = main.run("enit", "foo");
         Assert.assertEquals(1, status);
     }
@@ -113,7 +113,7 @@ public class MainTest {
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        final Main main = new Main(wordReference);
+        final CommandLineClient main = new CommandLineClient(wordReference);
         main.setErr(new PrintStream(errContent));
         main.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
