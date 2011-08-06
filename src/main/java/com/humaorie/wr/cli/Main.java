@@ -1,6 +1,5 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
@@ -14,17 +13,17 @@ import java.util.List;
 
 public class Main {
 
-    private final ApiKeyProvider apiKeyProvider;
+    private final WordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
 
-    public Main(ApiKeyProvider apiKeyProvider) {
-        this.apiKeyProvider = apiKeyProvider;
+    public Main(WordReference wordReference) {
+        this.wordReference = wordReference;
     }
 
     public int run(String... args) {
         if (args.length != 2) {
-            out.println("java -jar wr.jar dict term");
+            err.println("java -jar wr.jar dict term");
             return 1;
         }
 
@@ -47,9 +46,6 @@ public class Main {
 
     private Result lookup(String dict, String term) {
         try {
-            InternetJsonRepository repository = new InternetJsonRepository();
-            repository.setApiKeyProvider(apiKeyProvider);
-            WordReference wordReference = new WordReference(repository);
             return wordReference.lookup(dict, term);
         } catch (InvalidApiKeyException ex) {
             err.println(ex.getMessage());
@@ -67,7 +63,10 @@ public class Main {
 
     public static void main(String[] args) {
         EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        Main main = new Main(enviromentApiKeyProvider);
+        InternetJsonRepository repository = new InternetJsonRepository();
+        repository.setApiKeyProvider(enviromentApiKeyProvider);
+        WordReference wordReference = new WordReference(repository);
+        Main main = new Main(wordReference);
         int status = main.run(args);
         System.exit(status);
     }
