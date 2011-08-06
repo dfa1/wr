@@ -9,7 +9,7 @@ import org.junit.Test;
 public class JSONParserTest {
 
     @Test
-    public void canParseValidMessage() {
+    public void canParseValidDocument() {
         InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/iten-drago.json");
         Reader reader = new InputStreamReader(inputStream);
         JSONParser parser = new JSONParser();
@@ -18,7 +18,7 @@ public class JSONParserTest {
     }
 
     @Test
-    public void canParseTermNotFoundMessages() {
+    public void canParseTermNotFoundDocument() {
         InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/notfound.json");
         Reader reader = new InputStreamReader(inputStream);
         JSONParser parser = new JSONParser();
@@ -27,8 +27,16 @@ public class JSONParserTest {
     }
 
     @Test(expected = InvalidApiKeyException.class)
-    public void invalidApiKeyToException() {
+    public void canParseInvalidKeyDocument() { // TODO: don't throw exception here
         InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/invalidkey.json");
+        Reader reader = new InputStreamReader(inputStream);
+        JSONParser parser = new JSONParser();
+        parser.parseDefinition(reader);
+    }
+
+    @Test(expected=RedirectException.class) // TODO: don't throw exception here
+    public void canParseRedirectDocument() {
+        InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
         Reader reader = new InputStreamReader(inputStream);
         JSONParser parser = new JSONParser();
         parser.parseDefinition(reader);
