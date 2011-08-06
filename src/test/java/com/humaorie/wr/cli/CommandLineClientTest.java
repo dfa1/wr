@@ -15,7 +15,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-public class CommandLineTest {
+public class CommandLineClientTest {
 
     private CommandLineClient cli;
     private ByteArrayOutputStream outContent;
