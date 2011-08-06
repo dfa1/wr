@@ -2,7 +2,6 @@ package com.humaorie.wr.api;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.List;
 
 public class WordReference {
 
@@ -13,7 +12,7 @@ public class WordReference {
         this.repository = repository;
     }
 
-    public List<Category> lookup(String dict, String word) {
+    public Result lookup(String dict, String word) {
         Reader reader = null;
 
         try {

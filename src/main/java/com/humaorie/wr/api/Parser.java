@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface Parser {
 
-    List<Category> parseDefinition(Reader reader);
+    Result parseDefinition(Reader reader);
 }

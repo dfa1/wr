@@ -11,13 +11,14 @@ import org.json.JSONTokener;
 public class JSONParser implements Parser {
 
     @Override
-    public List<Category> parseDefinition(Reader reader) {
+    public Result parseDefinition(Reader reader) {
         try {
-            JSONObject rootJson = new JSONObject(new JSONTokener(reader));
+            final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertValidApiKey(rootJson);
-            assertContainsResults(rootJson);
             assertNoRedirect(rootJson);
-            return parseCategories(rootJson);
+            final String note = rootJson.optString("Note");
+            final List<Category> categories = parseCategories(rootJson);
+            return new Result(note, categories);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
         }
@@ -29,6 +30,10 @@ public class JSONParser implements Parser {
         List<Category> categories = new ArrayList<Category>();
         Iterator categoryKeys = rootJson.keys();
 
+        if (categoryKeys == null) {
+            return categories;
+        }
+        
         while (categoryKeys.hasNext()) {
             String categoryKey = (String) categoryKeys.next();
             Category category = new Category(categoryKey);
@@ -69,13 +74,6 @@ public class JSONParser implements Parser {
                 termJson.optString("POS"),
                 termJson.optString("sense"),
                 termJson.optString("usage"));
-    }
-
-    private void assertContainsResults(JSONObject rootJson) {
-        String note = rootJson.optString("Note");
-        if (note != null && note.contains("No translation was found for")) {
-            throw new TermNotFoundException(note);
-        }
     }
 
     private void assertNoRedirect(JSONObject rootJson) {

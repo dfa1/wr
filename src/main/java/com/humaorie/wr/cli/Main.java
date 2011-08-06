@@ -5,22 +5,14 @@ import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
 import com.humaorie.wr.api.InvalidApiKeyException;
-import com.humaorie.wr.api.NotFoundException;
+import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
 import com.humaorie.wr.api.WordReference;
-import java.io.FileNotFoundException;
 import java.io.PrintStream;
 import java.util.List;
 
 public class Main {
-
-    public static void main(String[] args) {
-        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        Main main = new Main(enviromentApiKeyProvider);
-        int status = main.run(args);
-        System.exit(status);
-    }
 
     private final ApiKeyProvider apiKeyProvider;
     private PrintStream out = System.out;
@@ -38,13 +30,8 @@ public class Main {
 
         String dict = args[0];
         String term = args[1];
-        List<Category> categories = lookup(dict, term);
-
-        if (categories == null) { // XXX: smell
-            return 1;
-        }
-
-        for (Category category : categories) {
+        Result result = lookup(dict, term);
+        for (Category category : result.getCategory()) {
             List<Translation> translations = category.getTranslations();
             for (Translation translation : translations) {
                 List<Term> translations1 = translation.getTranslations();
@@ -54,19 +41,17 @@ public class Main {
             }
         }
 
+        out.printf("Note: %s\n", result.getNote());
         return 0;
     }
 
-    private List<Category> lookup(String dict, String term) {
+    private Result lookup(String dict, String term) {
         try {
             InternetJsonRepository repository = new InternetJsonRepository();
             repository.setApiKeyProvider(apiKeyProvider);
             WordReference wordReference = new WordReference(repository);
             return wordReference.lookup(dict, term);
         } catch (InvalidApiKeyException ex) {
-            err.println(ex.getMessage());
-            return null;
-        } catch (NotFoundException ex) {
             err.println(ex.getMessage());
             return null;
         }
@@ -78,5 +63,12 @@ public class Main {
 
     public void setOut(PrintStream out) {
         this.out = out;
+    }
+
+    public static void main(String[] args) {
+        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
+        Main main = new Main(enviromentApiKeyProvider);
+        int status = main.run(args);
+        System.exit(status);
     }
 }

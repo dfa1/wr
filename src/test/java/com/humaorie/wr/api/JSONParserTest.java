@@ -15,28 +15,25 @@ public class JSONParserTest {
         FileSystemRepository fileSystemRepository = new FileSystemRepository();
         Reader reader = fileSystemRepository.lookup("iten", "drago");
         JSONParser parser = new JSONParser();
-        List<Category> categories = parser.parseDefinition(reader);
-        Assert.assertEquals("original", categories.get(0).getName());
+        Result result  = parser.parseDefinition(reader);
+        Assert.assertEquals("original", result.getCategory().get(0).getName());
     }
 
     @Test
-    public void termNotFoundLeadsToException() {
-        try {
-            InputStream inputStream = FileSystemRepository.class.getResourceAsStream("/data/notfound.json");
-            Reader reader = new InputStreamReader(inputStream);
-            JSONParser parser = new JSONParser();
-            parser.parseDefinition(reader);
-            Assert.fail("expected a TermNotFoundException");
-        } catch (TermNotFoundException ex) {
-            Assert.assertEquals("No translation was found for foo.", ex.getMessage());
-        }
+    public void canParseTermNotFoundMessages() {
+        InputStream inputStream = FileSystemRepository.class.getResourceAsStream("/data/notfound.json");
+        Reader reader = new InputStreamReader(inputStream);
+        JSONParser parser = new JSONParser();
+        Result result = parser.parseDefinition(reader);
+        Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
 
-    @Test(expected=InvalidApiKeyException.class)
+    // TODO: this is an integration test
+    @Test(expected = InvalidApiKeyException.class) 
     public void invalidApiKeyToException() {
-            InputStream inputStream = FileSystemRepository.class.getResourceAsStream("/data/invalidkey.json");
-            Reader reader = new InputStreamReader(inputStream);
-            JSONParser parser = new JSONParser();
-            parser.parseDefinition(reader);
-    }    
+        InputStream inputStream = FileSystemRepository.class.getResourceAsStream("/data/invalidkey.json");
+        Reader reader = new InputStreamReader(inputStream);
+        JSONParser parser = new JSONParser();
+        parser.parseDefinition(reader);
+    }
 }
