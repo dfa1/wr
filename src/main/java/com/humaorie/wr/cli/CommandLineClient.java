@@ -26,20 +26,28 @@ public class CommandLineClient {
             return 1;
         }
 
-        String dict = args[0];
-        String term = args[1];
-        Result result = lookup(dict, term);
-        
+        final String dict = args[0];
+        final String word = args[1];
+        final Result result = lookup(dict, word);
+
         if (result == null) { // XXX: smell
             return 1;
         }
-        
+
         for (Category category : result.getCategory()) {
-            List<Translation> translations = category.getTranslations();
+            out.printf("category '%s':%n", category.getName());
+            final List<Translation> translations = category.getTranslations();
+            
             for (Translation translation : translations) {
-                List<Term> translations1 = translation.getTranslations();
-                for (Term term1 : translations1) {
-                    out.printf("%s %s %s %s%n", term1.getTerm(), term1.getPos(), term1.getSense(), term1.getUsage());
+                final Term originalTerm = translation.getOriginalTerm();
+                out.printf(" %s %s %s %s%n", originalTerm.getTerm(), originalTerm.getPos(), originalTerm.getSense(), originalTerm.getUsage());
+                
+                for (Term term : translation.getTranslations()) {
+                    out.printf("   %s %s %s %s%n", term.getTerm(), term.getPos(), term.getSense(), term.getUsage());
+                }
+
+                if (!translation.getNote().isEmpty()) {
+                    out.printf(" note: %s", translation.getNote());
                 }
             }
         }
