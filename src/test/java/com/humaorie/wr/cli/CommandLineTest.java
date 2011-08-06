@@ -17,7 +17,7 @@ import org.junit.Test;
 
 public class CommandLineTest {
 
-    private CommandLineClient main;
+    private CommandLineClient cli;
     private ByteArrayOutputStream outContent;
     private ByteArrayOutputStream errContent;
 
@@ -26,58 +26,58 @@ public class CommandLineTest {
         final LocalJsonRepository repository = new LocalJsonRepository();
         final JSONParser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        main = new CommandLineClient(wordReference);
+        cli = new CommandLineClient(wordReference);
         outContent = new ByteArrayOutputStream();
-        main.setOut(new PrintStream(outContent));
+        cli.setOut(new PrintStream(outContent));
         errContent = new ByteArrayOutputStream();
-        main.setErr(new PrintStream(errContent));
+        cli.setErr(new PrintStream(errContent));
     }
 
     @Test
     public void returnErrorWhenCalledWithoutArguments() {
-        int status = main.run();
+        final int status = cli.run();
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorWhenCalledWithoutArguments() {
-        main.run();
+        cli.run();
         Assert.assertEquals("java -jar wr.jar dict term\n", errContent.toString());
     }
 
     @Test
     public void returnErrorWhenCalledWithOneArgument() {
-        int status = main.run("enit");
+        final int status = cli.run("enit");
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorWhenCalledWithOneArgument() {
-        main.run();
+        cli.run();
         Assert.assertEquals("java -jar wr.jar dict term\n", errContent.toString());
     }
 
     @Test
     public void returnZeroOnValidQueries() {
-        int status = main.run("enfr", "grin");
+        final int status = cli.run("enfr", "grin");
         Assert.assertEquals(0, status);
     }
 
     @Test
     public void showDefinitionOfAWord() {
-        main.run("enit", "run");
+        cli.run("enit", "run");
         Assert.assertTrue(outContent.toString().contains("correre"));
     }
 
     @Test
     public void returnErrorOnInvalidDictionary() {
-        int status = main.run("asdasd", "grin");
+        final int status = cli.run("asdasd", "grin");
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorOnInvalidDictionary() {
-        main.run("foo", "grin");
+        cli.run("foo", "grin");
         Assert.assertEquals("dictionary 'foo' not found\n", errContent.toString());
     }
 
@@ -102,8 +102,8 @@ public class CommandLineTest {
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        final CommandLineClient main = new CommandLineClient(wordReference);
-        int status = main.run("enit", "foo");
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final int status = cli.run("enit", "foo");
         Assert.assertEquals(1, status);
     }
 
@@ -113,9 +113,9 @@ public class CommandLineTest {
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JSONParser();
         final WordReference wordReference = new WordReference(repository, parser);
-        final CommandLineClient main = new CommandLineClient(wordReference);
-        main.setErr(new PrintStream(errContent));
-        main.run("enit", "dog");
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        cli.setErr(new PrintStream(errContent));
+        cli.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
     }
 }

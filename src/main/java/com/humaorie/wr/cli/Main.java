@@ -9,13 +9,13 @@ import com.humaorie.wr.api.WordReference;
 public class Main {
 
     public static void main(String[] args) {
-        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        InternetJsonRepository repository = new InternetJsonRepository();
+        final EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository();
         repository.setApiKeyProvider(enviromentApiKeyProvider);
-        Parser parser = new JSONParser();
-        WordReference wordReference = new WordReference(repository, parser);
-        CommandLineClient main = new CommandLineClient(wordReference);
-        int status = main.run(args);
+        final Parser parser = new JSONParser();
+        final WordReference wordReference = new WordReference(repository, parser);
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final int status = cli.run(args);
         System.exit(status);
     }
 }
