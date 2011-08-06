@@ -8,7 +8,6 @@ import org.junit.Test;
 
 public class BoringJsonParserTest {
 
-
     @Test
     public void canParseValidDocument() {
         final BoringJsonParser parser = new BoringJsonParser();
@@ -27,23 +26,23 @@ public class BoringJsonParserTest {
 
     @Test(expected = InvalidApiKeyException.class)
     public void invalidKeyDocumentLeadsToException() {
-        final Reader reader = loadFile("/data/invalidkey.json");
         final BoringJsonParser parser = new BoringJsonParser();
+        final Reader reader = loadFile("/data/invalidkey.json");
         parser.parseDefinition(reader);
     }
 
     @Test(expected = RedirectException.class)
     public void redirectResponseLeadsToException() {
-        final Reader reader = loadFile("/data/redirect.json");
         final BoringJsonParser parser = new BoringJsonParser();
+        final Reader reader = loadFile("/data/redirect.json");
         parser.parseDefinition(reader);
     }
 
     @Test
     public void redirectResponseContainsNewDict() {
         try {
-            final Reader reader = loadFile("/data/redirect.json");
             final BoringJsonParser parser = new BoringJsonParser();
+            final Reader reader = loadFile("/data/redirect.json");
             parser.parseDefinition(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
@@ -54,8 +53,8 @@ public class BoringJsonParserTest {
     @Test
     public void redirectResponseContainsNewWord() {
         try {
-            final Reader reader = loadFile("/data/redirect.json");
             final BoringJsonParser parser = new BoringJsonParser();
+            final Reader reader = loadFile("/data/redirect.json");
             parser.parseDefinition(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
@@ -63,12 +62,12 @@ public class BoringJsonParserTest {
         }
     }
 
-    @Test(expected=IllegalArgumentException.class)
+    @Test(expected = IllegalArgumentException.class)
     public void refuseToParseANullReader() {
         final BoringJsonParser boringJsonParser = new BoringJsonParser();
         boringJsonParser.parseDefinition(null);
     }
-    
+
     private Reader loadFile(String filename) {
         final InputStream inputStream = BoringJsonParserTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
