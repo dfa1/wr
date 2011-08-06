@@ -12,7 +12,7 @@ public class BoringJsonParserTest {
     public void canParseValidDocument() {
         final BoringJsonParser parser = new BoringJsonParser();
         final Reader reader = loadFile("/data/iten-drago.json");
-        Result result = parser.parseDefinition(reader);
+        Result result = parser.parse(reader);
         Assert.assertEquals("original", result.getCategory().get(0).getName());
     }
 
@@ -20,7 +20,7 @@ public class BoringJsonParserTest {
     public void canParseTermNotFoundDocument() {
         final BoringJsonParser parser = new BoringJsonParser();
         final Reader reader = loadFile("/data/notfound.json");
-        final Result result = parser.parseDefinition(reader);
+        final Result result = parser.parse(reader);
         Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
 
@@ -28,14 +28,14 @@ public class BoringJsonParserTest {
     public void invalidKeyDocumentLeadsToException() {
         final BoringJsonParser parser = new BoringJsonParser();
         final Reader reader = loadFile("/data/invalidkey.json");
-        parser.parseDefinition(reader);
+        parser.parse(reader);
     }
 
     @Test(expected = RedirectException.class)
     public void redirectResponseLeadsToException() {
         final BoringJsonParser parser = new BoringJsonParser();
         final Reader reader = loadFile("/data/redirect.json");
-        parser.parseDefinition(reader);
+        parser.parse(reader);
     }
 
     @Test
@@ -43,7 +43,7 @@ public class BoringJsonParserTest {
         try {
             final BoringJsonParser parser = new BoringJsonParser();
             final Reader reader = loadFile("/data/redirect.json");
-            parser.parseDefinition(reader);
+            parser.parse(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
             Assert.assertEquals("iten", redirectException.getNewDict());
@@ -55,7 +55,7 @@ public class BoringJsonParserTest {
         try {
             final BoringJsonParser parser = new BoringJsonParser();
             final Reader reader = loadFile("/data/redirect.json");
-            parser.parseDefinition(reader);
+            parser.parse(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
             Assert.assertEquals("drago", redirectException.getNewWord());
@@ -65,7 +65,7 @@ public class BoringJsonParserTest {
     @Test(expected = IllegalArgumentException.class)
     public void refuseToParseANullReader() {
         final BoringJsonParser boringJsonParser = new BoringJsonParser();
-        boringJsonParser.parseDefinition(null);
+        boringJsonParser.parse(null);
     }
 
     private Reader loadFile(String filename) {

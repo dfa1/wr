@@ -25,7 +25,7 @@ public class WordReference {
         Reader reader = null;
         try {
             reader = repository.lookup(dict, word);
-            return parser.parseDefinition(reader);
+            return parser.parse(reader);
         } finally {
             try {
                 if (reader != null) {

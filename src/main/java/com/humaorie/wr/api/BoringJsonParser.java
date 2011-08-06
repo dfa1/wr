@@ -11,7 +11,7 @@ import org.json.JSONTokener;
 public class BoringJsonParser implements Parser {
 
     @Override
-    public Result parseDefinition(Reader reader) {
+    public Result parse(Reader reader) {
         if (reader == null) {
             throw new IllegalArgumentException("cannot use null as Reader");
         }
