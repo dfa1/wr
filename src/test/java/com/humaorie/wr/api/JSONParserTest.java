@@ -8,46 +8,46 @@ import org.junit.Test;
 
 public class JSONParserTest {
 
+    private Reader loadFile(String filename) {
+        final InputStream inputStream = JSONParserTest.class.getResourceAsStream(filename);
+        return new InputStreamReader(inputStream);
+    }
+
     @Test
     public void canParseValidDocument() {
-        InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/iten-drago.json");
-        Reader reader = new InputStreamReader(inputStream);
-        JSONParser parser = new JSONParser();
+        final JSONParser parser = new JSONParser();
+        final Reader reader = loadFile("/data/iten-drago.json");
         Result result = parser.parseDefinition(reader);
         Assert.assertEquals("original", result.getCategory().get(0).getName());
     }
 
     @Test
     public void canParseTermNotFoundDocument() {
-        InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/notfound.json");
-        Reader reader = new InputStreamReader(inputStream);
-        JSONParser parser = new JSONParser();
-        Result result = parser.parseDefinition(reader);
+        final JSONParser parser = new JSONParser();
+        final Reader reader = loadFile("/data/notfound.json");
+        final Result result = parser.parseDefinition(reader);
         Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
 
     @Test(expected = InvalidApiKeyException.class)
-    public void canParseInvalidKeyDocument() { // TODO: don't throw exception here
-        InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/invalidkey.json");
-        Reader reader = new InputStreamReader(inputStream);
-        JSONParser parser = new JSONParser();
+    public void invalidKeyDocumentLeadsToException() {
+        final Reader reader = loadFile("/data/invalidkey.json");
+        final JSONParser parser = new JSONParser();
         parser.parseDefinition(reader);
     }
 
     @Test(expected = RedirectException.class)
     public void redirectResponseLeadsToException() {
-        InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
-        Reader reader = new InputStreamReader(inputStream);
-        JSONParser parser = new JSONParser();
+        final Reader reader = loadFile("/data/redirect.json");
+        final JSONParser parser = new JSONParser();
         parser.parseDefinition(reader);
     }
 
     @Test
     public void redirectResponseContainsNewDict() {
         try {
-            InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
-            Reader reader = new InputStreamReader(inputStream);
-            JSONParser parser = new JSONParser();
+            final Reader reader = loadFile("/data/redirect.json");
+            final JSONParser parser = new JSONParser();
             parser.parseDefinition(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
@@ -58,9 +58,8 @@ public class JSONParserTest {
     @Test
     public void redirectResponseContainsNewWord() {
         try {
-            InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
-            Reader reader = new InputStreamReader(inputStream);
-            JSONParser parser = new JSONParser();
+            final Reader reader = loadFile("/data/redirect.json");
+            final JSONParser parser = new JSONParser();
             parser.parseDefinition(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
