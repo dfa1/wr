@@ -36,12 +36,12 @@ public class Main {
             for (Translation translation : translations) {
                 List<Term> translations1 = translation.getTranslations();
                 for (Term term1 : translations1) {
-                    out.printf("%s %s %s %s\n", term1.getTerm(), term1.getPos(), term1.getSense(), term1.getUsage());
+                    out.printf("%s %s %s %s%n", term1.getTerm(), term1.getPos(), term1.getSense(), term1.getUsage());
                 }
             }
         }
 
-        out.printf("Note: %s\n", result.getNote());
+        out.printf("Note: %s%n", result.getNote());
         return 0;
     }
 
