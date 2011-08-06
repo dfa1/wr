@@ -10,14 +10,14 @@ public class FileSystemRepositoryTest {
 
     @Test
     public void canLoadADefinition() {
-        FileSystemRepository fsr = new FileSystemRepository();
+        LocalJsonRepository fsr = new LocalJsonRepository();
 
         Assert.assertNotNull(fsr.lookup("enit", "run"));
     }
 
     @Test
     public void returnNotFoundWhen() throws IOException {
-        FileSystemRepository fsr = new FileSystemRepository();
+        LocalJsonRepository fsr = new LocalJsonRepository();
         Reader reader = fsr.lookup("enit", "missing");
         String content = readerToString(reader);
         Assert.assertTrue(content.contains("No translation was found"));
@@ -25,7 +25,7 @@ public class FileSystemRepositoryTest {
 
     @Test
     public void canReadTheWholeDefinition() throws IOException {
-        FileSystemRepository fsr = new FileSystemRepository();
+        LocalJsonRepository fsr = new LocalJsonRepository();
         Reader reader = fsr.lookup("enit", "run");
         String content = readerToString(reader);
 
