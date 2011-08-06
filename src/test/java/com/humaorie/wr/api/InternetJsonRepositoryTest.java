@@ -1,7 +1,6 @@
 package com.humaorie.wr.api;
 
-import java.io.Reader;
-import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 public class InternetJsonRepositoryTest {
@@ -19,17 +18,18 @@ public class InternetJsonRepositoryTest {
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void refuseNullTerm() {
+    public void refuseNullWord() {
         InternetJsonRepository repository = new InternetJsonRepository();
         repository.lookup("enit", null);
     }
     
     @Test(expected=IllegalArgumentException.class)
-    public void refuseEmptyTerm() {
+    public void refuseEmptyWord() {
         InternetJsonRepository repository = new InternetJsonRepository();
         repository.lookup("enit", "");
     }
     
+    @Ignore("how to simulate this?")
     @Test(expected=NotFoundException.class)
     public void unknownDictLeadsToException() {
         InternetJsonRepository repository = new InternetJsonRepository();

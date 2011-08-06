@@ -13,23 +13,23 @@ public class InternetJsonRepository implements Repository {
     private ApiKeyProvider apiKeyProvider = new CostantApiKeyProvider("2");
 
     @Override
-    public Reader lookup(String dict, String term) {
+    public Reader lookup(String dict, String word) {
         if (dict == null || dict.equals("")) {
             throw new IllegalArgumentException("dict cannot be null or empty");
         }
 
-        if (term == null || term.equals("")) {
-            throw new IllegalArgumentException("term cannot be null or empty");
+        if (word == null || word.equals("")) {
+            throw new IllegalArgumentException("word cannot be null or empty");
         }
 
         try {
-            String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, term);
-            URL url = new URL(path);
+            final String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, word);
+            final URL url = new URL(path);
             return new InputStreamReader(url.openStream());
         } catch (FileNotFoundException ex) {
             throw new NotFoundException("dictionary '%s' not found", dict);
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            throw new RuntimeException(ex); // XXX: 
         }
     }
 
