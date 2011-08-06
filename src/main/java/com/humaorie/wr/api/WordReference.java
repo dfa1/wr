@@ -16,10 +16,8 @@ public class WordReference {
     public Result lookup(String dict, String word) {
         try {
             return lookupResult(dict, word);
-        } catch (RedirectException exception) { // XXX: smess using exception for flow-control
-            String redirectUrl = exception.getRedirectUrl();
-            String[] dictAndWord = redirectUrl.split("/");
-            return lookupResult(dictAndWord[0], dictAndWord[1]);
+        } catch (RedirectException redirect) { // XXX: smess using exception for flow-control
+            return lookupResult(redirect.getNewDict(), redirect.getNewWord());
         }
     }
 

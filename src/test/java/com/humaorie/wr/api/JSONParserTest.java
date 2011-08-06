@@ -34,11 +34,37 @@ public class JSONParserTest {
         parser.parseDefinition(reader);
     }
 
-    @Test(expected=RedirectException.class) // TODO: don't throw exception here
-    public void canParseRedirectDocument() {
+    @Test(expected = RedirectException.class)
+    public void redirectResponseLeadsToException() {
         InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
         Reader reader = new InputStreamReader(inputStream);
         JSONParser parser = new JSONParser();
         parser.parseDefinition(reader);
+    }
+
+    @Test
+    public void redirectResponseContainsNewDict() {
+        try {
+            InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
+            Reader reader = new InputStreamReader(inputStream);
+            JSONParser parser = new JSONParser();
+            parser.parseDefinition(reader);
+            Assert.fail("expected a RedirectException");
+        } catch (RedirectException redirectException) {
+            Assert.assertEquals("iten", redirectException.getNewDict());
+        }
+    }
+
+    @Test
+    public void redirectResponseContainsNewWord() {
+        try {
+            InputStream inputStream = JSONParserTest.class.getResourceAsStream("/data/redirect.json");
+            Reader reader = new InputStreamReader(inputStream);
+            JSONParser parser = new JSONParser();
+            parser.parseDefinition(reader);
+            Assert.fail("expected a RedirectException");
+        } catch (RedirectException redirectException) {
+            Assert.assertEquals("drago", redirectException.getNewWord());
+        }
     }
 }

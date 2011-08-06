@@ -1,14 +1,20 @@
 package com.humaorie.wr.api;
 
 public class RedirectException extends RuntimeException {
-    
-    private String redirectUrl;
 
-    public RedirectException(String redirectUrl) {
-        this.redirectUrl = redirectUrl;
+    private String newDict;
+    private String newWord;
+
+    public RedirectException(String newDict, String newWord) {
+        this.newDict = newDict;
+        this.newWord = newWord;
     }
 
-    public String getRedirectUrl() {
-        return redirectUrl; 
+    public String getNewWord() {
+        return newWord;
+    }
+
+    public String getNewDict() {
+        return newDict;
     }
 }

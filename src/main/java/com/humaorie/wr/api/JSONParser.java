@@ -33,7 +33,7 @@ public class JSONParser implements Parser {
         if (categoryKeys == null) {
             return categories;
         }
-        
+
         while (categoryKeys.hasNext()) {
             String categoryKey = (String) categoryKeys.next();
             Category category = new Category(categoryKey);
@@ -43,7 +43,7 @@ public class JSONParser implements Parser {
             if (categoryJson == null) {
                 break;
             }
-            
+
             Iterator nameKeys = categoryJson.keys();
             while (nameKeys.hasNext()) {
                 String nameKey = (String) nameKeys.next();
@@ -82,8 +82,10 @@ public class JSONParser implements Parser {
     }
 
     private void assertNoRedirect(JSONObject rootJson) {
-        if (!rootJson.optString("Response").isEmpty()) {
-            throw new RedirectException(rootJson.optString("URL"));
+        if ("Redirect".equals(rootJson.optString("Response"))) {
+            final String newUrl = rootJson.optString("URL");
+            final String[] newDictAndWord = newUrl.substring(1).split("/", 2);
+            throw new RedirectException(newDictAndWord[0], newDictAndWord[1]);
         }
     }
 
