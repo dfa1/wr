@@ -39,7 +39,7 @@ public class LocalJsonRepositoryTest {
     @Test
     public void canLoadJsonFile() {
         final LocalJsonRepository repository = new LocalJsonRepository();
-        final Reader reader = repository.lookup("enit", "drago");
+        final Reader reader = repository.lookup("iten", "drago");
         Assert.assertNotNull(reader);
     }
 }
