@@ -1,7 +1,9 @@
+Java for WordReference.com
+==========================
 
-References
-----------
+Experimental Java6 library for WordReference.com Json API.
 
+See:
 http://www.wordreference.com/docs/api.aspx
 http://www.wordreference.com/docs/APIregistration.aspx
 
@@ -9,10 +11,11 @@ http://www.wordreference.com/docs/APIregistration.aspx
 TODO
 ----
 
+- improve unit tests
 - http://api.wordreference.com/0.8/enit/json/enit/ <-- handle missing word
 {
 	"Note" : "Please enter a word to search for. For example, http://api.wordreference.com/json/enfr/start."
 }
 - filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service
-- caching via FileSystemRepository
+- local caching of results 
