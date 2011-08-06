@@ -4,6 +4,8 @@ import com.humaorie.wr.api.Category;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
 import com.humaorie.wr.api.InvalidApiKeyException;
+import com.humaorie.wr.api.JSONParser;
+import com.humaorie.wr.api.Parser;
 import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
@@ -65,7 +67,8 @@ public class Main {
         EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
         InternetJsonRepository repository = new InternetJsonRepository();
         repository.setApiKeyProvider(enviromentApiKeyProvider);
-        WordReference wordReference = new WordReference(repository);
+        Parser parser = new JSONParser();
+        WordReference wordReference = new WordReference(repository, parser);
         Main main = new Main(wordReference);
         int status = main.run(args);
         System.exit(status);

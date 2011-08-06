@@ -6,10 +6,11 @@ import java.io.Reader;
 public class WordReference {
 
     private final Repository repository;
-    private Parser parser = new JSONParser();
+    private final Parser parser;
 
-    public WordReference(Repository repository) {
+    public WordReference(Repository repository, Parser parser) {
         this.repository = repository;
+        this.parser = parser;
     }
 
     public Result lookup(String dict, String word) {
@@ -37,9 +38,5 @@ public class WordReference {
             String[] dictAndWord = redirectUrl.split("/");
             return repository.lookup(dictAndWord[0], dictAndWord[1]);
         } 
-    }
-
-    public void setParser(Parser parser) {
-        this.parser = parser;
     }
 }

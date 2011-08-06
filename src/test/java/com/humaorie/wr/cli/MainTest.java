@@ -1,6 +1,7 @@
 package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.FileSystemRepository;
+import com.humaorie.wr.api.JSONParser;
 import com.humaorie.wr.api.WordReference;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -17,7 +18,8 @@ public class MainTest {
     @Before
     public void setup() {
         FileSystemRepository repository = new FileSystemRepository();
-        WordReference wordReference = new WordReference(repository);
+        JSONParser parser = new JSONParser();
+        WordReference wordReference = new WordReference(repository, parser);
         main = new Main(wordReference);
         outContent = new ByteArrayOutputStream();
         main.setOut(new PrintStream(outContent));
