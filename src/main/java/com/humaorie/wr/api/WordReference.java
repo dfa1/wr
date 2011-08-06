@@ -14,10 +14,19 @@ public class WordReference {
     }
 
     public Result lookup(String dict, String word) {
-        Reader reader = null;
-
         try {
-            reader = retrieveDocument(dict, word);
+            return lookupResult(dict, word);
+        } catch (RedirectException exception) { // XXX: smess using exception for flow-control
+            String redirectUrl = exception.getRedirectUrl();
+            String[] dictAndWord = redirectUrl.split("/");
+            return lookupResult(dictAndWord[0], dictAndWord[1]);
+        }
+    }
+
+    private Result lookupResult(String dict, String word)  {
+        Reader reader = null;
+        try {
+            reader = repository.lookup(dict, word);
             return parser.parseDefinition(reader);
         } finally {
             try {
@@ -28,15 +37,5 @@ public class WordReference {
                 throw new RuntimeException(ex);
             }
         }
-    }
-
-    private Reader retrieveDocument(String dict, String word) {
-        try {
-            return repository.lookup(dict, word);
-        } catch (RedirectException exception) { // XXX: smess using exception for flow-control
-            String redirectUrl = exception.getRedirectUrl();
-            String[] dictAndWord = redirectUrl.split("/");
-            return repository.lookup(dictAndWord[0], dictAndWord[1]);
-        } 
     }
 }

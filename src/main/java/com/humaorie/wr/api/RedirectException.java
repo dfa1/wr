@@ -9,6 +9,6 @@ public class RedirectException extends RuntimeException {
     }
 
     public String getRedirectUrl() {
-        return redirectUrl;
+        return redirectUrl; 
     }
 }
