@@ -29,7 +29,7 @@ public class InternetJsonRepository implements Repository {
         } catch (FileNotFoundException ex) {
             throw new NotFoundException("dictionary '%s' not found", dict);
         } catch (IOException ex) {
-            throw new RuntimeException(ex); // XXX: 
+            throw new RuntimeException(ex); 
         }
     }
 

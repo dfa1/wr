@@ -1,10 +1,16 @@
 package com.humaorie.wr.cli;
 
+import com.humaorie.wr.api.ApiKeyProvider;
+import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.LocalJsonRepository;
 import com.humaorie.wr.api.JSONParser;
+import com.humaorie.wr.api.Parser;
+import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.WordReference;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.io.Reader;
+import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,12 +20,12 @@ public class MainTest {
     private Main main;
     private ByteArrayOutputStream outContent;
     private ByteArrayOutputStream errContent;
-    
+
     @Before
     public void setup() {
-        LocalJsonRepository repository = new LocalJsonRepository();
-        JSONParser parser = new JSONParser();
-        WordReference wordReference = new WordReference(repository, parser);
+        final LocalJsonRepository repository = new LocalJsonRepository();
+        final JSONParser parser = new JSONParser();
+        final WordReference wordReference = new WordReference(repository, parser);
         main = new Main(wordReference);
         outContent = new ByteArrayOutputStream();
         main.setOut(new PrintStream(outContent));
@@ -59,9 +65,8 @@ public class MainTest {
 
     @Test
     public void showDefinitionOfAWord() {
-        main.run("enit", "grin");
-
-        Assert.assertTrue(outContent.toString().contains("ghignare"));
+        main.run("enit", "run");
+        Assert.assertTrue(outContent.toString().contains("correre"));
     }
 
     @Test
@@ -71,13 +76,45 @@ public class MainTest {
     }
 
     @Test
-    public void returnErrorOnInvalidApiKey() {
+    public void showErrorOnInvalidDictionary() {
+        main.run("foo", "grin");
+        Assert.assertEquals("dictionary 'foo' not found\n", errContent.toString());
+    }
+
+    private static class FakeRepository implements Repository {
+
+        private final ApiKeyProvider apiKeyProvider;
+
+        public FakeRepository(ApiKeyProvider apiKeyProvider) {
+            this.apiKeyProvider = apiKeyProvider;
+        }
+
+        @Override
+        public Reader lookup(String dict, String word) {
+            final String json = String.format("{ 'api key'; '%s' }", apiKeyProvider.provideKey());
+            return new StringReader(json);
+        }
+    }
+
+    @Test
+    public void returnErrorWhenApiKeyIsNotFound() {
+        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
+        final Repository repository = new FakeRepository(apiKeyProvider);
+        final Parser parser = new JSONParser();
+        final WordReference wordReference = new WordReference(repository, parser);
+        final Main main = new Main(wordReference);
         int status = main.run("enit", "foo");
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorOnInvalidApiKey() {
+        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
+        final Repository repository = new FakeRepository(apiKeyProvider);
+        final Parser parser = new JSONParser();
+        final WordReference wordReference = new WordReference(repository, parser);
+        final Main main = new Main(wordReference);
+        main.setErr(new PrintStream(errContent));
         main.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
     }
