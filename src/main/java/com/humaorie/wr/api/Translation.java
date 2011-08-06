@@ -5,19 +5,25 @@ import java.util.List;
 
 public class Translation {
 
-    private final String note;
+    private final Term originalTerm;
     private final List<Term> translations;
+    private final String note;
 
-    public Translation(String note, List<Term> translations) {
-        this.note = note;
+    public Translation(Term originalTerm, List<Term> translations, String note) {
+        this.originalTerm = originalTerm;
         this.translations = translations;
+        this.note = note;
     }
 
-    public String getNote() {
-        return note;
+    public Term getOriginalTerm() {
+        return originalTerm;
     }
 
     public List<Term> getTranslations() {
         return Collections.unmodifiableList(translations);
+    }
+
+    public String getNote() {
+        return note;
     }
 }

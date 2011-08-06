@@ -118,4 +118,13 @@ public class CommandLineTest {
         cli.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
     }
+    
+    @Test
+    public void canShowWholeDefinitions() {
+        final Repository repository = new LocalJsonRepository();
+        final Parser parser = new BoringJsonParser();
+        final WordReference wordReference = new WordReference(repository, parser);
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        cli.run("enit", "run");
+    }
 }

@@ -1,6 +1,5 @@
 package com.humaorie.wr.api;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
