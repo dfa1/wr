@@ -16,12 +16,16 @@ public class JSONParser implements Parser {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertValidApiKey(rootJson);
             assertNoRedirect(rootJson);
-            final String note = rootJson.optString("Note");
+            final String note = parseNote(rootJson);
             final List<Category> categories = parseCategories(rootJson);
             return new Result(note, categories);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
         }
+    }
+
+    private String parseNote(final JSONObject rootJson) {
+        return rootJson.optString("Note");
     }
 
     private List<Category> parseCategories(JSONObject rootJson) {
@@ -60,7 +64,7 @@ public class JSONParser implements Parser {
     }
 
     private Translation parseTranslation(JSONObject translationJson) {
-        Translation translation = new Translation(translationJson.optString("Note"));
+        Translation translation = new Translation(parseNote(translationJson));
         translationJson.remove("Note");
         Iterator termKeys = translationJson.keys();
 
