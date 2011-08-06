@@ -39,6 +39,11 @@ public class JSONParser implements Parser {
             Category category = new Category(categoryKey);
             categories.add(category);
             JSONObject categoryJson = rootJson.optJSONObject(categoryKey);
+
+            if (categoryJson == null) {
+                break;
+            }
+            
             Iterator nameKeys = categoryJson.keys();
             while (nameKeys.hasNext()) {
                 String nameKey = (String) nameKeys.next();
