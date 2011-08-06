@@ -125,6 +125,6 @@ public class CommandLineClientTest {
         final Parser parser = new BoringJsonParser();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
-        cli.run("enit", "run");
+        cli.run("iten", "drago");
     }
 }
