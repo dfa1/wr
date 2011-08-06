@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class JSONParser implements Parser {
+public class BoringJsonParser implements Parser {
 
     @Override
     public Result parseDefinition(Reader reader) {

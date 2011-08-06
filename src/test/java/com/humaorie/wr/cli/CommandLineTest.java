@@ -3,7 +3,7 @@ package com.humaorie.wr.cli;
 import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.LocalJsonRepository;
-import com.humaorie.wr.api.JSONParser;
+import com.humaorie.wr.api.BoringJsonParser;
 import com.humaorie.wr.api.Parser;
 import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.WordReference;
@@ -24,7 +24,7 @@ public class CommandLineTest {
     @Before
     public void setup() {
         final LocalJsonRepository repository = new LocalJsonRepository();
-        final JSONParser parser = new JSONParser();
+        final BoringJsonParser parser = new BoringJsonParser();
         final WordReference wordReference = new WordReference(repository, parser);
         cli = new CommandLineClient(wordReference);
         outContent = new ByteArrayOutputStream();
@@ -100,7 +100,7 @@ public class CommandLineTest {
     public void returnErrorWhenApiKeyIsNotFound() {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new JSONParser();
+        final Parser parser = new BoringJsonParser();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final int status = cli.run("enit", "foo");
@@ -111,7 +111,7 @@ public class CommandLineTest {
     public void showErrorOnInvalidApiKey() {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new JSONParser();
+        final Parser parser = new BoringJsonParser();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));
