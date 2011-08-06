@@ -33,7 +33,7 @@ public class BoringJsonParser implements Parser {
         rootJson.remove("Lines");
         rootJson.remove("END");
     }
-    
+
     private void assertNoRedirect(JSONObject rootJson) {
         if ("Redirect".equals(rootJson.optString("Response"))) {
             final String newUrl = rootJson.optString("URL");
@@ -49,7 +49,7 @@ public class BoringJsonParser implements Parser {
             throw new InvalidApiKeyException(sorry);
         }
     }
-    
+
     private String parseNote(final JSONObject rootJson) {
         return rootJson.optString("Note");
     }
@@ -64,41 +64,50 @@ public class BoringJsonParser implements Parser {
 
         while (categoryKeys.hasNext()) {
             final String categoryKey = (String) categoryKeys.next();
-            final Category category = new Category(categoryKey);
-            categories.add(category);
             final JSONObject categoryJson = rootJson.optJSONObject(categoryKey);
 
             if (categoryJson == null) {
                 break;
             }
 
-            final Iterator nameKeys = categoryJson.keys();
-            while (nameKeys.hasNext()) {
-                final String nameKey = (String) nameKeys.next();
+            final List<Translation> translations = new ArrayList<Translation>();
+            final Iterator categoriesKey = categoryJson.keys();
+            
+            while (categoriesKey.hasNext()) {
+                final String nameKey = (String) categoriesKey.next();
                 final JSONObject translationsJson = categoryJson.optJSONObject(nameKey);
                 final Iterator translationKeys = translationsJson.keys();
                 while (translationKeys.hasNext()) {
                     final String translationKey = (String) translationKeys.next();
-                    category.addTranslation(parseTranslation(translationsJson.optJSONObject(translationKey)));
+                    final Translation translation = parseTranslation(translationsJson.optJSONObject(translationKey));
+                    translations.add(translation);
                 }
             }
+
+            final Category category = new Category(categoryKey, translations);
+            categories.add(category);
         }
 
         return categories;
     }
 
     private Translation parseTranslation(JSONObject translationJson) {
-        final Translation translation = new Translation(parseNote(translationJson));
-        translationJson.remove("Note");
         final Iterator termKeys = translationJson.keys();
+        final List<Term> terms = new ArrayList<Term>();
 
         while (termKeys.hasNext()) {
             final String termKey = (String) termKeys.next();
+            if ("Note".equals(termKey)) {
+                continue;
+            }
+
             final JSONObject termJson = translationJson.optJSONObject(termKey);
-            translation.addTerm(parseTerm(termJson));
+            final Term term = parseTerm(termJson);
+            terms.add(term);
         }
 
-        return translation;
+        final String note = parseNote(translationJson);
+        return new Translation(note, terms);
     }
 
     private Term parseTerm(JSONObject termJson) {
