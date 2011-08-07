@@ -56,7 +56,7 @@ public class CommandLineClient {
                 }
 
                 if (!translation.getNote().isEmpty()) {
-                    out.printf(" note: %s", translation.getNote());
+                    out.printf(" note: %s%n", translation.getNote());
                 }
             }
         }
