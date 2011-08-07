@@ -22,26 +22,35 @@ public class CommandLineClient {
 
     public int run(String... args) {
         if (args.length != 2) {
-            err.println("java -jar wr.jar dict term");
+            err.println("error: you must provide dict and word (e.g. 'enit run')");
             return 1;
         }
 
         final String dict = args[0];
         final String word = args[1];
-        final Result result = lookup(dict, word);
 
-        if (result == null) { // XXX: smell
+        try {
+            final Result result = wordReference.lookup(dict, word);
+            printResults(result);
+            return 0;
+        } catch (InvalidApiKeyException ex) {
+            err.println(ex.getMessage());
+            return 1;
+        } catch (NotFoundException ex) {
+            err.println(ex.getMessage());
             return 1;
         }
+    }
 
+    private void printResults(Result result) {
         for (Category category : result.getCategory()) {
             out.printf("category '%s':%n", category.getName());
             final List<Translation> translations = category.getTranslations();
-            
+
             for (Translation translation : translations) {
                 final Term originalTerm = translation.getOriginalTerm();
                 out.printf(" %s %s %s %s%n", originalTerm.getTerm(), originalTerm.getPos(), originalTerm.getSense(), originalTerm.getUsage());
-                
+
                 for (Term term : translation.getTranslations()) {
                     out.printf("   %s %s %s %s%n", term.getTerm(), term.getPos(), term.getSense(), term.getUsage());
                 }
@@ -53,19 +62,6 @@ public class CommandLineClient {
         }
 
         out.printf("Note: %s%n", result.getNote());
-        return 0;
-    }
-
-    private Result lookup(String dict, String term) {
-        try {
-            return wordReference.lookup(dict, term);
-        } catch (InvalidApiKeyException ex) {
-            err.println(ex.getMessage());
-            return null;
-        } catch (NotFoundException ex) {
-            err.println(ex.getMessage());
-            return null;
-        }
     }
 
     public void setErr(PrintStream err) {

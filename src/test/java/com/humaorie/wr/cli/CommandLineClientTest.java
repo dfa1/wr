@@ -42,7 +42,7 @@ public class CommandLineClientTest {
     @Test
     public void showErrorWhenCalledWithoutArguments() {
         cli.run();
-        Assert.assertEquals("java -jar wr.jar dict term\n", errContent.toString());
+        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", errContent.toString());
     }
 
     @Test
@@ -54,7 +54,7 @@ public class CommandLineClientTest {
     @Test
     public void showErrorWhenCalledWithOneArgument() {
         cli.run();
-        Assert.assertEquals("java -jar wr.jar dict term\n", errContent.toString());
+        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", errContent.toString());
     }
 
     @Test
