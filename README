@@ -1,21 +1,55 @@
-Java for WordReference.com
-==========================
+Java Library for WordReference.com
+==================================
 
-Experimental Java6 library for WordReference.com Json API.
+Experimental Java6 library for WordReference Json API.
 
-See:
-http://www.wordreference.com/docs/api.aspx
-http://www.wordreference.com/docs/APIregistration.aspx
+
+Prerequisites
+-------------
+
+- JDK6
+- Maven
+- wordreference API key 
+    http://www.wordreference.com/docs/APIregistration.aspx
+
+
+Howto for the command line client
+---------------------------------
+
+$ mvn assembly:assembly
+$ WR_API_KEY=yourapikey java -jar target/wrcli.jar iten nebbia
+category 'original':
+ nebbia marina, foschia marina   
+   sea mist   
+ camera a nebbia   
+   cloud chamber   
+ avvolto nella nebbia   
+   mist-shrouded   
+ avvolgere nella nebbia v  
+   hide  cover with fog 
+ sirena da nebbia nf  
+   foghorn  nautical 
+ nella foschia, nella nebbia   
+   in a mist   
+category 'term0':
+ nebbia nf  
+   fog   
+Note: 
+
+iten is the Italian->English dictionary. See 
+http://www.wordreference.com/docs/api.aspx for the complete list of
+supported dictionaries.
 
 
 TODO
 ----
 
 - improve unit tests
+- filtering translations by category 
+- print terms of service: http://www.wordreference.com/docs/api.aspx#service
+- local caching of results 
 - http://api.wordreference.com/0.8/enit/json/enit/ <-- handle missing word
 {
 	"Note" : "Please enter a word to search for. For example, http://api.wordreference.com/json/enfr/start."
 }
-- filtering translations by category 
-- print terms of service: http://www.wordreference.com/docs/api.aspx#service
-- local caching of results 
+
