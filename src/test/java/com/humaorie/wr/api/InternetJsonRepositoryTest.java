@@ -4,35 +4,53 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 public class InternetJsonRepositoryTest {
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotCreateInternetJsonRepositoryWithNullApiKeyProvider() {
+        new InternetJsonRepository(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
     public void refuseNullDict() {
-        InternetJsonRepository repository = new InternetJsonRepository();
+        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository(apiKeyProvider);
         repository.lookup(null, "word");
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void refuseEmptyDict() {
-        InternetJsonRepository repository = new InternetJsonRepository();
+        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository(apiKeyProvider);
         repository.lookup("", "word");
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void refuseNullWord() {
-        InternetJsonRepository repository = new InternetJsonRepository();
+        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository(apiKeyProvider);
         repository.lookup("enit", null);
     }
-    
-    @Test(expected=IllegalArgumentException.class)
+
+    @Test(expected = IllegalArgumentException.class)
     public void refuseEmptyWord() {
-        InternetJsonRepository repository = new InternetJsonRepository();
+        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository(apiKeyProvider);
         repository.lookup("enit", "");
     }
-    
+
     @Ignore("how to simulate this?")
-    @Test(expected=NotFoundException.class)
+    @Test(expected = NotFoundException.class)
     public void unknownDictLeadsToException() {
-        InternetJsonRepository repository = new InternetJsonRepository();
-        repository.lookup("invalid_dict", "word"); 
+        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
+        final InternetJsonRepository repository = new InternetJsonRepository(apiKeyProvider);
+        repository.lookup("invalid_dict", "word");
+    }
+
+    public static class StubApiKeyProvider implements ApiKeyProvider {
+
+        @Override
+        public String provideKey() {
+            return "stub";
+        }
     }
 }

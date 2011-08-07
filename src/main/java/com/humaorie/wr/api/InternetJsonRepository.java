@@ -11,8 +11,13 @@ public class InternetJsonRepository implements Repository {
 
     private String baseURL = "http://api.wordreference.com";
     private String apiVersion = "0.8";
-    private ApiKeyProvider apiKeyProvider = new CostantApiKeyProvider("2");
+    private final ApiKeyProvider apiKeyProvider;
 
+    public InternetJsonRepository(ApiKeyProvider apiKeyProvider) {
+        Preconditions.require(apiKeyProvider != null, "cannot use null as ApiKeyProvider");
+        this.apiKeyProvider = apiKeyProvider;
+    }
+    
     @Override
     public Reader lookup(String dict, String word) {
         Preconditions.require(dict != null, "dict cannot be null");
@@ -35,10 +40,6 @@ public class InternetJsonRepository implements Repository {
 
     public void setBaseURL(String baseURL) {
         this.baseURL = baseURL;
-    }
-
-    public void setApiKeyProvider(ApiKeyProvider apiKeyProvider) {
-        this.apiKeyProvider = apiKeyProvider;
     }
 
     public void setApiVersion(String apiVersion) {

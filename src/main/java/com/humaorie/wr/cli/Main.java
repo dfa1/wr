@@ -10,8 +10,7 @@ public class Main {
 
     public static void main(String[] args) {
         final EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        final InternetJsonRepository repository = new InternetJsonRepository();
-        repository.setApiKeyProvider(enviromentApiKeyProvider);
+        final InternetJsonRepository repository = new InternetJsonRepository(enviromentApiKeyProvider);
         final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
