@@ -9,8 +9,8 @@ import java.net.UnknownHostException;
 
 public class InternetJsonRepository implements Repository {
 
-    private String baseURL = "http://api.wordreference.com";
-    private String apiVersion = "0.8";
+    private final String baseURL = "http://api.wordreference.com";
+    private final String apiVersion = "0.8";
     private final ApiKeyProvider apiKeyProvider;
 
     public InternetJsonRepository(ApiKeyProvider apiKeyProvider) {
@@ -36,13 +36,5 @@ public class InternetJsonRepository implements Repository {
         } catch (IOException ex) {
             throw new RuntimeException("I/O error", ex); 
         }
-    }
-
-    public void setBaseURL(String baseURL) {
-        this.baseURL = baseURL;
-    }
-
-    public void setApiVersion(String apiVersion) {
-        this.apiVersion = apiVersion;
     }
 }
