@@ -9,6 +9,8 @@ public class WordReference {
     private final Parser parser;
 
     public WordReference(Repository repository, Parser parser) {
+        Preconditions.require(repository != null, "repository cannot be null");
+        Preconditions.require(parser != null, "repository cannot be null");
         this.repository = repository;
         this.parser = parser;
     }
