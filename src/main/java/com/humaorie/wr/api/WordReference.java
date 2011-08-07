@@ -25,14 +25,14 @@ public class WordReference {
 
     private Result lookupResult(String dict, String word) {
         final Reader reader = repository.lookup(dict, word);
-
+        
         try {
             return parser.parse(reader);
         } finally {
             try {
                 reader.close();
             } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                throw new IllegalStateException("IO error", ex);
             }
         }
     }
