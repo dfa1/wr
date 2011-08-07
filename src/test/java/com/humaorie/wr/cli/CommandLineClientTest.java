@@ -103,6 +103,7 @@ public class CommandLineClientTest {
         final Parser parser = new BoringJsonParser();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
+        cli.setErr(new PrintStream(errContent));
         final int status = cli.run("enit", "foo");
         Assert.assertEquals(1, status);
     }
@@ -117,14 +118,5 @@ public class CommandLineClientTest {
         cli.setErr(new PrintStream(errContent));
         cli.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
-    }
-    
-    @Test
-    public void canShowWholeDefinitions() {
-        final Repository repository = new LocalJsonRepository();
-        final Parser parser = new BoringJsonParser();
-        final WordReference wordReference = new WordReference(repository, parser);
-        final CommandLineClient cli = new CommandLineClient(wordReference);
-        cli.run("iten", "drago");
     }
 }
