@@ -31,7 +31,7 @@ public class CommandLineClient {
 
         try {
             final Result result = wordReference.lookup(dict, word);
-            printResults(result);
+            printResult(result);
             return 0;
         } catch (InvalidApiKeyException ex) {
             err.println(ex.getMessage());
@@ -42,8 +42,8 @@ public class CommandLineClient {
         }
     }
 
-    private void printResults(Result result) {
-        for (Category category : result.getCategory()) {
+    private void printResult(Result result) {
+        for (Category category : result.getCategories()) {
             out.printf("category '%s':%n", category.getName());
             final List<Translation> translations = category.getTranslations();
 

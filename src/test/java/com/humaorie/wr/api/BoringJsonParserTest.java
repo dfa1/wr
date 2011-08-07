@@ -13,7 +13,7 @@ public class BoringJsonParserTest {
         final BoringJsonParser parser = new BoringJsonParser();
         final Reader reader = loadFile("/data/iten-drago.json");
         Result result = parser.parse(reader);
-        Assert.assertEquals("original", result.getCategory().get(0).getName());
+        Assert.assertEquals("original", result.getCategories().get(0).getName());
     }
 
     @Test
