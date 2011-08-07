@@ -13,9 +13,7 @@ public class BoringJsonParser implements Parser {
 
     @Override
     public Result parse(Reader reader) {
-        if (reader == null) {
-            throw new IllegalArgumentException("cannot use null as Reader");
-        }
+        Preconditions.require(reader != null, "cannot use null as Reader");
 
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));

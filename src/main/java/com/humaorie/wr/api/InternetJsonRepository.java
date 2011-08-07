@@ -15,13 +15,10 @@ public class InternetJsonRepository implements Repository {
 
     @Override
     public Reader lookup(String dict, String word) {
-        if (dict == null || dict.equals("")) {
-            throw new IllegalArgumentException("dict cannot be null or empty");
-        }
-
-        if (word == null || word.equals("")) {
-            throw new IllegalArgumentException("word cannot be null or empty");
-        }
+        Preconditions.require(dict != null, "dict cannot be null");
+        Preconditions.require(!dict.isEmpty(), "dict cannot be empty");
+        Preconditions.require(word != null, "word cannot be null");
+        Preconditions.require(!word.isEmpty(), "word cannot be empty");
 
         try {
             final String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, word);

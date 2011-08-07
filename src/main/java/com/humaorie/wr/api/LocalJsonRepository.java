@@ -8,14 +8,10 @@ public class LocalJsonRepository implements Repository {
 
     @Override
     public Reader lookup(String dict, String word) {
-        if (dict == null || dict.equals("")) {
-            throw new IllegalArgumentException("dict cannot be null or empty");
-        }
-
-        if (word == null || word.equals("")) {
-            throw new IllegalArgumentException("word cannot be null or empty");
-        }
-
+        Preconditions.require(dict != null, "dict cannot be null");
+        Preconditions.require(!dict.isEmpty(), "dict cannot be empty");
+        Preconditions.require(word != null, "word cannot be null");
+        Preconditions.require(!word.isEmpty(), "word cannot be empty");
         final String fileName = String.format("/data/%s-%s.json", dict, word);
         final InputStream inputStream = LocalJsonRepository.class.getResourceAsStream(fileName);
 
