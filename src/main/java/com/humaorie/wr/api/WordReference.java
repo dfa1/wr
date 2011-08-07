@@ -23,16 +23,14 @@ public class WordReference {
         }
     }
 
-    private Result lookupResult(String dict, String word)  {
-        Reader reader = null;
+    private Result lookupResult(String dict, String word) {
+        final Reader reader = repository.lookup(dict, word);
+
         try {
-            reader = repository.lookup(dict, word);
             return parser.parse(reader);
         } finally {
             try {
-                if (reader != null) {
-                    reader.close();
-                }
+                reader.close();
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
