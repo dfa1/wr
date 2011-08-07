@@ -3,7 +3,7 @@ package com.humaorie.wr.cli;
 import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.LocalJsonRepository;
-import com.humaorie.wr.api.BoringJsonParser;
+import com.humaorie.wr.api.JsonParserCursedByLeChuck;
 import com.humaorie.wr.api.Parser;
 import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.WordReference;
@@ -24,7 +24,7 @@ public class CommandLineClientTest {
     @Before
     public void setup() {
         final LocalJsonRepository repository = new LocalJsonRepository();
-        final BoringJsonParser parser = new BoringJsonParser();
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new WordReference(repository, parser);
         cli = new CommandLineClient(wordReference);
         outContent = new ByteArrayOutputStream();
@@ -100,7 +100,7 @@ public class CommandLineClientTest {
     public void returnErrorWhenApiKeyIsNotFound() {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new BoringJsonParser();
+        final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));
@@ -112,7 +112,7 @@ public class CommandLineClientTest {
     public void showErrorOnInvalidApiKey() {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new BoringJsonParser();
+        final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new WordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));

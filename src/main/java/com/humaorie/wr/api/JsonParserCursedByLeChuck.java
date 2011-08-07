@@ -8,8 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-// this class was cursed by Le Chuck
-public class BoringJsonParser implements Parser {
+public class JsonParserCursedByLeChuck implements Parser {
 
     @Override
     public Result parse(Reader reader) {

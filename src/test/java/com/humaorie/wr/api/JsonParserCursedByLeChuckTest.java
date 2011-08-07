@@ -6,19 +6,19 @@ import java.io.Reader;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class BoringJsonParserTest {
+public class JsonParserCursedByLeChuckTest {
 
     @Test
     public void canParseValidDocument() {
-        final BoringJsonParser parser = new BoringJsonParser();
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final Reader reader = loadFile("/data/iten-drago.json");
-        Result result = parser.parse(reader);
+        final Result result = parser.parse(reader);
         Assert.assertEquals("original", result.getCategories().get(0).getName());
     }
 
     @Test
     public void canParseTermNotFoundDocument() {
-        final BoringJsonParser parser = new BoringJsonParser();
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final Reader reader = loadFile("/data/notfound.json");
         final Result result = parser.parse(reader);
         Assert.assertEquals("No translation was found for foo.", result.getNote());
@@ -26,14 +26,14 @@ public class BoringJsonParserTest {
 
     @Test(expected = InvalidApiKeyException.class)
     public void invalidKeyDocumentLeadsToException() {
-        final BoringJsonParser parser = new BoringJsonParser();
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final Reader reader = loadFile("/data/invalidkey.json");
         parser.parse(reader);
     }
 
     @Test(expected = RedirectException.class)
     public void redirectResponseLeadsToException() {
-        final BoringJsonParser parser = new BoringJsonParser();
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final Reader reader = loadFile("/data/redirect.json");
         parser.parse(reader);
     }
@@ -41,7 +41,7 @@ public class BoringJsonParserTest {
     @Test
     public void redirectResponseContainsNewDict() {
         try {
-            final BoringJsonParser parser = new BoringJsonParser();
+            final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
             final Reader reader = loadFile("/data/redirect.json");
             parser.parse(reader);
             Assert.fail("expected a RedirectException");
@@ -53,7 +53,7 @@ public class BoringJsonParserTest {
     @Test
     public void redirectResponseContainsNewWord() {
         try {
-            final BoringJsonParser parser = new BoringJsonParser();
+            final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
             final Reader reader = loadFile("/data/redirect.json");
             parser.parse(reader);
             Assert.fail("expected a RedirectException");
@@ -64,12 +64,12 @@ public class BoringJsonParserTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void refuseToParseANullReader() {
-        final BoringJsonParser boringJsonParser = new BoringJsonParser();
-        boringJsonParser.parse(null);
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
+        parser.parse(null);
     }
 
     private Reader loadFile(String filename) {
-        final InputStream inputStream = BoringJsonParserTest.class.getResourceAsStream(filename);
+        final InputStream inputStream = JsonParserCursedByLeChuckTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
     }
 }
