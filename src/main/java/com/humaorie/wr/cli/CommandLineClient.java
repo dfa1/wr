@@ -49,10 +49,18 @@ public class CommandLineClient {
 
             for (Translation translation : translations) {
                 final Term originalTerm = translation.getOriginalTerm();
-                out.printf(" %s %s %s %s%n", originalTerm.getTerm(), originalTerm.getPos(), originalTerm.getSense(), originalTerm.getUsage());
+                out.printf(" %s %s %s %s%n",
+                        originalTerm.getTerm(),
+                        originalTerm.getPos(),
+                        originalTerm.getSense(),
+                        originalTerm.getUsage());
 
                 for (Term term : translation.getTranslations()) {
-                    out.printf("   %s %s %s %s%n", term.getTerm(), term.getPos(), term.getSense(), term.getUsage());
+                    out.printf("   %s %s %s %s%n",
+                            term.getTerm(),
+                            term.getPos(),
+                            term.getSense(),
+                            term.getUsage());
                 }
 
                 if (!translation.getNote().isEmpty()) {
