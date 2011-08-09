@@ -18,7 +18,7 @@ public class WordReference {
     public Result lookup(String dict, String word) {
         try {
             return lookupResult(dict, word);
-        } catch (RedirectException redirect) { // XXX: using exception for flow-control is evil
+        } catch (RedirectException redirect) { 
             return lookupResult(redirect.getNewDict(), redirect.getNewWord());
         }
     }
