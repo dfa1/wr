@@ -6,7 +6,7 @@ public class EnviromentApiKeyProvider implements ApiKeyProvider {
 
     @Override
     public String provideKey() {
-        String key = System.getenv(KEY);
+        final String key = System.getenv(KEY);
 
         if (key == null) {
             throw new InvalidApiKeyException("please set the enviroment variable %s%nSee http://www.wordreference.com/docs/APIregistration.aspx", KEY);
