@@ -4,7 +4,7 @@ import org.junit.Test;
 
 public class ManaulIntegrationTesting {
 
-    final int REPEAT = 30;
+    private final int REPEAT = 30;
 
     @Test
     public void lookupRepeatedlyWithoutGzip() {
