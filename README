@@ -16,7 +16,7 @@ Prerequisites
 Howto for the command line client
 ---------------------------------
 
-$ mvn assembly:assembly
+$ mvn assembly:single
 $ WR_API_KEY=yourapikey java -jar target/wrcli.jar iten nebbia
 category 'original':
  nebbia marina, foschia marina   
