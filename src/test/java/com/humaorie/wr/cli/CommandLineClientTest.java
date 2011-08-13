@@ -6,7 +6,7 @@ import com.humaorie.wr.api.LocalJsonRepository;
 import com.humaorie.wr.api.JsonParserCursedByLeChuck;
 import com.humaorie.wr.api.Parser;
 import com.humaorie.wr.api.Repository;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.api.DefaultWordReference;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.io.Reader;
@@ -25,7 +25,7 @@ public class CommandLineClientTest {
     public void setup() {
         final LocalJsonRepository repository = new LocalJsonRepository();
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final WordReference wordReference = new WordReference(repository, parser);
+        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         cli = new CommandLineClient(wordReference);
         outContent = new ByteArrayOutputStream();
         cli.setOut(new PrintStream(outContent));
@@ -101,7 +101,7 @@ public class CommandLineClientTest {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JsonParserCursedByLeChuck();
-        final WordReference wordReference = new WordReference(repository, parser);
+        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));
         final int status = cli.run("enit", "foo");
@@ -113,7 +113,7 @@ public class CommandLineClientTest {
         final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
         final Repository repository = new FakeRepository(apiKeyProvider);
         final Parser parser = new JsonParserCursedByLeChuck();
-        final WordReference wordReference = new WordReference(repository, parser);
+        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));
         cli.run("enit", "dog");

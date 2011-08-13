@@ -4,7 +4,7 @@ import com.humaorie.wr.api.EnviromentApiKeyProvider;
 import com.humaorie.wr.api.InternetJsonRepository;
 import com.humaorie.wr.api.JsonParserCursedByLeChuck;
 import com.humaorie.wr.api.Parser;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.api.DefaultWordReference;
 
 public class Main {
 
@@ -12,7 +12,7 @@ public class Main {
         final EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
         final InternetJsonRepository repository = new InternetJsonRepository(enviromentApiKeyProvider);
         final Parser parser = new JsonParserCursedByLeChuck();
-        final WordReference wordReference = new WordReference(repository, parser);
+        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final int status = cli.run(args);
         System.exit(status);

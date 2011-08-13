@@ -6,17 +6,17 @@ import com.humaorie.wr.api.NotFoundException;
 import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.api.DefaultWordReference;
 import java.io.PrintStream;
 import java.util.List;
 
 public class CommandLineClient {
 
-    private final WordReference wordReference;
+    private final DefaultWordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
 
-    public CommandLineClient(WordReference wordReference) {
+    public CommandLineClient(DefaultWordReference wordReference) {
         this.wordReference = wordReference;
     }
 
