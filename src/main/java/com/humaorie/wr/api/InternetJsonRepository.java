@@ -8,26 +8,18 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 public class InternetJsonRepository implements Repository {
+    
+    private final UrlFactory urlFactory;
 
-    private final String baseURL = "http://api.wordreference.com";
-    private final String apiVersion = "0.8";
-    private final ApiKeyProvider apiKeyProvider;
-
-    public InternetJsonRepository(ApiKeyProvider apiKeyProvider) {
-        Preconditions.require(apiKeyProvider != null, "cannot use null as ApiKeyProvider");
-        this.apiKeyProvider = apiKeyProvider;
+    public InternetJsonRepository(UrlFactory urlFactory) {
+        Preconditions.require(urlFactory != null, "");
+        this.urlFactory = urlFactory;
     }
     
     @Override
     public Reader lookup(String dict, String word) {
-        Preconditions.require(dict != null, "dict cannot be null");
-        Preconditions.require(!dict.isEmpty(), "dict cannot be empty");
-        Preconditions.require(word != null, "word cannot be null");
-        Preconditions.require(!word.isEmpty(), "word cannot be empty");
-
         try {
-            final String path = String.format("%s/%s/%s/json/%s/%s", baseURL, apiVersion, apiKeyProvider.provideKey(), dict, word);
-            final URL url = new URL(path);
+            final URL url = urlFactory.createUrl(dict, word);
             return new InputStreamReader(url.openStream());
         } catch (FileNotFoundException ex) {
             throw new NotFoundException("dictionary '%s' not found", dict);
