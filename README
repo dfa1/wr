@@ -19,7 +19,7 @@ Prerequisites
 Howto for the command line client
 ---------------------------------
 
-$ mvn assembly:single
+$ mvn compile assembly:single
 $ WR_API_KEY=yourapikey java -jar target/wrcli.jar iten nebbia
 category 'original':
  nebbia marina, foschia marina   
@@ -47,7 +47,7 @@ supported dictionaries.
 Installation
 ------------
 
-$ mvn assembly:single
+$ mvn compile assembly:single
 $ sudo cp target/wrcli.jar /usr/local/bin
 $ # add your API key to bin/wrcli
 $ sudo cp bin/wrcli /usr/local/bin 
