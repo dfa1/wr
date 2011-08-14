@@ -7,14 +7,14 @@ public class EnviromentApiKeyProviderTest {
 
     @Test(expected = InvalidApiKeyException.class)
     public void withoutEnvironmentVariableThrows() {
-        EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
-        enviromentApiKeyProvider.provideKey();
+        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
+        apiKeyProvider.provideKey();
     }
     
     @Test
     @Ignore("how to set an environment variable here?")
     public void withEnvironmentVariableReturnsIt() {
-        EnviromentApiKeyProvider provider = new EnviromentApiKeyProvider();
-        provider.provideKey();
+        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
+        apiKeyProvider.provideKey();
     }
 }
