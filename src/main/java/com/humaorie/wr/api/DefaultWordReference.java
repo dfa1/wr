@@ -18,13 +18,13 @@ public class DefaultWordReference implements WordReference {
     @Override
     public Result lookup(String dict, String word) {
         try {
-            return lookupResult(dict, word);
+            return fetchAndParse(dict, word);
         } catch (RedirectException redirect) { 
-            return lookupResult(redirect.getNewDict(), redirect.getNewWord());
+            return fetchAndParse(redirect.getNewDict(), redirect.getNewWord());
         }
     }
 
-    private Result lookupResult(String dict, String word) {
+    private Result fetchAndParse(String dict, String word) {
         final Reader reader = repository.lookup(dict, word);
         
         try {

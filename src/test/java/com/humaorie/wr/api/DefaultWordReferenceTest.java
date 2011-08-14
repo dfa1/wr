@@ -9,26 +9,18 @@ public class DefaultWordReferenceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullRepository() {
-        new DefaultWordReference(null, new StubParser());
+        new DefaultWordReference(null, new FailingParser());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullParser() {
-        new DefaultWordReference(new StubRepository(), null);
+        new DefaultWordReference(new FailiingRepository(), null);
     }
 
-    public static class StubRepository implements Repository {
+    public static class FailiingRepository implements Repository {
 
         @Override
         public Reader lookup(String dict, String word) {
-            throw new UnsupportedOperationException("Not supported yet.");
-        }
-    }
-
-    public static class StubParser implements Parser {
-
-        @Override
-        public Result parse(Reader reader) {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     }
@@ -89,7 +81,7 @@ public class DefaultWordReferenceTest {
         final MockReader reader = new MockReader();
         try {
             final ConstantRepository repository = new ConstantRepository(reader);
-            final AlwaysFailingParser parser = new AlwaysFailingParser();
+            final FailingParser parser = new FailingParser();
             final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
             wordReference.lookup("iten", "drago");
         } catch (IllegalStateException ise) {
@@ -97,11 +89,51 @@ public class DefaultWordReferenceTest {
         }
     }
 
-    public static class AlwaysFailingParser implements Parser {
+    public static class FailingParser implements Parser {
 
         @Override
         public Result parse(Reader reader) {
             throw new IllegalStateException("I'm a crappy parser");
+        }
+    }
+
+    @Test
+    public void canHandleRedirects() {
+        final Result expectedResult = new Result("expected", null);
+        final Parser parser = new ConstantParser(expectedResult);
+        final Repository repository = new RedirectOnceRepository();
+        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
+        final Result result = wordReference.lookup("iten", "drago");
+        
+        Assert.assertSame(expectedResult, result);
+    }
+
+    public static class RedirectOnceRepository implements Repository {
+
+        private boolean alreadyRedirected = false;
+
+        @Override
+        public Reader lookup(String dict, String word) {
+            if (!alreadyRedirected) {
+                alreadyRedirected = true;
+                throw new RedirectException(dict, word);
+            }
+
+            return null;
+        }
+    }
+
+    public static class ConstantParser implements Parser {
+
+        private final Result result;
+
+        public ConstantParser(Result result) {
+            this.result = result;
+        }
+
+        @Override
+        public Result parse(Reader reader) {
+            return result;
         }
     }
 }
