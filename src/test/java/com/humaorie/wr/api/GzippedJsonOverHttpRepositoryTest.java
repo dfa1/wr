@@ -8,4 +8,10 @@ public class GzippedJsonOverHttpRepositoryTest {
     public void cannotCreateWithNullUrlFactory() {
         new GzippedJsonOverHttpRepository(null);
     }
+
+    @Test
+    public void canCreateWithUrlFactory() {
+        final UrlFactory urlFactory = new UrlFactory(new UrlFactoryTest.StubApiKeyProvider());
+        new GzippedJsonOverHttpRepository(urlFactory);
+    }
 }
