@@ -11,7 +11,7 @@ Prerequisites
 -------------
 
 - JDK6
-- Maven
+- Mave
 - wordreference API key 
     http://www.wordreference.com/docs/APIregistration.aspx
 
@@ -44,12 +44,22 @@ http://www.wordreference.com/docs/api.aspx for the complete list of
 supported dictionaries.
 
 
+Installation
+------------
+
+$ mvn assembly:single
+$ sudo cp target/wrcli.jar /usr/local/bin
+$ # add your API key to bin/wrcli
+$ sudo cp bin/wrcli /usr/local/bin 
+
+
 TODO
 ----
 
+- local caching of results 
+- improve installation (e.g. distribute a binary package)
 - filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service
-- local caching of results 
 - http://api.wordreference.com/0.8/enit/json/enit/ <-- handle missing word
 {
 	"Note" : "Please enter a word to search for. For example, http://api.wordreference.com/json/enfr/start."
