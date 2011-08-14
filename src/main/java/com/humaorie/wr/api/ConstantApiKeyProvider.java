@@ -1,10 +1,10 @@
 package com.humaorie.wr.api;
 
-public class CostantApiKeyProvider implements ApiKeyProvider {
+public class ConstantApiKeyProvider implements ApiKeyProvider {
 
     private final String key;
 
-    public CostantApiKeyProvider(String key) {
+    public ConstantApiKeyProvider(String key) {
         this.key = key;
     }
 
