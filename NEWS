@@ -1,0 +1,10 @@
+14 Aug 2011
+  - version 1.1
+  - 2x speedup by using gzip encoding
+  - bash command line script 
+  - test coverage > 90%
+
+7 Aug 2011
+  - version 1.0
+  - API + simple command line client (as executable jar)
+ 
