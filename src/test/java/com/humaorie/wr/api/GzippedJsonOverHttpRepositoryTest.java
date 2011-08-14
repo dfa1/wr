@@ -2,10 +2,10 @@ package com.humaorie.wr.api;
 
 import org.junit.Test;
 
-public class GzipInternetJsonRepositoryTest {
+public class GzippedJsonOverHttpRepositoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWithNullUrlFactory() {
-        new GzipInternetJsonRepository(null);
+        new GzippedJsonOverHttpRepository(null);
     }
 }

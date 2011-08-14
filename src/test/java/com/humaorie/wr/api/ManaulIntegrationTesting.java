@@ -10,7 +10,7 @@ public class ManaulIntegrationTesting {
     public void lookupRepeatedlyWithoutGzip() {
         final ConstantApiKeyProvider costantApiKeyProvider = new ConstantApiKeyProvider("2");
         final UrlFactory urlFactory = new UrlFactory(costantApiKeyProvider);
-        final Repository repository = new InternetJsonRepository(urlFactory);
+        final Repository repository = new JsonOverHttpRepository(urlFactory);
         final Parser parser = new JsonParserCursedByLeChuck();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
 
@@ -23,7 +23,7 @@ public class ManaulIntegrationTesting {
     public void lookipRepeatedlyWithGzip() {
         final ConstantApiKeyProvider costantApiKeyProvider = new ConstantApiKeyProvider("2");
         final UrlFactory urlFactory = new UrlFactory(costantApiKeyProvider);
-        final Repository repository = new GzipInternetJsonRepository(urlFactory);
+        final Repository repository = new GzippedJsonOverHttpRepository(urlFactory);
         final Parser parser = new JsonParserCursedByLeChuck();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
 

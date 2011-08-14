@@ -10,11 +10,11 @@ import java.net.URLConnection;
 import java.net.UnknownHostException;
 import java.util.zip.GZIPInputStream;
 
-public class GzipInternetJsonRepository implements Repository {
+public class GzippedJsonOverHttpRepository implements Repository {
 
     private final UrlFactory urlFactory;
 
-    public GzipInternetJsonRepository(UrlFactory urlFactory) {
+    public GzippedJsonOverHttpRepository(UrlFactory urlFactory) {
         Preconditions.require(urlFactory != null, "urlFactory cannot be null");
         this.urlFactory = urlFactory;
     }

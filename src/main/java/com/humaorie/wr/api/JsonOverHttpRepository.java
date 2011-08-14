@@ -7,11 +7,11 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.UnknownHostException;
 
-public class InternetJsonRepository implements Repository {
+public class JsonOverHttpRepository implements Repository {
     
     private final UrlFactory urlFactory;
 
-    public InternetJsonRepository(UrlFactory urlFactory) {
+    public JsonOverHttpRepository(UrlFactory urlFactory) {
         Preconditions.require(urlFactory != null, "");
         this.urlFactory = urlFactory;
     }
