@@ -3,6 +3,7 @@ package com.humaorie.wr.api;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -72,4 +73,11 @@ public class JsonParserCursedByLeChuckTest {
         final InputStream inputStream = JsonParserCursedByLeChuckTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
     }
+    
+    @Test(expected = IllegalStateException.class)
+    public void refuseIllegalJson() {
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
+        parser.parse(new StringReader("<xml>I cannot be parsed as JSON</xml>"));
+    }
+
 }
