@@ -13,4 +13,5 @@ public class JsonOverHttpRepositoryTest {
     public void canCreateWithUrlFactory() {
         final UrlFactory urlFactory = new UrlFactory(new UrlFactoryTest.StubApiKeyProvider());
         new JsonOverHttpRepository(urlFactory);
+    }
 }
