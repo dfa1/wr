@@ -39,14 +39,6 @@ public class UrlFactoryTest {
         urlFactory.createUrl("enit", "");
     }
 
-    @Ignore("how to simulate this?")
-    @Test(expected = NotFoundException.class)
-    public void unknownDictLeadsToException() throws MalformedURLException {
-        final StubApiKeyProvider apiKeyProvider = new StubApiKeyProvider();
-        final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
-        urlFactory.createUrl("unknow dict", "word");
-    }
-
     public static class StubApiKeyProvider implements ApiKeyProvider {
 
         @Override
