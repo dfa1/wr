@@ -2,6 +2,7 @@ package com.humaorie.wr.api;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -119,7 +120,7 @@ public class DefaultWordReferenceTest {
                 throw new RedirectException(dict, word);
             }
 
-            return null;
+            return new StringReader("");
         }
     }
 
