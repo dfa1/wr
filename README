@@ -1,7 +1,10 @@
 Java Library for WordReference.com
 ==================================
 
-Experimental Java6 library for WordReference Json API.
+Java6 library and command line client for WordReference web API:
+ - supports API version 0.8
+ - supports JSON (avoid the parse HTML hell) 
+ - supports GZIP compression of JSON (2x faster than plain text) 
 
 
 Prerequisites
@@ -44,7 +47,6 @@ supported dictionaries.
 TODO
 ----
 
-- improve unit tests
 - filtering translations by category 
 - print terms of service: http://www.wordreference.com/docs/api.aspx#service
 - local caching of results 
