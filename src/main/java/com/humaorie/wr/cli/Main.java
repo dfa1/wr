@@ -1,10 +1,10 @@
 package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.EnviromentApiKeyProvider;
-import com.humaorie.wr.api.JsonOverHttpRepository;
 import com.humaorie.wr.api.JsonParserCursedByLeChuck;
 import com.humaorie.wr.api.Parser;
 import com.humaorie.wr.api.DefaultWordReference;
+import com.humaorie.wr.api.GzippedJsonOverHttpRepository;
 import com.humaorie.wr.api.UrlFactory;
 
 public class Main {
@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         final EnviromentApiKeyProvider enviromentApiKeyProvider = new EnviromentApiKeyProvider();
         final UrlFactory urlFactory = new UrlFactory(enviromentApiKeyProvider);
-        final JsonOverHttpRepository repository = new JsonOverHttpRepository(urlFactory);
+        final GzippedJsonOverHttpRepository repository = new GzippedJsonOverHttpRepository(urlFactory);
         final Parser parser = new JsonParserCursedByLeChuck();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final CommandLineClient cli = new CommandLineClient(wordReference);
