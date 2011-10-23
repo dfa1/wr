@@ -31,7 +31,7 @@ public class GzippedJsonOverHttpRepository implements Repository {
         } catch (FileNotFoundException ex) {
             throw new NotFoundException("dictionary '%s' not found", dict);
         } catch (UnknownHostException ex) {
-            throw new NotFoundException("cannot open http://api.wordreference.com");
+            throw new NotFoundException("cannot open %s", UrlFactory.API_URL);
         } catch (IOException ex) {
             throw new RuntimeException("I/O error", ex);
         }
