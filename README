@@ -56,6 +56,9 @@ $ sudo cp bin/wrcli /usr/local/bin
 TODO
 ----
 
-- improve installation (e.g. distribute a binary package)
-- filtering translations by category 
-- support for thesaurus (required a new JSON parser)
+- enh: improve installation (e.g. distribute a binary package)
+- enh: filtering translations by category 
+- enh: support for thesaurus (hard)
+- ref: merge exceptions 
+- ref: new integration test with local file system repository
+- ref: rename json repositories

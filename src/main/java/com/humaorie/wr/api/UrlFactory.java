@@ -19,6 +19,11 @@ public class UrlFactory {
     public URL createUrl(String dict, String word) throws IOException {
         Preconditions.require(dict != null, "dict cannot be null");
         Preconditions.require(word != null, "word cannot be null");
+        
+        if (dict.length() != 4) {
+            throw new InvalidDictException("dict must be of length 4");
+        }
+        
         final String url = String.format("%s/%s/%s/json/%s/%s", 
 					  API_URL, 
 					  API_VERSION, 

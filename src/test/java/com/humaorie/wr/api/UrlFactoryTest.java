@@ -26,6 +26,13 @@ public class UrlFactoryTest {
         urlFactory.createUrl("enit", null);
     }
 
+    @Test(expected = InvalidDictException.class)
+    public void refuseDictNotOfLengthFour() throws IOException {
+        final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");
+        final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
+        urlFactory.createUrl("12345", "dog");
+    }
+
     @Test
     public void acceptNonNullDictAndWord() throws IOException {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");
@@ -43,7 +50,7 @@ public class UrlFactoryTest {
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/key/json/%25%25%25%25/dog");
         Assert.assertEquals(expectedUrl, createdUrl);
     }
-    
+
     @Test
     public void wordIsUrlEncoded() throws IOException {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");
@@ -52,7 +59,7 @@ public class UrlFactoryTest {
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/key/json/enit/%25");
         Assert.assertEquals(expectedUrl, createdUrl);
     }
-    
+
     @Test
     public void apiKeyIsUrlEncoded() throws IOException {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("%");
