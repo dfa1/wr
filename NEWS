@@ -1,4 +1,5 @@
 23 Oct 2011
+  - fix: urlencoding url fragments
   - print copyright and terms of service
   - print link back to wordreference.com
 
