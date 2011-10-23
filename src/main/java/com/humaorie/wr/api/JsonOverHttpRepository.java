@@ -12,7 +12,7 @@ public class JsonOverHttpRepository implements Repository {
     private final UrlFactory urlFactory;
 
     public JsonOverHttpRepository(UrlFactory urlFactory) {
-        Preconditions.require(urlFactory != null, "");
+        Preconditions.require(urlFactory != null, "urlFactory cannot be null");
         this.urlFactory = urlFactory;
     }
     
