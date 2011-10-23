@@ -60,4 +60,8 @@ TODO
 - enh: filtering translations by category 
 - enh: support for thesaurus (hard)
 - ref: integration test with local file system repository
-
+- fix: $ wrcli enit lol                                                                                                                    
+Note: No translation was found for lol.
+© WordReference.com
+Original link: http://www.wordreference.com/enit/lol
+ (don't show the original link)
