@@ -12,6 +12,7 @@ import java.util.List;
 
 public class CommandLineClient {
 
+    private final String WR = "http://www.wordreference.com";
     private final DefaultWordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
@@ -32,6 +33,7 @@ public class CommandLineClient {
         try {
             final Result result = wordReference.lookup(dict, word);
             printResult(result);
+	    printCopyright(dict, word);
             return 0;
         } catch (InvalidApiKeyException ex) {
             err.println(ex.getMessage());
@@ -40,6 +42,11 @@ public class CommandLineClient {
             err.println(ex.getMessage());
             return 1;
         }
+    }
+
+    private void printCopyright(String dict, String word) {
+	out.printf("© WordReference.com%n");
+	out.printf("Original link: %s/%s/%s%n", WR, dict, word);
     }
 
     private void printResult(Result result) {
