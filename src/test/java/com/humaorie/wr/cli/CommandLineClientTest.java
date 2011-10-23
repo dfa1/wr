@@ -33,6 +33,11 @@ public class CommandLineClientTest {
         cli.setErr(new PrintStream(errContent));
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void cannotCreateCliWithNullWordReference() {
+        new CommandLineClient(null);
+    }
+
     @Test
     public void returnErrorWhenCalledWithoutArguments() {
         final int status = cli.run();
