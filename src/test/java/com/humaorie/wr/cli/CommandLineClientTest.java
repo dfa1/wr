@@ -98,11 +98,6 @@ public class CommandLineClientTest {
 
     @Test
     public void returnErrorWhenApiKeyIsNotFound() {
-        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
-        final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new JsonParserCursedByLeChuck();
-        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
-        final CommandLineClient cli = new CommandLineClient(wordReference);
         cli.setErr(new PrintStream(errContent));
         final int status = cli.run("enit", "foo");
         Assert.assertEquals(1, status);
