@@ -1,9 +1,7 @@
 package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.Category;
-import com.humaorie.wr.api.InvalidApiKeyException;
-import com.humaorie.wr.api.InvalidDictException;
-import com.humaorie.wr.api.NotFoundException;
+import com.humaorie.wr.api.WordReferenceException;
 import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
@@ -38,16 +36,10 @@ public class CommandLineClient {
             printResult(result);
 	    printCopyright(dict, word);
             return 0;
-        } catch (InvalidApiKeyException ex) {
+        } catch (WordReferenceException ex) {
             err.println(ex.getMessage());
             return 1;
-        } catch (InvalidDictException ex) {
-            err.println(ex.getMessage());
-            return 1;
-        } catch (NotFoundException ex) {
-            err.println(ex.getMessage());
-            return 1;
-        }
+        } 
     }
     
     private void printCopyright(String dict, String word) {

@@ -59,6 +59,5 @@ TODO
 - enh: improve installation (e.g. distribute a binary package)
 - enh: filtering translations by category 
 - enh: support for thesaurus (hard)
-- ref: merge exceptions 
-- ref: new integration test with local file system repository
-- ref: rename json repositories
+- ref: integration test with local file system repository
+

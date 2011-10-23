@@ -25,7 +25,7 @@ public class JsonParserCursedByLeChuckTest {
         Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
 
-    @Test(expected = InvalidApiKeyException.class)
+    @Test(expected = WordReferenceException.class)
     public void invalidKeyDocumentLeadsToException() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         final Reader reader = loadFile("/data/invalidkey.json");

@@ -1,8 +1,7 @@
 package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.Category;
-import com.humaorie.wr.api.InvalidApiKeyException;
-import com.humaorie.wr.api.InvalidDictException;
+import com.humaorie.wr.api.WordReferenceException;
 import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.WordReference;
 import java.io.ByteArrayOutputStream;
@@ -80,8 +79,8 @@ public class CommandLineClientTest {
 
     @Test
     public void returnErrorOnDictionaryNotFound() {
-        final InvalidDictException invalidDictException = new InvalidDictException("invalid dictonary");
-        final WordReference wordReference = new FailingWordReference(invalidDictException);
+        final WordReferenceException exception = new WordReferenceException("invalid dictonary");
+        final WordReference wordReference = new FailingWordReference(exception);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final int status = cli.run("enen", "grin");
         Assert.assertEquals(1, status);
@@ -89,18 +88,18 @@ public class CommandLineClientTest {
 
     @Test
     public void showErrorOnDictionaryNotFound() {
-        final InvalidDictException invalidDictException = new InvalidDictException("invalid dictonary");
-        final WordReference wordReference = new FailingWordReference(invalidDictException);
+        final WordReferenceException exception = new WordReferenceException("invalid dictonary");
+        final WordReference wordReference = new FailingWordReference(exception);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         cli.setErr(new PrintStream(errContent));
         cli.run("enen", "grin");
-        Assert.assertEquals(invalidDictException.getMessage() + "\n", errContent.toString());
+        Assert.assertEquals(exception.getMessage() + "\n", errContent.toString());
     }
 
     @Test
     public void returnErrorWhenApiKeyIsNotFound() {
-        final InvalidApiKeyException exception = new InvalidApiKeyException("invalid api key");
+        final WordReferenceException exception = new WordReferenceException("invalid api key");
         final WordReference wordReference = new FailingWordReference(exception);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
@@ -111,7 +110,7 @@ public class CommandLineClientTest {
 
     @Test
     public void showErrorOnInvalidApiKey() {
-        final InvalidApiKeyException exception = new InvalidApiKeyException("invalid api key");
+        final WordReferenceException exception = new WordReferenceException("invalid api key");
         final WordReference wordReference = new FailingWordReference(exception);
         final CommandLineClient cli = new CommandLineClient(wordReference);
         final ByteArrayOutputStream errContent = new ByteArrayOutputStream();

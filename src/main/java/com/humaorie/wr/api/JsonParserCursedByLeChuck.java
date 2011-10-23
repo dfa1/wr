@@ -44,7 +44,7 @@ public class JsonParserCursedByLeChuck implements Parser {
         String sorry = rootJson.optString("Sorry");
 
         if (!sorry.isEmpty()) {
-            throw new InvalidApiKeyException(sorry);
+            throw new WordReferenceException(sorry);
         }
     }
 

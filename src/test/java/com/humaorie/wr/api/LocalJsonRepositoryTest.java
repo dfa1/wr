@@ -30,7 +30,7 @@ public class LocalJsonRepositoryTest {
         repository.lookup("enit", "");
     }
 
-    @Test(expected = NotFoundException.class)
+    @Test(expected = WordReferenceException.class)
     public void unknownDictLeadsToException() {
         LocalJsonRepository repository = new LocalJsonRepository();
         repository.lookup("invalid_dict", "word");

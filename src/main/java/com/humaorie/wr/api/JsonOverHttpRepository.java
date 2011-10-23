@@ -22,9 +22,9 @@ public class JsonOverHttpRepository implements Repository {
 	    final URL url = urlFactory.createUrl(dict, word);
             return new InputStreamReader(url.openStream());
         } catch (FileNotFoundException ex) {
-            throw new NotFoundException("dictionary '%s' not found", dict);
+            throw new WordReferenceException("dictionary '%s' not found", dict);
         } catch (UnknownHostException ex) {
-            throw new NotFoundException("cannot open %s", UrlFactory.API_URL); 
+            throw new WordReferenceException("cannot open %s", UrlFactory.API_URL); 
         } catch (IOException ex) {
             throw new RuntimeException("I/O error", ex); 
         }

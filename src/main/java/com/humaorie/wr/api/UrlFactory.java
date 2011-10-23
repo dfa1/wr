@@ -21,7 +21,7 @@ public class UrlFactory {
         Preconditions.require(word != null, "word cannot be null");
         
         if (dict.length() != 4) {
-            throw new InvalidDictException("dict must be of length 4");
+            throw new WordReferenceException("dict must be of length 4");
         }
         
         final String url = String.format("%s/%s/%s/json/%s/%s", 

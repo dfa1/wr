@@ -26,7 +26,7 @@ public class UrlFactoryTest {
         urlFactory.createUrl("enit", null);
     }
 
-    @Test(expected = InvalidDictException.class)
+    @Test(expected = WordReferenceException.class)
     public void refuseDictNotOfLengthFour() throws IOException {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");
         final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
