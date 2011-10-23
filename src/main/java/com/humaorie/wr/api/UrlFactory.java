@@ -1,6 +1,7 @@
 package com.humaorie.wr.api;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.net.URLEncoder;
 
@@ -17,18 +18,17 @@ public class UrlFactory {
 
     public URL createUrl(String dict, String word) throws IOException {
         Preconditions.require(dict != null, "dict cannot be null");
-        Preconditions.require(!dict.isEmpty(), "dict cannot be empty");
         Preconditions.require(word != null, "word cannot be null");
-        Preconditions.require(!word.isEmpty(), "word cannot be empty");
-	final String urlEncodedApiKey = URLEncoder.encode(apiKeyProvider.provideKey(), "utf8");
-	final String urlEncodedDict = URLEncoder.encode(dict, "utf8");
-	final String urlEncodedWord = URLEncoder.encode(word, "utf8");
         final String url = String.format("%s/%s/%s/json/%s/%s", 
 					  API_URL, 
 					  API_VERSION, 
-					  urlEncodedApiKey, 
-					  urlEncodedDict, 
-					  urlEncodedWord);
+					  urlEncode(apiKeyProvider.provideKey()), 
+					  urlEncode(dict), 
+					  urlEncode(word));
         return new URL(url);
+    }
+    
+    private String urlEncode(String plain) throws UnsupportedEncodingException {
+        return URLEncoder.encode(plain, "utf8");
     }
 }
