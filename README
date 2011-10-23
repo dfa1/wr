@@ -58,8 +58,14 @@ TODO
 
 - improve installation (e.g. distribute a binary package)
 - filtering translations by category 
-- http://api.wordreference.com/0.8/enit/json/enit/ <-- handle missing word
-{
-	"Note" : "Please enter a word to search for. For example, http://api.wordreference.com/json/enfr/start."
-}
-
+- support for thesaurus (required a new JSON parser)
+- handle HTTP 400 error: $ wrcli enit '%'                                     Exception in thread "main" java.lang.RuntimeException: I/O error
+        at com.humaorie.wr.api.GzippedJsonOverHttpRepository.lookup(GzippedJsonOverHttpRepository.java:36)
+        at com.humaorie.wr.api.DefaultWordReference.fetchAndParse(DefaultWordReference.java:28)
+        at com.humaorie.wr.api.DefaultWordReference.lookup(DefaultWordReference.java:21)
+        at com.humaorie.wr.cli.CommandLineClient.run(CommandLineClient.java:34)
+        at com.humaorie.wr.cli.Main.main(Main.java:19)
+Caused by: java.io.IOException: Server returned HTTP response code: 400 for URL: http://api.wordreference.com/0.8/0faf5/json/enit/%
+        at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1436)
+        at com.humaorie.wr.api.GzippedJsonOverHttpRepository.lookup(GzippedJsonOverHttpRepository.java:28)
+        ... 4 more
