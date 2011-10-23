@@ -8,6 +8,10 @@
     <packaging>jar</packaging>
     <name>wr</name>
     <url>http://bitbucket.org/dfa/wr</url>
+    <scm>
+        <connection>http://bitbucket.org/dfa/dollar</connection>
+        <url>http://bitbucket.org/dfa/dollar</url>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
