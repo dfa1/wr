@@ -6,18 +6,20 @@ import com.humaorie.wr.api.NotFoundException;
 import com.humaorie.wr.api.Result;
 import com.humaorie.wr.api.Term;
 import com.humaorie.wr.api.Translation;
-import com.humaorie.wr.api.DefaultWordReference;
+import com.humaorie.wr.api.Preconditions;
+import com.humaorie.wr.api.WordReference;
 import java.io.PrintStream;
 import java.util.List;
 
 public class CommandLineClient {
 
     private final String WR = "http://www.wordreference.com";
-    private final DefaultWordReference wordReference;
+    private final WordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
 
-    public CommandLineClient(DefaultWordReference wordReference) {
+    public CommandLineClient(WordReference wordReference) {
+        Preconditions.require(wordReference != null, "word reference cannot be null");
         this.wordReference = wordReference;
     }
 
@@ -43,7 +45,7 @@ public class CommandLineClient {
             return 1;
         }
     }
-
+    
     private void printCopyright(String dict, String word) {
 	out.printf("© WordReference.com%n");
 	out.printf("Original link: %s/%s/%s%n", WR, dict, word);
