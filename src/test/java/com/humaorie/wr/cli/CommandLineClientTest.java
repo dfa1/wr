@@ -1,37 +1,17 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.api.ApiKeyProvider;
-import com.humaorie.wr.api.EnviromentApiKeyProvider;
-import com.humaorie.wr.api.LocalJsonRepository;
-import com.humaorie.wr.api.JsonParserCursedByLeChuck;
-import com.humaorie.wr.api.Parser;
-import com.humaorie.wr.api.Repository;
-import com.humaorie.wr.api.DefaultWordReference;
+import com.humaorie.wr.api.Category;
+import com.humaorie.wr.api.InvalidApiKeyException;
+import com.humaorie.wr.api.InvalidDictException;
+import com.humaorie.wr.api.Result;
+import com.humaorie.wr.api.WordReference;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-import java.io.Reader;
-import java.io.StringReader;
+import java.util.ArrayList;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 public class CommandLineClientTest {
-
-    private CommandLineClient cli;
-    private ByteArrayOutputStream outContent;
-    private ByteArrayOutputStream errContent;
-
-    @Before
-    public void setup() {
-        final LocalJsonRepository repository = new LocalJsonRepository();
-        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
-        cli = new CommandLineClient(wordReference);
-        outContent = new ByteArrayOutputStream();
-        cli.setOut(new PrintStream(outContent));
-        errContent = new ByteArrayOutputStream();
-        cli.setErr(new PrintStream(errContent));
-    }
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateCliWithNullWordReference() {
@@ -40,69 +20,90 @@ public class CommandLineClientTest {
 
     @Test
     public void returnErrorWhenCalledWithoutArguments() {
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(null));
         final int status = cli.run();
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorWhenCalledWithoutArguments() {
+        final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(null));
+        cli.setErr(new PrintStream(errContent));
         cli.run();
         Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", errContent.toString());
     }
 
     @Test
     public void returnErrorWhenCalledWithOneArgument() {
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(null));
         final int status = cli.run("enit");
         Assert.assertEquals(1, status);
     }
 
     @Test
     public void showErrorWhenCalledWithOneArgument() {
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(null));
+        final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+        cli.setErr(new PrintStream(errContent));
         cli.run();
         Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", errContent.toString());
     }
 
     @Test
     public void returnZeroOnValidQueries() {
-        final int status = cli.run("enfr", "grin");
+        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
+        final int status = cli.run("enfr", "mist");
         Assert.assertEquals(0, status);
     }
 
     @Test
     public void showDefinitionOfAWord() {
+        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        cli.setOut(new PrintStream(outContent));
         cli.run("enit", "run");
-        Assert.assertTrue(outContent.toString().contains("correre"));
+        Assert.assertTrue(outContent.toString().contains(result.getNote()));
     }
 
     @Test
-    public void returnErrorOnInvalidDictionary() {
-        final int status = cli.run("asdasd", "grin");
+    public void showCopyrightMessage() {
+        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        cli.setOut(new PrintStream(outContent));
+        cli.run("enit", "run");
+        Assert.assertTrue(outContent.toString().contains("© WordReference.com"));
+    }
+
+    @Test
+    public void returnErrorOnDictionaryNotFound() {
+        final InvalidDictException invalidDictException = new InvalidDictException("invalid dictonary");
+        final WordReference wordReference = new FailingWordReference(invalidDictException);
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final int status = cli.run("enen", "grin");
         Assert.assertEquals(1, status);
     }
 
     @Test
-    public void showErrorOnInvalidDictionary() {
-        cli.run("foo", "grin");
-        Assert.assertEquals("dictionary 'foo' not found\n", errContent.toString());
-    }
-
-    private static class FakeRepository implements Repository {
-
-        private final ApiKeyProvider apiKeyProvider;
-
-        public FakeRepository(ApiKeyProvider apiKeyProvider) {
-            this.apiKeyProvider = apiKeyProvider;
-        }
-
-        @Override
-        public Reader lookup(String dict, String word) {
-            final String json = String.format("{ 'api key'; '%s' }", apiKeyProvider.provideKey());
-            return new StringReader(json);
-        }
+    public void showErrorOnDictionaryNotFound() {
+        final InvalidDictException invalidDictException = new InvalidDictException("invalid dictonary");
+        final WordReference wordReference = new FailingWordReference(invalidDictException);
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
+        cli.setErr(new PrintStream(errContent));
+        cli.run("enen", "grin");
+        Assert.assertEquals(invalidDictException.getMessage() + "\n", errContent.toString());
     }
 
     @Test
     public void returnErrorWhenApiKeyIsNotFound() {
+        final InvalidApiKeyException exception = new InvalidApiKeyException("invalid api key");
+        final WordReference wordReference = new FailingWordReference(exception);
+        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         cli.setErr(new PrintStream(errContent));
         final int status = cli.run("enit", "foo");
         Assert.assertEquals(1, status);
@@ -110,13 +111,12 @@ public class CommandLineClientTest {
 
     @Test
     public void showErrorOnInvalidApiKey() {
-        final EnviromentApiKeyProvider apiKeyProvider = new EnviromentApiKeyProvider();
-        final Repository repository = new FakeRepository(apiKeyProvider);
-        final Parser parser = new JsonParserCursedByLeChuck();
-        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
+        final InvalidApiKeyException exception = new InvalidApiKeyException("invalid api key");
+        final WordReference wordReference = new FailingWordReference(exception);
         final CommandLineClient cli = new CommandLineClient(wordReference);
+        final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         cli.setErr(new PrintStream(errContent));
         cli.run("enit", "dog");
-        Assert.assertTrue(errContent.toString().contains("See http://www.wordreference.com/docs/APIregistration.aspx"));
+        Assert.assertTrue(errContent.toString().contains(exception.getMessage()));
     }
 }
