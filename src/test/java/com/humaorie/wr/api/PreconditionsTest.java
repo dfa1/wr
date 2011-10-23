@@ -5,23 +5,23 @@ import org.junit.Test;
 public class PreconditionsTest {
 
     @Test
-    public void havePublicConstructor() {
+    public void itHasAPublicConstructor() {
         new Preconditions();
     }
 
     @Test
-    public void isNotFinal() {
+    public void itIsNotFinal() {
         final Preconditions extended = new Preconditions() {
         };
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void throwsWhenConditionIfFalse() {
+    public void throwsWhenConditionYieldsFalse() {
         Preconditions.require(false, "error message");
     }
 
     @Test
-    public void dontThrowsWhenConditionIfTrue() {
+    public void dontThrowsWhenConditionYieldsTrue() {
         Preconditions.require(true, "error message");
     }
 }
