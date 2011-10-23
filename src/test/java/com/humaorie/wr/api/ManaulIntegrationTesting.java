@@ -20,7 +20,7 @@ public class ManaulIntegrationTesting {
     }
 
     @Test
-    public void lookipRepeatedlyWithGzip() {
+    public void lookupRepeatedlyWithGzip() {
         final ConstantApiKeyProvider costantApiKeyProvider = new ConstantApiKeyProvider("2");
         final UrlFactory urlFactory = new UrlFactory(costantApiKeyProvider);
         final Repository repository = new GzippedJsonOverHttpRepository(urlFactory);
