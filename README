@@ -7,11 +7,10 @@ Java6 library and command line client for WordReference web API:
  - supports GZIP compression of JSON (2x faster than plain text) 
 
 
-Prerequisites
+Prerequisites 
 -------------
 
-- JDK6
-- Mave
+- JDK6 and Apache Maven 1.6 to compile from sources
 - wordreference API key 
     http://www.wordreference.com/docs/APIregistration.aspx
 
@@ -19,49 +18,43 @@ Prerequisites
 Howto for the command line client
 ---------------------------------
 
-$ mvn compile assembly:single
-$ WR_API_KEY=yourapikey java -jar target/wrcli.jar iten nebbia
+$ mvn clean compile assembly:single
+$ echo "your_api_key" > ~/.wrcli
+$ java -jar target/wrcli.jar iten nebbia
 category 'original':
  nebbia marina, foschia marina   
    sea mist   
  camera a nebbia   
-   cloud chamber   
- avvolto nella nebbia   
-   mist-shrouded   
- avvolgere nella nebbia v  
-   hide  cover with fog 
- sirena da nebbia nf  
-   foghorn  nautical 
- nella foschia, nella nebbia   
-   in a mist   
-category 'term0':
- nebbia nf  
-   fog   
-Note: 
+...
 
-iten is the Italian->English dictionary. See 
+"iten" is the Italian->English dictionary. See 
 http://www.wordreference.com/docs/api.aspx for the complete list of
 supported dictionaries.
 
 
-Installation
-------------
+Manual installation
+-------------------
 
-$ mvn compile assembly:single
-$ sudo cp target/wrcli.jar /usr/local/bin
-$ # add your API key to bin/wrcli
+$ sudo install -D -m755 target/wrcli.jar /opt/wrcli/wrcli.jar
 $ sudo cp bin/wrcli /usr/local/bin 
+$ wrcli enit dog
+category 'original':
+ nebbia marina, foschia marina   
+   sea mist   
+ camera a nebbia   
+...
+
+
+RPM
+---
+
+$ mvn package assembly:single rpm:rpm
+
+an RPM will be built into the directory target/rpm/wr/RPMS/noarch
 
 
 TODO
 ----
 
-- enh: improve installation (e.g. distribute a binary package)
 - enh: filtering translations by category 
 - enh: support for thesaurus (hard)
-- ref: integration test with local file system repository
-- fix: $ wrcli enit lol                                                                                                                    
-Note: No translation was found for lol.
-© WordReference.com
-Original link: http://www.wordreference.com/enit/lol
- (don't show the original link)

@@ -1,2 +1,2 @@
 #/bin/bash
-java -jar /usr/share/wrcli/wrcli.jar $1 $2
+java -jar /opt/wrcli/wrcli.jar $1 $2
