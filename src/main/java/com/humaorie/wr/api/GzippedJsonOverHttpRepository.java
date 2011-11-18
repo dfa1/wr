@@ -26,12 +26,12 @@ public class GzippedJsonOverHttpRepository implements Repository {
             final URLConnection openConnection = url.openConnection();
             openConnection.addRequestProperty("Accept-Encoding", "gzip");
             final InputStream inputStream = openConnection.getInputStream();
-            final GZIPInputStream gzipInputStream= new GZIPInputStream(inputStream);
+            final GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
             return new InputStreamReader(gzipInputStream);
         } catch (FileNotFoundException ex) {
-            throw new WordReferenceException("dictionary '%s' not found", dict);
+            throw new WordReferenceException(String.format("dictionary '%s' not found", dict));
         } catch (UnknownHostException ex) {
-            throw new WordReferenceException("cannot open %s", UrlFactory.API_URL);
+            throw new WordReferenceException(String.format("cannot open %s", UrlFactory.API_URL));
         } catch (IOException ex) {
             throw new RuntimeException("I/O error", ex);
         }

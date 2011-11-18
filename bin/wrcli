@@ -1,7 +1,2 @@
-#/bin/sh
-
-MY_API_KEY=
-
-test -z $MY_API_KEY && printf "get for your API key at \n%s\n" http://www.wordreference.com/docs/APIregistration.aspx && exit
-WR_JAR=/usr/local/bin/wrcli.jar
-WR_API_KEY=$MY_API_KEY java -jar $WR_JAR $1 $2
+#/bin/bash
+java -jar /usr/share/wrcli/wrcli.jar $1 $2

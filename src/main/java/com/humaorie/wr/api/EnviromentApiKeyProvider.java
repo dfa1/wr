@@ -1,5 +1,6 @@
 package com.humaorie.wr.api;
 
+@Deprecated
 public class EnviromentApiKeyProvider implements ApiKeyProvider {
 
     private final String KEY = "WR_API_KEY";
@@ -9,7 +10,7 @@ public class EnviromentApiKeyProvider implements ApiKeyProvider {
         final String key = System.getenv(KEY);
 
         if (key == null) {
-            throw new WordReferenceException("please set the enviroment variable %s%nSee http://www.wordreference.com/docs/APIregistration.aspx", KEY);
+            throw new WordReferenceException(String.format("please set the enviroment variable %s%nSee http://www.wordreference.com/docs/APIregistration.aspx", KEY));
         }
         
         return key;

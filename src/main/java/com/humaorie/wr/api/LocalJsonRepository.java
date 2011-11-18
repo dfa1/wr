@@ -16,7 +16,7 @@ public class LocalJsonRepository implements Repository {
         final InputStream inputStream = LocalJsonRepository.class.getResourceAsStream(fileName);
 
         if (inputStream == null) {
-            throw new WordReferenceException("dictionary '%s' not found", dict);
+            throw new WordReferenceException(String.format("dictionary '%s' not found", dict));
         }
 
         return new InputStreamReader(inputStream);
