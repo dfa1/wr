@@ -64,11 +64,10 @@
                     <copyright>2011, Davide Angelocola</copyright>
                     <group>Applications/Text</group>
                     <packager>davide.angelocola@gmail.com</packager>
-                    <prefix>/usr</prefix>
+                    <name>wrcli</name>
                     <mappings>
                         <mapping>
-                            <directory>/usr/share/wrcli</directory>
-                            <filemode>444</filemode>
+                            <directory>/opt/wrcli</directory>
                             <sources>
                                 <source>
                                     <location>target/wrcli.jar</location>
@@ -77,7 +76,7 @@
                         </mapping>
                         <mapping>
                             <directory>/usr/bin</directory>
-                            <filemode>750</filemode>
+                            <filemode>755</filemode>
                             <sources>
                                 <source>
                                     <location>bin/wrcli</location>

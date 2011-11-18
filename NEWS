@@ -1,3 +1,6 @@
+19 Nov 2011
+  - improved installation instructions
+
 18 Nov 2011
   - RPM package
   - simplified api key configuration (introduced FileApiKeyProvider, deprecated EnvironmnetApiKeyProvider)
