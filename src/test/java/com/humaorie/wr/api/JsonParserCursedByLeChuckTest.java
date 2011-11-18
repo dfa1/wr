@@ -12,7 +12,7 @@ public class JsonParserCursedByLeChuckTest {
     @Test
     public void canParseValidDocument() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final Reader reader = loadFile("/data/iten-drago.json");
+        final Reader reader = loadFile("iten-drago.json");
         final Result result = parser.parse(reader);
         Assert.assertEquals("original", result.getCategories().get(0).getName());
     }
@@ -20,7 +20,7 @@ public class JsonParserCursedByLeChuckTest {
     @Test
     public void canParseTermNotFoundDocument() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final Reader reader = loadFile("/data/notfound.json");
+        final Reader reader = loadFile("notfound.json");
         final Result result = parser.parse(reader);
         Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
@@ -28,14 +28,14 @@ public class JsonParserCursedByLeChuckTest {
     @Test(expected = WordReferenceException.class)
     public void invalidKeyDocumentLeadsToException() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final Reader reader = loadFile("/data/invalidkey.json");
+        final Reader reader = loadFile("invalidkey.json");
         parser.parse(reader);
     }
 
     @Test(expected = RedirectException.class)
     public void redirectResponseLeadsToException() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final Reader reader = loadFile("/data/redirect.json");
+        final Reader reader = loadFile("redirect.json");
         parser.parse(reader);
     }
 
@@ -43,7 +43,7 @@ public class JsonParserCursedByLeChuckTest {
     public void redirectResponseContainsNewDict() {
         try {
             final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-            final Reader reader = loadFile("/data/redirect.json");
+            final Reader reader = loadFile("redirect.json");
             parser.parse(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
@@ -55,7 +55,7 @@ public class JsonParserCursedByLeChuckTest {
     public void redirectResponseContainsNewWord() {
         try {
             final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-            final Reader reader = loadFile("/data/redirect.json");
+            final Reader reader = loadFile("redirect.json");
             parser.parse(reader);
             Assert.fail("expected a RedirectException");
         } catch (RedirectException redirectException) {
@@ -72,9 +72,15 @@ public class JsonParserCursedByLeChuckTest {
     @Test
     public void noTranslationLeadsToEmptyCategories() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        final Reader reader = loadFile("/data/notranslation.json");
+        final Reader reader = loadFile("notranslation.json");
         final Result result = parser.parse(reader);
         Assert.assertTrue("categories must be empty", result.getCategories().isEmpty());
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void refuseIllegalJson() {
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
+        parser.parse(new StringReader("<xml>I cannot be parsed as JSON</xml>"));
     }
 
     private Reader loadFile(String filename) {
@@ -82,10 +88,4 @@ public class JsonParserCursedByLeChuckTest {
         return new InputStreamReader(inputStream);
     }
     
-    @Test(expected = IllegalStateException.class)
-    public void refuseIllegalJson() {
-        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
-        parser.parse(new StringReader("<xml>I cannot be parsed as JSON</xml>"));
-    }
-
 }

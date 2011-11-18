@@ -1,6 +1,7 @@
 18 Nov 2011
   - RPM package
   - simplified api key configuration (introduced FileApiKeyProvider, deprecated EnvironmnetApiKeyProvider)
+  - improved test suite
   - fix: NPE on NoTranslation response
  
 23 Oct 2011
