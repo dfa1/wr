@@ -1,8 +1,8 @@
 18 Nov 2011
   - RPM package
-  - introduced FileApiKeyProvider
-  - deprecated EnvironmnetApiKeyProvider 
-
+  - simplified api key configuration (introduced FileApiKeyProvider, deprecated EnvironmnetApiKeyProvider)
+  - fix: NPE on NoTranslation response
+ 
 23 Oct 2011
   - fix: urlencoding url fragments
   - print copyright and terms of service

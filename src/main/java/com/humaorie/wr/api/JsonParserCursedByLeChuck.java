@@ -41,7 +41,7 @@ public class JsonParserCursedByLeChuck implements Parser {
     }
 
     private void assertValidApiKey(JSONObject rootJson) {
-        String sorry = rootJson.optString("Sorry");
+        final String sorry = rootJson.optString("Sorry");
 
         if (!sorry.isEmpty()) {
             throw new WordReferenceException(sorry);
@@ -56,6 +56,11 @@ public class JsonParserCursedByLeChuck implements Parser {
 
     private List<Category> parseMeanings(JSONObject rootJson) {
         final List<Category> categories = new ArrayList<Category>();
+        
+        if (rootJson.has("Error")) {
+            return categories;
+        }
+        
         final Iterator meaningKeys = rootJson.keys();
 
         while (meaningKeys.hasNext()) {

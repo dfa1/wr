@@ -69,6 +69,14 @@ public class JsonParserCursedByLeChuckTest {
         parser.parse(null);
     }
 
+    @Test
+    public void noTranslationLeadsToEmptyCategories() {
+        final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
+        final Reader reader = loadFile("/data/notranslation.json");
+        final Result result = parser.parse(reader);
+        Assert.assertTrue("categories must be empty", result.getCategories().isEmpty());
+    }
+
     private Reader loadFile(String filename) {
         final InputStream inputStream = JsonParserCursedByLeChuckTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
