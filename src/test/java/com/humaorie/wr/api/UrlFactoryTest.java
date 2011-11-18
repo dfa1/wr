@@ -39,7 +39,7 @@ public class UrlFactoryTest {
         final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
         final URL createdUrl = urlFactory.createUrl("enit", "dog");
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/key/json/enit/dog");
-        Assert.assertEquals(expectedUrl, createdUrl);
+        Assert.assertEquals(expectedUrl.toExternalForm(), createdUrl.toExternalForm());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class UrlFactoryTest {
         final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
         final URL createdUrl = urlFactory.createUrl("%%%%", "dog");
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/key/json/%25%25%25%25/dog");
-        Assert.assertEquals(expectedUrl, createdUrl);
+        Assert.assertEquals(expectedUrl.toExternalForm(), createdUrl.toExternalForm());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class UrlFactoryTest {
         final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
         final URL createdUrl = urlFactory.createUrl("enit", "%");
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/key/json/enit/%25");
-        Assert.assertEquals(expectedUrl, createdUrl);
+        Assert.assertEquals(expectedUrl.toExternalForm(), createdUrl.toExternalForm());
     }
 
     @Test
@@ -66,6 +66,6 @@ public class UrlFactoryTest {
         final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
         final URL createdUrl = urlFactory.createUrl("enit", "dog");
         final URL expectedUrl = new URL("http://api.wordreference.com/0.8/%25/json/enit/dog");
-        Assert.assertEquals(expectedUrl, createdUrl);
+        Assert.assertEquals(expectedUrl.toExternalForm(), createdUrl.toExternalForm());
     }
 }
