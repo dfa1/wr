@@ -61,10 +61,10 @@
                 <artifactId>rpm-maven-plugin</artifactId>
                 <version>2.1-alpha-1</version>
                 <configuration>
-                    <copyright>2011, Davide Angelocola</copyright>
-                    <group>Applications/Text</group>
-                    <packager>davide.angelocola@gmail.com</packager>
                     <name>wrcli</name>
+                    <copyright>2011, Davide Angelocola</copyright>
+                    <packager>davide.angelocola@gmail.com</packager>
+                    <group>Applications/Text</group>
                     <mappings>
                         <mapping>
                             <directory>/opt/wrcli</directory>
