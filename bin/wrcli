@@ -1,2 +1,2 @@
-#/bin/bash
+#!/bin/bash
 java -jar /opt/wrcli/wrcli.jar $1 $2
