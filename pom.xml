@@ -7,6 +7,13 @@
     <packaging>jar</packaging>
     <name>wr</name>
     <url>http://bitbucket.org/dfa/wr</url>
+    <licenses>
+        <license>
+            <name>LGPL3.0</name>
+            <url>http://www.gnu.org/licenses/lgpl-3.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
     <scm>
         <connection>scm:hg:file://${basedir}</connection>
         <developerConnection>scm:hg:file://${basedir}</developerConnection>
