@@ -51,7 +51,7 @@ public class CommandLineClientTest {
 
     @Test
     public void returnZeroOnValidQueries() {
-        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
         final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
         final int status = cli.run("enfr", "mist");
         Assert.assertEquals(0, status);
@@ -59,7 +59,7 @@ public class CommandLineClientTest {
 
     @Test
     public void showDefinitionOfAWord() {
-        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
         final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         cli.setOut(new PrintStream(outContent));
@@ -69,7 +69,7 @@ public class CommandLineClientTest {
 
     @Test
     public void showCopyrightMessage() {
-        final Result result = new Result("random note about mist", new ArrayList<Category>());
+        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
         final CommandLineClient cli = new CommandLineClient(new ConstantWordReference(result));
         final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         cli.setOut(new PrintStream(outContent));

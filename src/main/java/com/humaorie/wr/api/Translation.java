@@ -1,18 +1,31 @@
 package com.humaorie.wr.api;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Translation {
 
-    private final Term originalTerm;
-    private final List<Term> translations;
-    private final String note;
+    private Term originalTerm;
+    private List<Term> translations;
+    private String note;
 
-    public Translation(Term originalTerm, List<Term> translations, String note) {
-        this.originalTerm = originalTerm;
-        this.translations = translations;
+    public static Translation create(Term originalTerm, List<Term> translations, String note) {
+        final Translation newTranslation = new Translation();
+        newTranslation.setOriginalTerm(originalTerm);
+        newTranslation.setTranslations(translations);
+        newTranslation.setNote(note);
+        return newTranslation;
+    }
+
+    public void setNote(String note) {
         this.note = note;
+    }
+
+    public void setOriginalTerm(Term originalTerm) {
+        this.originalTerm = originalTerm;
+    }
+
+    public void setTranslations(List<Term> translations) {
+        this.translations = translations;
     }
 
     public Term getOriginalTerm() {
@@ -20,7 +33,7 @@ public class Translation {
     }
 
     public List<Term> getTranslations() {
-        return Collections.unmodifiableList(translations);
+        return translations;
     }
 
     public String getNote() {

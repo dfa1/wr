@@ -100,13 +100,13 @@ public class DefaultWordReferenceTest {
 
     @Test
     public void canHandleRedirects() {
-        final Result expectedResult = new Result("expected", null);
+        final Result expectedResult = Result.create(null, "expected");
         final Parser parser = new ConstantParser(expectedResult);
         final Repository repository = new RedirectOnceRepository();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final Result result = wordReference.lookup("iten", "drago");
         
-        Assert.assertSame(expectedResult, result);
+        Assert.assertSame(expectedResult, result); // TODO: weak test
     }
 
     public static class RedirectOnceRepository implements Repository {

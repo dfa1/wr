@@ -5,12 +5,22 @@ import java.util.List;
 
 public class Category {
 
-    private final String name;
-    private final List<Translation> translations;
+    private String name;
+    private List<Translation> translations;
 
-    public Category(String name, List<Translation> translations) {
-        this.name = name;
+    public static Category create(String name, List<Translation> translations) {
+        final Category newCategory = new Category();
+        newCategory.setName(name);
+        newCategory.setTranslations(translations);
+        return newCategory;
+    }
+
+    public void setTranslations(List<Translation> translations) {
         this.translations = translations;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -18,6 +28,6 @@ public class Category {
     }
 
     public List<Translation> getTranslations() {
-        return Collections.unmodifiableList(translations);
+        return translations;
     }
 }

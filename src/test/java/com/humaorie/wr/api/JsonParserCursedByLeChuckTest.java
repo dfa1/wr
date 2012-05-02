@@ -87,5 +87,4 @@ public class JsonParserCursedByLeChuckTest {
         final InputStream inputStream = JsonParserCursedByLeChuckTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
     }
-    
 }

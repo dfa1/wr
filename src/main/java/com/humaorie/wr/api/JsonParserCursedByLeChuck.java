@@ -21,7 +21,7 @@ public class JsonParserCursedByLeChuck implements Parser {
             removeUselessKeys(rootJson);
             final String note = parseNote(rootJson);
             final List<Category> categories = parseMeanings(rootJson);
-            return new Result(note, categories);
+            return Result.create(categories, note);
         } catch (JSONException ex) {
             throw new IllegalStateException("cannot parse JSON", ex);
         }
@@ -56,11 +56,11 @@ public class JsonParserCursedByLeChuck implements Parser {
 
     private List<Category> parseMeanings(JSONObject rootJson) {
         final List<Category> categories = new ArrayList<Category>();
-        
+
         if (rootJson.has("Error")) {
             return categories;
         }
-        
+
         final Iterator meaningKeys = rootJson.keys();
 
         while (meaningKeys.hasNext()) {
@@ -76,26 +76,26 @@ public class JsonParserCursedByLeChuck implements Parser {
     private Category parseCategory(String meaningKey, JSONObject categoryJson) {
         final Iterator translationsKeys = categoryJson.keys();
         final List<Translation> translations = new ArrayList<Translation>();
-        
+
         while (translationsKeys.hasNext()) {
             final String translationKey = (String) translationsKeys.next();
             final JSONObject translationsJson = categoryJson.optJSONObject(translationKey);
             translations.addAll(parseTranslations(translationsJson));
         }
 
-        return new Category(meaningKey, translations);
+        return Category.create(meaningKey, translations);
     }
 
     private List<Translation> parseTranslations(JSONObject translationsJson) {
         final List<Translation> translations = new ArrayList<Translation>();
         final Iterator translationKeys = translationsJson.keys();
-        
+
         while (translationKeys.hasNext()) {
             final String translationIndex = (String) translationKeys.next();
             final Translation translation = parseTranslation(translationsJson.optJSONObject(translationIndex));
             translations.add(translation);
         }
-       
+
         return translations;
     }
 
@@ -113,14 +113,14 @@ public class JsonParserCursedByLeChuck implements Parser {
             translations.add(term);
         }
 
-        return new Translation(originalTerm, translations, note);
+        return Translation.create(originalTerm, translations, note);
     }
 
     private Term parseTerm(JSONObject termJson) {
-        return new Term(
-                termJson.optString("term"),
-                termJson.optString("POS"),
-                termJson.optString("sense"),
-                termJson.optString("usage"));
+        final String term = termJson.optString("term");
+        final String pos = termJson.optString("POS");
+        final String sense = termJson.optString("sense");
+        final String usage = termJson.optString("usage");
+        return Term.create(term, pos, sense, usage);
     }
 }

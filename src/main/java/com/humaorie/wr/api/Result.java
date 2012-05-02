@@ -2,21 +2,31 @@ package com.humaorie.wr.api;
 
 import java.util.List;
 
-public class Result  {
+public class Result {
 
-    private final String note;
-    private final List<Category> categories;
+    private List<Category> categories;
+    private String note;
 
-    public Result(String note, List<Category> categories) {
-        this.note = note;
+    public static Result create(List<Category> categories, String note) {
+        final Result newResult = new Result();
+        newResult.setNote(note);
+        newResult.setCategories(categories);
+        return newResult;
+    }
+
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
-    public String getNote() {
-        return note;
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public List<Category> getCategories() {
         return categories;
+    }
+
+    public String getNote() {
+        return note;
     }
 }
