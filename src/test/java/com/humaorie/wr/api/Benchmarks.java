@@ -2,7 +2,7 @@ package com.humaorie.wr.api;
 
 import org.junit.Test;
 
-public class ManaulIntegrationTesting {
+public class Benchmarks {
 
     private final int REPEAT = 30;
 
