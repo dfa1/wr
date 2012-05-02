@@ -28,7 +28,7 @@ public class DefaultWordReferenceTest {
 
     @Test
     public void callCloseWhenParserSucceeds() {
-        final MockReader reader = new MockReader();
+        final SpyOnClosingReader reader = new SpyOnClosingReader();
         final ConstantRepository repository = new ConstantRepository(reader);
         final NoopParser parser = new NoopParser();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
@@ -36,7 +36,7 @@ public class DefaultWordReferenceTest {
         Assert.assertTrue(reader.isClosed());
     }
 
-    public static class MockReader extends Reader {
+    public static class SpyOnClosingReader extends Reader {
 
         private boolean closed = false;
 
@@ -79,15 +79,16 @@ public class DefaultWordReferenceTest {
 
     @Test
     public void callCloseWhenParserFail() {
-        final MockReader reader = new MockReader();
+        final SpyOnClosingReader reader = new SpyOnClosingReader();
         try {
             final ConstantRepository repository = new ConstantRepository(reader);
             final FailingParser parser = new FailingParser();
             final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
             wordReference.lookup("iten", "drago");
-        } catch (IllegalStateException ise) {
-            Assert.assertTrue(reader.isClosed());
+        } catch (RuntimeException ex) {
         }
+        
+        Assert.assertTrue(reader.isClosed());
     }
 
     public static class FailingParser implements Parser {
@@ -105,7 +106,6 @@ public class DefaultWordReferenceTest {
         final Repository repository = new RedirectOnceRepository();
         final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
         final Result result = wordReference.lookup("iten", "drago");
-        
         Assert.assertSame(expectedResult, result); // TODO: weak test
     }
 

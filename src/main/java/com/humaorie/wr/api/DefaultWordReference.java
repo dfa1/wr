@@ -33,7 +33,7 @@ public class DefaultWordReference implements WordReference {
             try {
                 reader.close();
             } catch (IOException ex) {
-                throw new IllegalStateException("IO error", ex);
+                throw new RuntimeException("IO error", ex);
             }
         }
     }
