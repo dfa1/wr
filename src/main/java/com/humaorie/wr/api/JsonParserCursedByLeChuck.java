@@ -48,7 +48,7 @@ public class JsonParserCursedByLeChuck implements Parser {
         }
     }
 
-    private String parseNote(final JSONObject rootJson) {
+    private String parseNote(JSONObject rootJson) {
         final String note = rootJson.optString("Note");
         rootJson.remove("Note");
         return note;
