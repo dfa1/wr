@@ -1,10 +1,10 @@
 Java Library for WordReference.com
 ==================================
 
-Java6 library and command line client for WordReference web API:
+Java6 library and command line client for WordReference API:
  - supports API version 0.8
- - supports JSON (avoid the parse HTML hell) 
- - supports GZIP compression of JSON (2x faster than plain text) 
+ - supports JSON  
+ - supports GZIP compression of JSON 
 
 
 Prerequisites 
@@ -37,12 +37,6 @@ Manual installation
 
 $ sudo install -D -m755 target/wr.jar /opt/wr/wr.jar
 $ sudo cp bin/wr /usr/local/bin 
-$ wrcli enit dog
-category 'original':
- nebbia marina, foschia marina   
-   sea mist   
- camera a nebbia   
-...
 
 
 RPM
@@ -50,11 +44,11 @@ RPM
 
 $ mvn package assembly:single rpm:rpm
 
-an RPM will be built into the directory target/rpm/wr/RPMS/noarch
+an RPM will be built into the directory 'target/rpm/wr/RPMS/noarch'.
 
 
 TODO
 ----
 
-- enh: filtering translations by category 
-- enh: support for thesaurus (hard)
+- filtering translations by category 
+- support for thesaurus 
