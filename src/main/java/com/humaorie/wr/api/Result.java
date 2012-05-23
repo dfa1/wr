@@ -9,8 +9,8 @@ public class Result {
 
     public static Result create(List<Category> categories, String note) {
         final Result newResult = new Result();
-        newResult.setNote(note);
         newResult.setCategories(categories);
+        newResult.setNote(note);
         return newResult;
     }
 
