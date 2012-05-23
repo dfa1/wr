@@ -11,7 +11,7 @@ public class JsonOverHttpRepositoryTest {
 
     @Test
     public void canCreateWithUrlFactory() {
-        final UrlFactory urlFactory = new UrlFactory(new ConstantApiKeyProvider(null));
+        final DefaultUrlFactory urlFactory = new DefaultUrlFactory(new ConstantApiKeyProvider(null));
         new JsonOverHttpRepository(urlFactory);
     }
 }

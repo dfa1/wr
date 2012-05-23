@@ -11,7 +11,7 @@ public class GzippedJsonOverHttpRepositoryTest {
 
     @Test
     public void canCreateWithUrlFactory() {
-        final UrlFactory urlFactory = new UrlFactory(new ConstantApiKeyProvider(null));
+        final DefaultUrlFactory urlFactory = new DefaultUrlFactory(new ConstantApiKeyProvider(null));
         new GzippedJsonOverHttpRepository(urlFactory);
     }
 }

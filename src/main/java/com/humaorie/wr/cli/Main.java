@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         final File apiKeyFile = new File(System.getProperty("user.home"), ".wrcli");
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
-        final UrlFactory urlFactory = new UrlFactory(apiKeyProvider);
+        final UrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
         final Repository repository = new ErrorAwareHttpRepository(new GzippedJsonOverHttpRepository(urlFactory));
         final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
