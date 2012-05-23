@@ -69,7 +69,7 @@
                 <version>2.1-alpha-1</version>
                 <configuration>
                     <name>wrcli</name>
-                    <copyright>2011, Davide Angelocola</copyright>
+                    <copyright>2011,2012, Davide Angelocola</copyright>
                     <packager>davide.angelocola@gmail.com</packager>
                     <group>Applications/Text</group>
                     <mappings>
@@ -84,6 +84,7 @@
                         <mapping>
                             <directory>/usr/bin</directory>
                             <filemode>755</filemode>
+                            <directoryIncluded>false</directoryIncluded>
                             <sources>
                                 <source>
                                     <location>bin/wrcli</location>
