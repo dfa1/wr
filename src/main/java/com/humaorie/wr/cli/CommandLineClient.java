@@ -12,7 +12,7 @@ import java.util.List;
 
 public class CommandLineClient {
 
-    private final String WR = "http://www.wordreference.com";
+    private static final String WR = "http://www.wordreference.com";
     private final WordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
