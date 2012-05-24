@@ -1,5 +1,9 @@
 package com.humaorie.wr.api;
 
+import java.io.IOException;
+import java.io.Reader;
+import java.net.URL;
+import org.junit.Assert;
 import org.junit.Test;
 
 public class JsonOverHttpRepositoryTest {
@@ -10,8 +14,16 @@ public class JsonOverHttpRepositoryTest {
     }
 
     @Test
-    public void canCreateWithUrlFactory() {
-        final DefaultUrlFactory urlFactory = new DefaultUrlFactory(new ConstantApiKeyProvider(null));
-        new JsonOverHttpRepository(urlFactory);
+    public void canOpenReaders() throws IOException {
+        final UrlFactory urlFactory = new UrlFactory() {
+
+            @Override
+            public URL createUrl(String dict, String word) throws IOException {
+                return this.getClass().getResource("iten-drago.json");
+            }
+        };
+        final JsonOverHttpRepository repository = new JsonOverHttpRepository(urlFactory);
+        final Reader reader = repository.lookup("dict", "word");
+        Assert.assertNotNull(reader);
     }
 }

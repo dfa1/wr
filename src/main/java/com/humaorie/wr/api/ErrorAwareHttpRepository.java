@@ -23,7 +23,7 @@ public class ErrorAwareHttpRepository implements Repository {
         } catch (UnknownHostException ex) {
             throw new WordReferenceException("cannot open connection", ex);
         } catch (IOException ex) {
-            throw new WordReferenceException("caught exception during http connection" ,ex);
+            throw new WordReferenceException("I/O error" ,ex);
         }
     }
 }
