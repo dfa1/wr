@@ -10,9 +10,15 @@ Java6 library and command line client for WordReference API:
 Prerequisites 
 -------------
 
-- JDK6 and Apache Maven to compile from sources
+Build:
+- JDK 1.6 
+- Apache Maven 2.2 or 3 
+
+Run:
+- JRE 1.6+
 - wordreference API key 
     http://www.wordreference.com/docs/APIregistration.aspx
+
 
 
 Howto for the command line client
@@ -25,9 +31,9 @@ category 'original':
  nebbia marina, foschia marina   
    sea mist   
  camera a nebbia   
-...
+$
 
-"iten" is the Italian->English dictionary. See 
+Please note that "iten" is the Italian->English dictionary. See 
 http://www.wordreference.com/docs/api.aspx for the complete list of
 supported dictionaries.
 
