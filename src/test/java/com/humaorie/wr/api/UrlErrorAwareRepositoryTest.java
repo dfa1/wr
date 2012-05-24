@@ -3,6 +3,7 @@ package com.humaorie.wr.api;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
+import java.net.UnknownHostException;
 import org.junit.Test;
 
 public class UrlErrorAwareRepositoryTest {
@@ -44,7 +45,7 @@ public class UrlErrorAwareRepositoryTest {
 
             @Override
             public Reader lookup(String dict, String word) throws IOException {
-                throw new FileNotFoundException("shit happenz");
+                throw new FileNotFoundException("dict not found");
             }
         };
         final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
@@ -57,7 +58,7 @@ public class UrlErrorAwareRepositoryTest {
 
             @Override
             public Reader lookup(String dict, String word) throws IOException {
-                throw new FileNotFoundException("shit happenz");
+                throw new UnknownHostException("dns down?");
             }
         };
         final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
