@@ -10,7 +10,7 @@ public class Benchmarks {
     public void lookupRepeatedlyWithoutGzip() {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider(TESTING_API_KEY);
         final DefaultUrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
-        final Repository repository = new JsonOverHttpRepository(urlFactory);
+        final Repository repository = new UrlRepository(urlFactory);
         final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
         final long elapsed = benchmarkRepeatedLookup(wordReference);
@@ -21,7 +21,7 @@ public class Benchmarks {
     public void lookupRepeatedlyWithGzip() {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider(TESTING_API_KEY);
         final DefaultUrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
-        final Repository repository = new GzippedJsonOverHttpRepository(urlFactory);
+        final Repository repository = new UrlGzippedRepository(urlFactory);
         final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
         final long elapsed = benchmarkRepeatedLookup(wordReference);

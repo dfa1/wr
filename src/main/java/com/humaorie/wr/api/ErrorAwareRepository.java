@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.UnknownHostException;
 
-public class ErrorAwareHttpRepository implements Repository {
+public class ErrorAwareRepository implements Repository {
 
     private final Repository repository;
 
-    public ErrorAwareHttpRepository(Repository repository) {
+    public ErrorAwareRepository(Repository repository) {
         Preconditions.require(repository != null, "repository cannot be null");
         this.repository = repository;
     }

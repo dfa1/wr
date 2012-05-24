@@ -5,11 +5,11 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 
-public class JsonOverHttpRepository implements Repository {
+public class UrlRepository implements Repository {
 
     private final UrlFactory urlFactory;
 
-    public JsonOverHttpRepository(UrlFactory urlFactory) {
+    public UrlRepository(UrlFactory urlFactory) {
         Preconditions.require(urlFactory != null, "urlFactory cannot be null");
         this.urlFactory = urlFactory;
     }

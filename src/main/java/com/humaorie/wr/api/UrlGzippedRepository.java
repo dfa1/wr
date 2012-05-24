@@ -8,11 +8,11 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.GZIPInputStream;
 
-public class GzippedJsonOverHttpRepository implements Repository {
+public class UrlGzippedRepository implements Repository {
 
     private final UrlFactory urlFactory;
 
-    public GzippedJsonOverHttpRepository(UrlFactory urlFactory) {
+    public UrlGzippedRepository(UrlFactory urlFactory) {
         Preconditions.require(urlFactory != null, "urlFactory cannot be null");
         this.urlFactory = urlFactory;
     }

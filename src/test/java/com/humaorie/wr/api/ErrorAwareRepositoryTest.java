@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.io.Reader;
 import org.junit.Test;
 
-public class ErrorAwareHttpRepositoryTest {
+public class ErrorAwareRepositoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void innerRepositoryCannotBeNull() {
-        new ErrorAwareHttpRepository(null);
+        new ErrorAwareRepository(null);
     }
 
     @Test(expected = RuntimeException.class)
@@ -20,7 +20,7 @@ public class ErrorAwareHttpRepositoryTest {
                 throw new NullPointerException("I'm a bad repository");
             }
         };
-        final ErrorAwareHttpRepository repository = new ErrorAwareHttpRepository(failingRepository);
+        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
 
@@ -33,7 +33,7 @@ public class ErrorAwareHttpRepositoryTest {
                 throw new IOException("shit happenz");
             }
         };
-        final ErrorAwareHttpRepository repository = new ErrorAwareHttpRepository(failingRepository);
+        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
 }

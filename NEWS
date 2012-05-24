@@ -1,3 +1,7 @@
+24 May 2012
+  - JsonOverHttpRepository was renamed to UrlRepository since it can load documents from any URL, even local
+  - ditto for GzippedJsonOverHttpRepository 
+
 23 May 2012
   - starting version 2.0
   - UrlFactory now is an interface (enabling override of API version)

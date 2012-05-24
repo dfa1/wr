@@ -6,11 +6,11 @@ import java.net.URL;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class GzippedJsonOverHttpRepositoryTest {
+public class UrlGzippedRepositoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWithNullUrlFactory() {
-        new GzippedJsonOverHttpRepository(null);
+        new UrlGzippedRepository(null);
     }
 
     @Test
@@ -22,7 +22,7 @@ public class GzippedJsonOverHttpRepositoryTest {
                 return this.getClass().getResource("iten-drago.json.gz");
             }
         };
-        final GzippedJsonOverHttpRepository repository = new GzippedJsonOverHttpRepository(urlFactory);
+        final UrlGzippedRepository repository = new UrlGzippedRepository(urlFactory);
         final Reader reader = repository.lookup("dict", "word");
         Assert.assertNotNull(reader);
     }}
