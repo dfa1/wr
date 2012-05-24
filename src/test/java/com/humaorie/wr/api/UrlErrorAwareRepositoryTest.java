@@ -5,11 +5,11 @@ import java.io.IOException;
 import java.io.Reader;
 import org.junit.Test;
 
-public class ErrorAwareRepositoryTest {
+public class UrlErrorAwareRepositoryTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void innerRepositoryCannotBeNull() {
-        new ErrorAwareRepository(null);
+        new UrlErrorAwareRepository(null);
     }
 
     @Test(expected = RuntimeException.class)
@@ -21,7 +21,7 @@ public class ErrorAwareRepositoryTest {
                 throw new NullPointerException("I'm a bad repository");
             }
         };
-        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
 
@@ -34,7 +34,7 @@ public class ErrorAwareRepositoryTest {
                 throw new IOException("shit happenz");
             }
         };
-        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
     
@@ -47,7 +47,7 @@ public class ErrorAwareRepositoryTest {
                 throw new FileNotFoundException("shit happenz");
             }
         };
-        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
     
@@ -60,7 +60,7 @@ public class ErrorAwareRepositoryTest {
                 throw new FileNotFoundException("shit happenz");
             }
         };
-        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        final UrlErrorAwareRepository repository = new UrlErrorAwareRepository(failingRepository);
         repository.lookup("dict", "word");
     }
 }

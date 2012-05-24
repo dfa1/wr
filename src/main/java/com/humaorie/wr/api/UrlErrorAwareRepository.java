@@ -5,11 +5,17 @@ import java.io.IOException;
 import java.io.Reader;
 import java.net.UnknownHostException;
 
-public class ErrorAwareRepository implements Repository {
+/**
+ * Common exception wrapping logic for url-based repositories.
+ * 
+ * @see UrlGzippedRepository
+ * @see UrlRepository
+*/
+public class UrlErrorAwareRepository implements Repository {
 
     private final Repository repository;
 
-    public ErrorAwareRepository(Repository repository) {
+    public UrlErrorAwareRepository(Repository repository) {
         Preconditions.require(repository != null, "repository cannot be null");
         this.repository = repository;
     }

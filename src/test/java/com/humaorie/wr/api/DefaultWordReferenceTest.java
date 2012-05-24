@@ -15,10 +15,10 @@ public class DefaultWordReferenceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullParser() {
-        new DefaultWordReference(new FailiingRepository(), null);
+        new DefaultWordReference(new FailingRepository(), null);
     }
 
-    public static class FailiingRepository implements Repository {
+    public static class FailingRepository implements Repository {
 
         @Override
         public Reader lookup(String dict, String word) {
