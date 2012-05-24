@@ -87,7 +87,7 @@ public class DefaultWordReferenceTest {
             wordReference.lookup("iten", "drago");
         } catch (RuntimeException ex) {
         }
-        
+
         Assert.assertTrue(reader.isClosed());
     }
 
@@ -136,5 +136,24 @@ public class DefaultWordReferenceTest {
         public Result parse(Reader reader) {
             return result;
         }
+    }
+
+    @Test(expected = WordReferenceException.class)
+    public void wrapIOExceptions() {
+        final Reader failOnCloseReader = new Reader() {
+
+            @Override
+            public int read(char[] cbuf, int off, int len) throws IOException {
+                return 0;
+            }
+
+            @Override
+            public void close() throws IOException {
+                throw new IOException("baaaaaad close!");
+            }
+        };
+        final Repository repository = new ConstantRepository(failOnCloseReader);
+        final DefaultWordReference wr = new DefaultWordReference(repository, new ConstantParser(new Result()));
+        wr.lookup("dict", "word");
     }
 }
