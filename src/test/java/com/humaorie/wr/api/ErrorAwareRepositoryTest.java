@@ -1,5 +1,6 @@
 package com.humaorie.wr.api;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Reader;
 import org.junit.Test;
@@ -31,6 +32,32 @@ public class ErrorAwareRepositoryTest {
             @Override
             public Reader lookup(String dict, String word) throws IOException {
                 throw new IOException("shit happenz");
+            }
+        };
+        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        repository.lookup("dict", "word");
+    }
+    
+    @Test(expected = WordReferenceException.class)
+    public void wrapFileNotExceptions() {
+        final Repository failingRepository = new Repository() {
+
+            @Override
+            public Reader lookup(String dict, String word) throws IOException {
+                throw new FileNotFoundException("shit happenz");
+            }
+        };
+        final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
+        repository.lookup("dict", "word");
+    }
+    
+    @Test(expected = WordReferenceException.class)
+    public void wrapUnknownHostExceptions() {
+        final Repository failingRepository = new Repository() {
+
+            @Override
+            public Reader lookup(String dict, String word) throws IOException {
+                throw new FileNotFoundException("shit happenz");
             }
         };
         final ErrorAwareRepository repository = new ErrorAwareRepository(failingRepository);
