@@ -10,14 +10,14 @@ import com.humaorie.wr.api.WordReference;
 import java.io.PrintStream;
 import java.util.List;
 
-public class CommandLineClient {
+public class Cli {
 
     private static final String WR = "http://www.wordreference.com";
     private final WordReference wordReference;
     private PrintStream out = System.out;
     private PrintStream err = System.err;
 
-    public CommandLineClient(WordReference wordReference) {
+    public Cli(WordReference wordReference) {
         Preconditions.require(wordReference != null, "word reference cannot be null");
         this.wordReference = wordReference;
     }

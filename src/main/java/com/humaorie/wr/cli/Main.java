@@ -12,7 +12,7 @@ public class Main {
         final Repository repository = new UrlErrorAwareRepository(new UrlGzippedRepository(urlFactory));
         final Parser parser = new JsonParserCursedByLeChuck();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
-        final CommandLineClient cli = new CommandLineClient(wordReference);
+        final Cli cli = new Cli(wordReference);
         final int status = cli.run(args);
         System.exit(status);
     }
