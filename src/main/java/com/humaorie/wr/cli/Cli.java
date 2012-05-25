@@ -23,6 +23,11 @@ public class Cli {
     }
 
     public int run(String... args) {
+        if (args.length == 1 && args[0].equals("--version")) {
+            out.println("wrcli version " + new VersionLoader().loadVersion());
+            return 0;
+        }
+        
         if (args.length != 2) {
             err.println("error: you must provide dict and word (e.g. 'enit run')");
             return 1;

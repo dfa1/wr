@@ -50,7 +50,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnZeroOnValidQueries() {
+    public void returnSuccessOnValidQueries() {
         final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli(new ConstantWordReference(result));
         final int status = cli.run("enfr", "mist");
@@ -117,5 +117,23 @@ public class CliTest {
         cli.setErr(new PrintStream(errContent));
         cli.run("enit", "dog");
         Assert.assertTrue(errContent.toString().contains(exception.getMessage()));
+    }
+
+    @Test
+    public void showVersion() {
+        final WordReference wordReference = new ConstantWordReference(null);
+        final Cli cli = new Cli(wordReference);
+        final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        cli.setOut(new PrintStream(outContent));
+        cli.run("--version");
+        Assert.assertTrue(outContent.toString().startsWith("wrcli version"));
+    }
+
+    @Test
+    public void returnSuccessOnVersion() {
+        final WordReference wordReference = new ConstantWordReference(null);
+        final Cli cli = new Cli(wordReference);
+        final int status = cli.run("--version");
+        Assert.assertEquals(0, status);
     }
 }
