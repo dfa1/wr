@@ -2,10 +2,11 @@ package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         final File apiKeyFile = new File(System.getProperty("user.home"), ".wrcli");
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
         final UrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
