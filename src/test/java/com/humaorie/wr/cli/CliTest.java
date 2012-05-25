@@ -45,7 +45,7 @@ public class CliTest {
         final Cli cli = new Cli(new ConstantWordReference(null));
         final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
         cli.setErr(new PrintStream(errContent));
-        cli.run();
+        cli.run("enit");
         Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", errContent.toString());
     }
 
