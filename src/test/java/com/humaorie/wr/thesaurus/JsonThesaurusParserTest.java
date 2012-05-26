@@ -10,7 +10,7 @@ public class JsonThesaurusParserTest {
 
     @Test
     public void canParseSampleFile() {
-        List<Sense> senses = new JsonThesaurusParser().parse(loadFile("dog.json"));
+        final List<Sense> senses = new JsonThesaurusParser().parse(loadFile("dog.json"));
         for (Sense sense : senses) {
             String text = sense.getText();
             System.out.println("sense " + text);

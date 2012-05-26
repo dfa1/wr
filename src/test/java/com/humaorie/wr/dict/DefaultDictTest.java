@@ -2,16 +2,13 @@ package com.humaorie.wr.dict;
 
 import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.dict.DefaultDict;
-import com.humaorie.wr.dict.DictParser;
-import com.humaorie.wr.dict.Result;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DefaultWordReferenceTest {
+public class DefaultDictTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullRepository() {
@@ -21,6 +18,12 @@ public class DefaultWordReferenceTest {
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullParser() {
         new DefaultDict(new FailingRepository(), null);
+    }
+
+    @Test(expected = WordReferenceException.class)
+    public void refuseDictNotOfLengthFour() throws IOException {
+        final Dict dict = new DefaultDict(new ConstantRepository(null), new ConstantParser(null));
+        dict.lookup("en", "word");
     }
 
     public static class FailingRepository implements Repository {
@@ -146,7 +149,6 @@ public class DefaultWordReferenceTest {
     @Test(expected = WordReferenceException.class)
     public void wrapIOExceptions() {
         final Reader failOnCloseReader = new Reader() {
-
             @Override
             public int read(char[] cbuf, int off, int len) throws IOException {
                 return 0;

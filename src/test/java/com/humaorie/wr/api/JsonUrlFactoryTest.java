@@ -26,13 +26,6 @@ public class JsonUrlFactoryTest {
         urlFactory.createUrl("enit", null);
     }
 
-    @Test(expected = WordReferenceException.class)
-    public void refuseDictNotOfLengthFour() throws IOException {
-        final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");
-        final JsonUrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
-        urlFactory.createUrl("12345", "dog");
-    }
-
     @Test
     public void acceptNonNullDictAndWord() throws IOException {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider("key");

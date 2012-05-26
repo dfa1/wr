@@ -21,8 +21,8 @@ public class Main {
         final UrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
         final Repository repository = new HttpRepository(urlFactory);
         final DictParser parser = new JsonDictParser();
-        final Dict wordReference = new DefaultDict(repository, parser);
-        final Cli cli = new Cli(wordReference);
+        final Dict dict = new DefaultDict(repository, parser);
+        final Cli cli = new Cli(dict);
         final int status = cli.run(args);
         System.exit(status);
     }

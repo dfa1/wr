@@ -5,6 +5,13 @@ public class Synonym {
     private String name;
     private String context;
 
+    public static Synonym create(String name, String context) {
+        final Synonym newSynonym = new Synonym();
+        newSynonym.setName(name);
+        newSynonym.setContext(context);
+        return newSynonym;
+    }
+
     public String getName() {
         return name;
     }

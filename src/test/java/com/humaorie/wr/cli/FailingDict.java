@@ -3,11 +3,11 @@ package com.humaorie.wr.cli;
 import com.humaorie.wr.dict.Result;
 import com.humaorie.wr.dict.Dict;
 
-public class FailingWordReference implements Dict {
+public class FailingDict implements Dict {
 
     private final RuntimeException exception;
 
-    public FailingWordReference(RuntimeException exception) {
+    public FailingDict(RuntimeException exception) {
         this.exception = exception;
     }
 

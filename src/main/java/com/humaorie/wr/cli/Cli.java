@@ -13,13 +13,13 @@ import java.util.List;
 public class Cli {
 
     private static final String WR = "http://www.wordreference.com";
-    private final Dict wordReference;
+    private final Dict dict;
     private Appendable out = System.out;
     private Appendable err = System.err;
 
-    public Cli(Dict wordReference) {
-        Preconditions.require(wordReference != null, "word reference cannot be null");
-        this.wordReference = wordReference;
+    public Cli(Dict dict) {
+        Preconditions.require(dict != null, "word reference cannot be null");
+        this.dict = dict;
     }
 
     public int run(String... args) {
@@ -49,7 +49,7 @@ public class Cli {
     private void doLookup(String... args) {
         final String dict = args[0];
         final String word = args[1];
-        final Result result = wordReference.lookup(dict, word);
+        final Result result = this.dict.lookup(dict, word);
         printResult(result);
         printCopyright(dict, word);
     }

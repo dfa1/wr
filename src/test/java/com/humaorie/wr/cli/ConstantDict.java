@@ -3,11 +3,11 @@ package com.humaorie.wr.cli;
 import com.humaorie.wr.dict.Result;
 import com.humaorie.wr.dict.Dict;
 
-public class ConstantWordReference implements Dict {
+public class ConstantDict implements Dict {
 
     private final Result result;
 
-    public ConstantWordReference(Result result) {
+    public ConstantDict(Result result) {
         this.result = result;
     }
 

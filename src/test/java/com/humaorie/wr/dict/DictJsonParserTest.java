@@ -1,8 +1,6 @@
 package com.humaorie.wr.dict;
 
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.dict.JsonDictParser;
-import com.humaorie.wr.dict.Result;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
