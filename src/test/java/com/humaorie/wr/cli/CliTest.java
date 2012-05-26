@@ -56,7 +56,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnSuccessOnValidQueries() {
+    public void returnSuccessWhenShowDefinitionOfAWord() {
         final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli(new ConstantWordReference(result));
         cli.setErr(new CapturingAppendable());
@@ -88,9 +88,8 @@ public class CliTest {
     }
 
     @Test
-    public void returnErrorOnDictionaryNotFound() {
-        final WordReferenceException exception = new WordReferenceException("invalid dictonary");
-        final WordReference wordReference = new FailingWordReference(exception);
+    public void returnErrorOnWordReferenceException() {
+        final WordReference wordReference = new FailingWordReference(new WordReferenceException("a message"));
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -99,38 +98,16 @@ public class CliTest {
     }
 
     @Test
-    public void showErrorOnDictionaryNotFound() {
+    public void showErrorOnWordReferenceException() {
         final CapturingAppendable err = new CapturingAppendable();
-        final WordReferenceException exception = new WordReferenceException("invalid dictonary");
+        final WordReferenceException exception = new WordReferenceException("a message");
         final WordReference wordReference = new FailingWordReference(exception);
         final Cli cli = new Cli(wordReference);
         cli.setErr(err);
         cli.setOut(new CapturingAppendable());
         cli.run("enen", "grin");
-        Assert.assertEquals(exception.getMessage() + "\n", err.getCapture());
-    }
-
-    @Test
-    public void returnErrorWhenApiKeyIsNotFound() {
-        final WordReferenceException exception = new WordReferenceException("invalid api key");
-        final WordReference wordReference = new FailingWordReference(exception);
-        final Cli cli = new Cli(wordReference);
-        cli.setErr(new CapturingAppendable());
-        cli.setOut(new CapturingAppendable());
-        final int status = cli.run("enit", "foo");
-        Assert.assertEquals(1, status);
-    }
-
-    @Test
-    public void showErrorOnInvalidApiKey() {
-        final CapturingAppendable err = new CapturingAppendable();
-        final WordReferenceException exception = new WordReferenceException("invalid api key");
-        final WordReference wordReference = new FailingWordReference(exception);
-        final Cli cli = new Cli(wordReference);
-        cli.setErr(err);
-        cli.setOut(new CapturingAppendable());
-        cli.run("enit", "dog");
-        Assert.assertTrue(err.getCapture().contains(exception.getMessage()));
+        final String expected = String.format("error: %s%n", exception.getMessage());
+        Assert.assertEquals(expected, err.getCapture());
     }
 
     @Test
