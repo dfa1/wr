@@ -57,7 +57,10 @@ public class Cli {
         for (Category category : result.getCategories()) {
             printCategory(category);
         }
-        print(out, "Note: %s%n", result.getNote());
+        final String note = result.getNote();
+        if (!note.isEmpty()) {
+            print(out, "note: %s%n", note);
+        }
     }
 
     private void printCategory(Category category) {
@@ -82,7 +85,10 @@ public class Cli {
                     term.getSense(),
                     term.getUsage());
         }
-        print(out, " note: %s%n", translation.getNote());
+        final String note = translation.getNote();
+        if (!note.isEmpty()) {
+            print(out, " note: %s%n", note);
+        }
     }
 
     private static void print(Appendable app, String fmt, Object... args) {
