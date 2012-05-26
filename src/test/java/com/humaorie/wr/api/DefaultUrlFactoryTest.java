@@ -2,8 +2,8 @@ package com.humaorie.wr.api;
 
 import java.io.IOException;
 import java.net.URL;
-import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Test;
 
 public class DefaultUrlFactoryTest {
 

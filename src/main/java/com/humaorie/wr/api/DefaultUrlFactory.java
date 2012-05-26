@@ -20,20 +20,14 @@ public class DefaultUrlFactory implements UrlFactory {
     public URL createUrl(String dict, String word) throws IOException {
         Preconditions.require(dict != null, "dict cannot be null");
         Preconditions.require(word != null, "word cannot be null");
-        
         if (dict.length() != 4) {
             throw new WordReferenceException("dict must be of length 4");
         }
-        
-        final String url = String.format("%s/%s/%s/json/%s/%s", 
-					  DEFAULT_API_URL, 
-					  apiVersion, 
-					  encode(apiKeyProvider.provideKey()), 
-					  encode(dict), 
-					  encode(word));
+        final String apiKey = apiKeyProvider.provideKey();
+        final String url = String.format("%s/%s/%s/json/%s/%s", DEFAULT_API_URL, apiVersion, encode(apiKey), encode(dict), encode(word));
         return new URL(url);
     }
-    
+
     private String encode(String plain) throws IOException {
         return URLEncoder.encode(plain, "utf8");
     }
