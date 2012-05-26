@@ -24,24 +24,24 @@ public class Cli {
 
     public int run(String... args) {
         if (args.length == 1 && args[0].equals("--version")) {
-            print(out, "wrcli version %s%n", new VersionLoader().loadVersion());
+            println(out, "wrcli version %s", new VersionLoader().loadVersion());
             return 0;
         }
         if (args.length == 1 && args[0].equals("--help")) {
-            print(out, "wrcli - word reference command line interface%n");
-            print(out, "by Davide Angelocola <davide.angelocola@gmail.com>%n");
-            print(out, "usage: wrcli dict word%n");
+            println(out, "wrcli - word reference command line interface");
+            println(out, "by Davide Angelocola <davide.angelocola@gmail.com>");
+            println(out, "usage: wrcli dict word");
             return 0;
         }
         if (args.length != 2) {
-            print(err, "error: you must provide dict and word (e.g. 'enit run')%n");
+            println(err, "error: you must provide dict and word (e.g. 'enit run')");
             return 1;
         }
         try {
             doLookup(args);
             return 0;
         } catch (WordReferenceException ex) {
-            print(err, "error: %s%n", ex.getMessage());
+            println(err, "error: %s", ex.getMessage());
             return 1;
         }
     }
@@ -55,8 +55,8 @@ public class Cli {
     }
 
     private void printCopyright(String dict, String word) {
-        print(out, "(C) WordReference.com%n");
-        print(out, "Original link: %s/%s/%s%n", WR, dict, word);
+        println(out, "(C) WordReference.com");
+        println(out, "Original link: %s/%s/%s", WR, dict, word);
     }
 
     private void printResult(Result result) {
@@ -65,12 +65,12 @@ public class Cli {
         }
         final String note = result.getNote();
         if (!note.isEmpty()) {
-            print(out, "note: %s%n", note);
+            println(out, "note: %s", note);
         }
     }
 
     private void printCategory(Category category) {
-        print(out, "category '%s':%n", category.getName());
+        println(out, "category '%s':", category.getName());
         final List<Translation> translations = category.getTranslations();
         for (Translation translation : translations) {
             printTranslation(translation);
@@ -79,13 +79,13 @@ public class Cli {
 
     private void printTranslation(Translation translation) {
         final Term originalTerm = translation.getOriginalTerm();
-        print(out, " %s %s %s %s%n",
+        println(out, " %s %s %s %s",
                 originalTerm.getTerm(),
                 originalTerm.getPos(),
                 originalTerm.getSense(),
                 originalTerm.getUsage());
         for (Term term : translation.getTranslations()) {
-            print(out, "   %s %s %s %s%n",
+            println(out, "   %s %s %s %s",
                     term.getTerm(),
                     term.getPos(),
                     term.getSense(),
@@ -93,13 +93,13 @@ public class Cli {
         }
         final String note = translation.getNote();
         if (!note.isEmpty()) {
-            print(out, " note: %s%n", note);
+            println(out, " note: %s", note);
         }
     }
 
-    private static void print(Appendable app, String fmt, Object... args) {
+    private static void println(Appendable app, String fmt, Object... args) {
         try {
-            app.append(String.format(fmt, args));
+            app.append(String.format(fmt + "%n", args));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
