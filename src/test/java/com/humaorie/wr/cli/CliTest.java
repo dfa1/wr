@@ -1,9 +1,9 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.api.Category;
+import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.api.Result;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.Dict;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -89,7 +89,7 @@ public class CliTest {
 
     @Test
     public void returnErrorOnWordReferenceException() {
-        final WordReference wordReference = new FailingWordReference(new WordReferenceException("a message"));
+        final Dict wordReference = new FailingWordReference(new WordReferenceException("a message"));
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -101,7 +101,7 @@ public class CliTest {
     public void showErrorOnWordReferenceException() {
         final CapturingAppendable err = new CapturingAppendable();
         final WordReferenceException exception = new WordReferenceException("a message");
-        final WordReference wordReference = new FailingWordReference(exception);
+        final Dict wordReference = new FailingWordReference(exception);
         final Cli cli = new Cli(wordReference);
         cli.setErr(err);
         cli.setOut(new CapturingAppendable());
@@ -113,7 +113,7 @@ public class CliTest {
     @Test
     public void showVersion() {
         final CapturingAppendable out = new CapturingAppendable();
-        final WordReference wordReference = new ConstantWordReference(null);
+        final Dict wordReference = new ConstantWordReference(null);
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);
@@ -123,7 +123,7 @@ public class CliTest {
 
     @Test
     public void returnSuccessOnVersion() {
-        final WordReference wordReference = new ConstantWordReference(null);
+        final Dict wordReference = new ConstantWordReference(null);
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -134,7 +134,7 @@ public class CliTest {
     @Test
     public void showHelp() {
         final CapturingAppendable out = new CapturingAppendable();
-        final WordReference wordReference = new ConstantWordReference(null);
+        final Dict wordReference = new ConstantWordReference(null);
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);
@@ -144,7 +144,7 @@ public class CliTest {
 
     @Test
     public void returnSuccessOnHelp() {
-        final WordReference wordReference = new ConstantWordReference(null);
+        final Dict wordReference = new ConstantWordReference(null);
         final Cli cli = new Cli(wordReference);
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());

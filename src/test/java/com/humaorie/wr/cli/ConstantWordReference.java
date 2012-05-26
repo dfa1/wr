@@ -1,9 +1,9 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.api.Result;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.Dict;
 
-public class ConstantWordReference implements WordReference {
+public class ConstantWordReference implements Dict {
 
     private final Result result;
 

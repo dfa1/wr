@@ -1,8 +1,8 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
 import java.io.Reader;
 
-public interface Parser {
+public interface DictParser {
 
     Result parse(Reader reader);
 }

@@ -1,7 +1,8 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
 import java.util.List;
 
+// FIXME: rename
 public class Result {
 
     private List<Category> categories;

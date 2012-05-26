@@ -1,0 +1,279 @@
+{
+    "term0" : {
+        "term" : "dog", 
+        "senses" : {
+            "0" : {
+                "sensetext" : "A domestic animal", 
+                "synonyms" : {
+                    "0" : {
+                        "synonym" : "hound", 
+                        "context" : ""
+                    }, 
+                    "1" : {
+                        "synonym" : "puppy", 
+                        "context" : ""
+                    }, 
+                    "2" : {
+                        "synonym" : "canine", 
+                        "context" : ""
+                    }, 
+                    "3" : {
+                        "synonym" : "mongrel", 
+                        "context" : ""
+                    }, 
+                    "4" : {
+                        "synonym" : "cur", 
+                        "context" : ""
+                    }, 
+                    "5" : {
+                        "synonym" : "canis familiaris", 
+                        "context" : "Latin"
+                    }, 
+                    "6" : {
+                        "synonym" : "bitch", 
+                        "context" : ""
+                    }, 
+                    "7" : {
+                        "synonym" : "pup", 
+                        "context" : ""
+                    }, 
+                    "8" : {
+                        "synonym" : "whelp", 
+                        "context" : ""
+                    }, 
+                    "9" : {
+                        "synonym" : "stray", 
+                        "context" : ""
+                    }, 
+                    "10" : {
+                        "synonym" : "watchdog", 
+                        "context" : ""
+                    }, 
+                    "11" : {
+                        "synonym" : "lap dog", 
+                        "context" : ""
+                    }, 
+                    "12" : {
+                        "synonym" : "guide dog", 
+                        "context" : ""
+                    }, 
+                    "13" : {
+                        "synonym" : "Seeing Eye dog", 
+                        "context" : ""
+                    }, 
+                    "14" : {
+                        "synonym" : "pye-dog", 
+                        "context" : ""
+                    }, 
+                    "15" : {
+                        "synonym" : "pooch", 
+                        "context" : ""
+                    }, 
+                    "16" : {
+                        "synonym" : "mutt", 
+                        "context" : ""
+                    }, 
+                    "17" : {
+                        "synonym" : "bowwow", 
+                        "context" : ""
+                    }, 
+                    "18" : {
+                        "synonym" : "Fido", 
+                        "context" : ""
+                    }, 
+                    "19" : {
+                        "synonym" : "fleabag", 
+                        "context" : ""
+                    }, 
+                    "20" : {
+                        "synonym" : "animal", 
+                        "context" : ""
+                    }, 
+                    "21" : {
+                        "synonym" : "man's best friend", 
+                        "context" : "slang"
+                    }, 
+                    "22" : {
+                        "synonym" : "doggy", 
+                        "context" : "slang"
+                    }, 
+                    "23" : {
+                        "synonym" : "guard dog", 
+                        "context" : ""
+                    }, 
+                    "24" : {
+                        "synonym" : "poodle", 
+                        "context" : ""
+                    }, 
+                    "25" : {
+                        "synonym" : "Setter", 
+                        "context" : ""
+                    }, 
+                    "26" : {
+                        "synonym" : "Red Setter", 
+                        "context" : ""
+                    }, 
+                    "27" : {
+                        "synonym" : "Irish Setter", 
+                        "context" : ""
+                    }, 
+                    "28" : {
+                        "synonym" : "Collie", 
+                        "context" : ""
+                    }, 
+                    "29" : {
+                        "synonym" : "Alsatian", 
+                        "context" : ""
+                    }, 
+                    "30" : {
+                        "synonym" : "German Shepherd", 
+                        "context" : ""
+                    }, 
+                    "31" : {
+                        "synonym" : "Rottweiler", 
+                        "context" : ""
+                    }, 
+                    "32" : {
+                        "synonym" : "Terrier", 
+                        "context" : ""
+                    }, 
+                    "33" : {
+                        "synonym" : "Yorkshire Terrier", 
+                        "context" : ""
+                    }, 
+                    "34" : {
+                        "synonym" : "Airedale Terrier", 
+                        "context" : ""
+                    }, 
+                    "35" : {
+                        "synonym" : "Border Terrier", 
+                        "context" : ""
+                    }, 
+                    "36" : {
+                        "synonym" : "Labrador", 
+                        "context" : ""
+                    }, 
+                    "37" : {
+                        "synonym" : "Retriever", 
+                        "context" : ""
+                    }, 
+                    "38" : {
+                        "synonym" : "Spaniel", 
+                        "context" : ""
+                    }, 
+                    "39" : {
+                        "synonym" : "Doberman Pinscher", 
+                        "context" : ""
+                    }, 
+                    "40" : {
+                        "synonym" : "Dachshund", 
+                        "context" : ""
+                    }, 
+                    "41" : {
+                        "synonym" : "sausage dog", 
+                        "context" : "slang"
+                    }, 
+                    "42" : {
+                        "synonym" : "Great Dane", 
+                        "context" : ""
+                    }, 
+                    "43" : {
+                        "synonym" : "Pekingese", 
+                        "context" : ""
+                    }, 
+                    "44" : {
+                        "synonym" : "bird dog", 
+                        "context" : ""
+                    }, 
+                    "45" : {
+                        "synonym" : "husky", 
+                        "context" : ""
+                    }, 
+                    "46" : {
+                        "synonym" : "Chihuahua", 
+                        "context" : ""
+                    }, 
+                    "47" : {
+                        "synonym" : "Dalmatian", 
+                        "context" : ""
+                    }, 
+                    "48" : {
+                        "synonym" : "Maltese", 
+                        "context" : ""
+                    }, 
+                    "49" : {
+                        "synonym" : "wiener dog", 
+                        "context" : "slang"
+                    }, 
+                    "50" : {
+                        "synonym" : "hound", 
+                        "context" : ""
+                    }, 
+                    "51" : {
+                        "synonym" : "xoloitzcuintle", 
+                        "context" : ""
+                    }
+                }
+            }, 
+            "1" : {
+                "sensetext" : "Insulting term", 
+                "synonyms" : {
+                    "0" : {
+                        "synonym" : "scamp", 
+                        "context" : ""
+                    }, 
+                    "1" : {
+                        "synonym" : "swine", 
+                        "context" : ""
+                    }, 
+                    "2" : {
+                        "synonym" : "blackguard", 
+                        "context" : ""
+                    }, 
+                    "3" : {
+                        "synonym" : "rascal", 
+                        "context" : ""
+                    }, 
+                    "4" : {
+                        "synonym" : "scoundrel", 
+                        "context" : ""
+                    }, 
+                    "5" : {
+                        "synonym" : "rake", 
+                        "context" : ""
+                    }, 
+                    "6" : {
+                        "synonym" : "cad", 
+                        "context" : "slang"
+                    }, 
+                    "7" : {
+                        "synonym" : "bounder", 
+                        "context" : "slang"
+                    }, 
+                    "8" : {
+                        "synonym" : "rotter", 
+                        "context" : "slang"
+                    }, 
+                    "9" : {
+                        "synonym" : "creep", 
+                        "context" : "slang"
+                    }, 
+                    "10" : {
+                        "synonym" : "louse", 
+                        "context" : "slang"
+                    }, 
+                    "11" : {
+                        "synonym" : "bitch", 
+                        "context" : "slang, vulgar"
+                    }, 
+                    "12" : {
+                        "synonym" : "cur", 
+                        "context" : ""
+                    }
+                }
+            }
+        }
+    }, 
+    "Lines" : "End Reached", 
+    "END" : true
+}

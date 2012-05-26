@@ -1,5 +1,7 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+import com.humaorie.wr.api.Preconditions;
+import com.humaorie.wr.api.WordReferenceException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,7 +10,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class DefaultJsonParser implements Parser {
+public class JsonDictParser implements DictParser {
 
     @Override
     public Result parse(Reader reader) {

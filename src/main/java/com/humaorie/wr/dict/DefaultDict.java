@@ -1,14 +1,17 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+import com.humaorie.wr.api.Preconditions;
+import com.humaorie.wr.api.Repository;
+import com.humaorie.wr.api.WordReferenceException;
 import java.io.IOException;
 import java.io.Reader;
 
-public class DefaultWordReference implements WordReference {
+public class DefaultDict implements Dict {
 
     private final Repository repository;
-    private final Parser parser;
+    private final DictParser parser;
 
-    public DefaultWordReference(Repository repository, Parser parser) {
+    public DefaultDict(Repository repository, DictParser parser) {
         Preconditions.require(repository != null, "repository cannot be null");
         Preconditions.require(parser != null, "parser cannot be null");
         this.repository = repository;

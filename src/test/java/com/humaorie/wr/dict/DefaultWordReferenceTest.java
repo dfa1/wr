@@ -1,5 +1,10 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+import com.humaorie.wr.api.Repository;
+import com.humaorie.wr.api.WordReferenceException;
+import com.humaorie.wr.dict.DefaultDict;
+import com.humaorie.wr.dict.DictParser;
+import com.humaorie.wr.dict.Result;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
@@ -10,12 +15,12 @@ public class DefaultWordReferenceTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullRepository() {
-        new DefaultWordReference(null, new FailingParser());
+        new DefaultDict(null, new FailingParser());
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void cannotCreateWordReferenceWithNullParser() {
-        new DefaultWordReference(new FailingRepository(), null);
+        new DefaultDict(new FailingRepository(), null);
     }
 
     public static class FailingRepository implements Repository {
@@ -31,7 +36,7 @@ public class DefaultWordReferenceTest {
         final SpyOnClosingReader reader = new SpyOnClosingReader();
         final ConstantRepository repository = new ConstantRepository(reader);
         final NoopParser parser = new NoopParser();
-        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
+        final DefaultDict wordReference = new DefaultDict(repository, parser);
         wordReference.lookup("iten", "drago");
         Assert.assertTrue(reader.isClosed());
     }
@@ -69,7 +74,7 @@ public class DefaultWordReferenceTest {
         }
     }
 
-    public static class NoopParser implements Parser {
+    public static class NoopParser implements DictParser {
 
         @Override
         public Result parse(Reader reader) {
@@ -83,7 +88,7 @@ public class DefaultWordReferenceTest {
         try {
             final ConstantRepository repository = new ConstantRepository(reader);
             final FailingParser parser = new FailingParser();
-            final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
+            final DefaultDict wordReference = new DefaultDict(repository, parser);
             wordReference.lookup("iten", "drago");
         } catch (RuntimeException ex) {
         }
@@ -91,7 +96,7 @@ public class DefaultWordReferenceTest {
         Assert.assertTrue(reader.isClosed());
     }
 
-    public static class FailingParser implements Parser {
+    public static class FailingParser implements DictParser {
 
         @Override
         public Result parse(Reader reader) {
@@ -102,9 +107,9 @@ public class DefaultWordReferenceTest {
     @Test
     public void canHandleRedirects() {
         final Result expectedResult = Result.create(null, "expected");
-        final Parser parser = new ConstantParser(expectedResult);
+        final DictParser parser = new ConstantParser(expectedResult);
         final Repository repository = new RedirectOnceRepository();
-        final DefaultWordReference wordReference = new DefaultWordReference(repository, parser);
+        final DefaultDict wordReference = new DefaultDict(repository, parser);
         final Result result = wordReference.lookup("iten", "drago");
         Assert.assertSame(expectedResult, result); // TODO: weak test
     }
@@ -124,7 +129,7 @@ public class DefaultWordReferenceTest {
         }
     }
 
-    public static class ConstantParser implements Parser {
+    public static class ConstantParser implements DictParser {
 
         private final Result result;
 
@@ -153,7 +158,7 @@ public class DefaultWordReferenceTest {
             }
         };
         final Repository repository = new ConstantRepository(failOnCloseReader);
-        final DefaultWordReference wr = new DefaultWordReference(repository, new ConstantParser(new Result()));
+        final DefaultDict wr = new DefaultDict(repository, new ConstantParser(new Result()));
         wr.lookup("dict", "word");
     }
 }

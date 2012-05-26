@@ -1,23 +1,23 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.api.Category;
+import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.api.Result;
-import com.humaorie.wr.api.Term;
-import com.humaorie.wr.api.Translation;
+import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.Term;
+import com.humaorie.wr.dict.Translation;
 import com.humaorie.wr.api.Preconditions;
-import com.humaorie.wr.api.WordReference;
+import com.humaorie.wr.dict.Dict;
 import java.io.IOException;
 import java.util.List;
 
 public class Cli {
 
     private static final String WR = "http://www.wordreference.com";
-    private final WordReference wordReference;
+    private final Dict wordReference;
     private Appendable out = System.out;
     private Appendable err = System.err;
 
-    public Cli(WordReference wordReference) {
+    public Cli(Dict wordReference) {
         Preconditions.require(wordReference != null, "word reference cannot be null");
         this.wordReference = wordReference;
     }

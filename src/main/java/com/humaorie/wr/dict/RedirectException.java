@@ -1,5 +1,7 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+// TODO: flow control exception
+@Deprecated
 public class RedirectException extends RuntimeException {
 
     private String newDict;
