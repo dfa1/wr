@@ -20,6 +20,7 @@ public class DefaultUrlFactory implements UrlFactory {
     public URL createUrl(String dict, String word) throws IOException {
         Preconditions.require(dict != null, "dict cannot be null");
         Preconditions.require(word != null, "word cannot be null");
+        // FIXME: when a dict is not of length 4 the response is an HTML with status 200
         if (dict.length() != 4) {
             throw new WordReferenceException("dict must be of length 4");
         }

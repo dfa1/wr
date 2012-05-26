@@ -35,7 +35,7 @@ public class Cli {
             doLookup(args);
             return 0;
         } catch (WordReferenceException ex) {
-            print(err, "%s%n", ex.getMessage());
+            print(err, "error: %s%n", ex.getMessage());
             return 1;
         }
     }

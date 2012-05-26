@@ -77,7 +77,7 @@ public class JsonParserCursedByLeChuckTest {
         Assert.assertTrue("categories must be empty", result.getCategories().isEmpty());
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = WordReferenceException.class)
     public void refuseIllegalJson() {
         final JsonParserCursedByLeChuck parser = new JsonParserCursedByLeChuck();
         parser.parse(new StringReader("<xml>I cannot be parsed as JSON</xml>"));

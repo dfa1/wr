@@ -13,7 +13,6 @@ public class JsonParserCursedByLeChuck implements Parser {
     @Override
     public Result parse(Reader reader) {
         Preconditions.require(reader != null, "cannot use null as Reader");
-
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertValidApiKey(rootJson);
@@ -23,7 +22,7 @@ public class JsonParserCursedByLeChuck implements Parser {
             final List<Category> categories = parseMeanings(rootJson);
             return Result.create(categories, note);
         } catch (JSONException ex) {
-            throw new IllegalStateException("cannot parse JSON", ex);
+            throw new WordReferenceException("cannot parse JSON", ex);
         }
     }
 
