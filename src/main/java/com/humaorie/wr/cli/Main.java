@@ -11,7 +11,7 @@ public class Main {
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
         final UrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
         final Repository repository = new HttpRepository(urlFactory);
-        final Parser parser = new JsonParserCursedByLeChuck();
+        final Parser parser = new DefaultJsonParser();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
         final Cli cli = new Cli(wordReference);
         final int status = cli.run(args);

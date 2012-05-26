@@ -11,7 +11,7 @@ public class Benchmarks {
         final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider(TESTING_API_KEY);
         final DefaultUrlFactory urlFactory = new DefaultUrlFactory(apiKeyProvider);
         final Repository repository = new HttpRepository(urlFactory);
-        final Parser parser = new JsonParserCursedByLeChuck();
+        final Parser parser = new DefaultJsonParser();
         final WordReference wordReference = new DefaultWordReference(repository, parser);
         final long elapsed = benchmarkRepeatedLookup(wordReference);
         System.out.printf("with HTTP/GZIP   : %sms%n", elapsed);

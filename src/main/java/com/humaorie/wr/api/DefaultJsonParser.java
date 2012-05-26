@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class JsonParserCursedByLeChuck implements Parser {
+public class DefaultJsonParser implements Parser {
 
     @Override
     public Result parse(Reader reader) {
