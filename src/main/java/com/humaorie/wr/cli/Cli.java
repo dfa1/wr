@@ -65,11 +65,12 @@ public class Cli {
         final String word = args[1];
         if ("thesaurus".startsWith(dict)) {
             printThesaurus(word);
+            printCopyright("thesaurus", word);
         } else {
             final Result result = this.dict.lookup(dict, word);
             printResult(result);
+            printCopyright(dict, word);
         }
-        printCopyright(dict, word);
     }
 
     private void printCopyright(String dict, String word) {
@@ -126,11 +127,13 @@ public class Cli {
     private void printThesaurus(final String word) {
         final List<Sense> senses = this.thesaurus.lookup(word);
         for (Sense sense : senses) {
-            println(out, "sense %s", sense.getText());
+            println(out, "as '%s'", sense.getText());
             final List<Synonym> synonyms = sense.getSynonyms();
             for (Synonym synonym : synonyms) {
-                println(out, "%s (%s)%n", synonym.getName(), synonym.getContext());
+                final String context = synonym.getContext();
+                println(out, "  %s %s", synonym.getName(), context.isEmpty() ? "" : "(" + context + ")");
             }
+            println(out, "");
         }
     }
 }
