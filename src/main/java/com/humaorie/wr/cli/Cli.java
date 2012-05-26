@@ -23,68 +23,74 @@ public class Cli {
     }
 
     public int run(String... args) {
+        if (args.length == 1 && args[0].equals("--version")) {
+            print(out, "wrcli version %s%n", new VersionLoader().loadVersion());
+            return 0;
+        }
+        if (args.length != 2) {
+            print(err, "error: you must provide dict and word (e.g. 'enit run')%n");
+            return 1;
+        }
         try {
-            return tryRun(args);
+            doLookup(args);
+            return 0;
+        } catch (WordReferenceException ex) {
+            print(err, "%s%n", ex.getMessage());
+            return 1;
+        }
+    }
+
+    private void doLookup(String... args) {
+        final String dict = args[0];
+        final String word = args[1];
+        final Result result = wordReference.lookup(dict, word);
+        printResult(result);
+        printCopyright(dict, word);
+    }
+
+    private void printCopyright(String dict, String word) {
+        print(out, "(C) WordReference.com%n");
+        print(out, "Original link: %s/%s/%s%n", WR, dict, word);
+    }
+
+    private void printResult(Result result) {
+        for (Category category : result.getCategories()) {
+            printCategory(category);
+        }
+        print(out, "Note: %s%n", result.getNote());
+    }
+
+    private void printCategory(Category category) {
+        print(out, "category '%s':%n", category.getName());
+        final List<Translation> translations = category.getTranslations();
+        for (Translation translation : translations) {
+            printTranslation(translation);
+        }
+    }
+
+    private void printTranslation(Translation translation) {
+        final Term originalTerm = translation.getOriginalTerm();
+        print(out, " %s %s %s %s%n",
+                originalTerm.getTerm(),
+                originalTerm.getPos(),
+                originalTerm.getSense(),
+                originalTerm.getUsage());
+        for (Term term : translation.getTranslations()) {
+            print(out, "   %s %s %s %s%n",
+                    term.getTerm(),
+                    term.getPos(),
+                    term.getSense(),
+                    term.getUsage());
+        }
+        print(out, " note: %s%n", translation.getNote());
+    }
+
+    private static void print(Appendable app, String fmt, Object... args) {
+        try {
+            app.append(String.format(fmt, args));
         } catch (IOException ex) {
             throw new RuntimeException(ex);
         }
-    }
-
-    public int tryRun(String... args) throws IOException {
-        if (args.length == 1 && args[0].equals("--version")) {
-            out.append(String.format("wrcli version %s%n", new VersionLoader().loadVersion()));
-            return 0;
-        }
-
-        if (args.length != 2) {
-            err.append(String.format("error: you must provide dict and word (e.g. 'enit run')%n"));
-            return 1;
-        }
-
-        final String dict = args[0];
-        final String word = args[1];
-
-        try {
-            final Result result = wordReference.lookup(dict, word);
-            printResult(result);
-            printCopyright(dict, word);
-            return 0;
-        } catch (WordReferenceException ex) {
-            err.append(String.format("%s%n", ex.getMessage()));
-            return 1;
-        }
-    }
-
-    private void printCopyright(String dict, String word) throws IOException {
-        out.append(String.format("(C) WordReference.com%n"));
-        out.append(String.format("Original link: %s/%s/%s%n", WR, dict, word));
-    }
-
-    private void printResult(Result result) throws IOException {
-        for (Category category : result.getCategories()) {
-            out.append(String.format("category '%s':%n", category.getName()));
-            final List<Translation> translations = category.getTranslations();
-            for (Translation translation : translations) {
-                final Term originalTerm = translation.getOriginalTerm();
-                out.append(String.format(" %s %s %s %s%n",
-                        originalTerm.getTerm(),
-                        originalTerm.getPos(),
-                        originalTerm.getSense(),
-                        originalTerm.getUsage()));
-                for (Term term : translation.getTranslations()) {
-                    out.append(String.format("   %s %s %s %s%n",
-                            term.getTerm(),
-                            term.getPos(),
-                            term.getSense(),
-                            term.getUsage()));
-                }
-                if (!translation.getNote().isEmpty()) {
-                    out.append(String.format(" note: %s%n", translation.getNote()));
-                }
-            }
-        }
-
-        out.append(String.format("Note: %s%n", result.getNote()));
     }
 
     public void setErr(Appendable err) {
