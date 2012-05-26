@@ -6,6 +6,7 @@ import com.humaorie.wr.api.UrlFactory;
 import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.HttpRepository;
 import com.humaorie.wr.api.ApiKeyProvider;
+import com.humaorie.wr.api.HttpErrorAwareRepository;
 import com.humaorie.wr.dict.DefaultDict;
 import com.humaorie.wr.dict.JsonDictParser;
 import com.humaorie.wr.dict.Dict;
@@ -21,7 +22,7 @@ public class Main {
         final File apiKeyFile = new File(System.getProperty("user.home"), ".wrcli");
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
         final UrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
-        final Repository repository = new HttpRepository(urlFactory);
+        final Repository repository = new HttpErrorAwareRepository(new HttpRepository(urlFactory));
         final Dict dict = new DefaultDict(repository, new JsonDictParser());
         final Thesaurus thesaurus = new DefaultThesaurus(repository, new JsonThesaurusParser());
         final Cli cli = new Cli(dict, thesaurus);
