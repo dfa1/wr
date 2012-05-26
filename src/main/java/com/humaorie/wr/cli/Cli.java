@@ -63,7 +63,7 @@ public class Cli {
     private void doLookup(String... args) {
         final String dict = args[0];
         final String word = args[1];
-        if ("thresaurus".startsWith(dict)) {
+        if ("thesaurus".startsWith(dict)) {
             printThesaurus(word);
         } else {
             final Result result = this.dict.lookup(dict, word);
