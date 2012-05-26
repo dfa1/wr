@@ -5,10 +5,6 @@ import com.humaorie.wr.api.ConstantApiKeyProvider;
 import com.humaorie.wr.api.HttpRepository;
 import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.Repository;
-import com.humaorie.wr.dict.JsonDictParser;
-import com.humaorie.wr.dict.Dict;
-import com.humaorie.wr.dict.DefaultDict;
-import com.humaorie.wr.dict.DictParser;
 import org.junit.Test;
 
 public class Benchmarks {

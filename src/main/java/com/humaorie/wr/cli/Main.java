@@ -7,9 +7,11 @@ import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.HttpRepository;
 import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.dict.DefaultDict;
-import com.humaorie.wr.dict.DictParser;
 import com.humaorie.wr.dict.JsonDictParser;
 import com.humaorie.wr.dict.Dict;
+import com.humaorie.wr.thesaurus.DefaultThesaurus;
+import com.humaorie.wr.thesaurus.JsonThesaurusParser;
+import com.humaorie.wr.thesaurus.Thesaurus;
 import java.io.File;
 import java.io.IOException;
 
@@ -20,9 +22,9 @@ public class Main {
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
         final UrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
         final Repository repository = new HttpRepository(urlFactory);
-        final DictParser parser = new JsonDictParser();
-        final Dict dict = new DefaultDict(repository, parser);
-        final Cli cli = new Cli(dict);
+        final Dict dict = new DefaultDict(repository, new JsonDictParser());
+        final Thesaurus thesaurus = new DefaultThesaurus(repository, new JsonThesaurusParser());
+        final Cli cli = new Cli(dict, thesaurus);
         final int status = cli.run(args);
         System.exit(status);
     }

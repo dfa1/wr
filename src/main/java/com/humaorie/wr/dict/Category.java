@@ -18,15 +18,15 @@ public class Category {
         this.translations = translations;
     }
 
+    public List<Translation> getTranslations() {
+        return translations;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
-    }
-
-    public List<Translation> getTranslations() {
-        return translations;
     }
 }

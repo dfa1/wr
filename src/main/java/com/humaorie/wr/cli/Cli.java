@@ -1,12 +1,15 @@
 package com.humaorie.wr.cli;
 
+import com.humaorie.wr.api.Preconditions;
 import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
 import com.humaorie.wr.dict.Result;
 import com.humaorie.wr.dict.Term;
 import com.humaorie.wr.dict.Translation;
-import com.humaorie.wr.api.Preconditions;
 import com.humaorie.wr.dict.Dict;
+import com.humaorie.wr.thesaurus.Sense;
+import com.humaorie.wr.thesaurus.Synonym;
+import com.humaorie.wr.thesaurus.Thesaurus;
 import java.io.IOException;
 import java.util.List;
 
@@ -14,12 +17,23 @@ public class Cli {
 
     private static final String WR = "http://www.wordreference.com";
     private final Dict dict;
+    private final Thesaurus thesaurus;
     private Appendable out = System.out;
     private Appendable err = System.err;
 
-    public Cli(Dict dict) {
-        Preconditions.require(dict != null, "word reference cannot be null");
+    public Cli(Dict dict, Thesaurus thesaurus) {
+        Preconditions.require(dict != null, "dict cannot be null");
+        Preconditions.require(thesaurus != null, "thesausus cannot be null");
         this.dict = dict;
+        this.thesaurus = thesaurus;
+    }
+
+    public void setErr(Appendable err) {
+        this.err = err;
+    }
+
+    public void setOut(Appendable out) {
+        this.out = out;
     }
 
     public int run(String... args) {
@@ -49,8 +63,12 @@ public class Cli {
     private void doLookup(String... args) {
         final String dict = args[0];
         final String word = args[1];
-        final Result result = this.dict.lookup(dict, word);
-        printResult(result);
+        if ("thresaurus".startsWith(dict)) {
+            printThesaurus(word);
+        } else {
+            final Result result = this.dict.lookup(dict, word);
+            printResult(result);
+        }
         printCopyright(dict, word);
     }
 
@@ -105,11 +123,14 @@ public class Cli {
         }
     }
 
-    public void setErr(Appendable err) {
-        this.err = err;
-    }
-
-    public void setOut(Appendable out) {
-        this.out = out;
+    private void printThesaurus(final String word) {
+        final List<Sense> senses = this.thesaurus.lookup(word);
+        for (Sense sense : senses) {
+            println(out, "sense %s", sense.getText());
+            final List<Synonym> synonyms = sense.getSynonyms();
+            for (Synonym synonym : synonyms) {
+                println(out, "%s (%s)%n", synonym.getName(), synonym.getContext());
+            }
+        }
     }
 }
