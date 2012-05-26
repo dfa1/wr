@@ -14,7 +14,7 @@ public class DictJsonParserTest {
     public void canParseValidDocument() {
         final JsonDictParser parser = new JsonDictParser();
         final Reader reader = loadFile("iten-drago.json");
-        final Result result = parser.parse(reader);
+        final DictEntry result = parser.parse(reader);
         Assert.assertEquals("original", result.getCategories().get(0).getName());
     }
 
@@ -22,7 +22,7 @@ public class DictJsonParserTest {
     public void canParseTermNotFoundDocument() {
         final JsonDictParser parser = new JsonDictParser();
         final Reader reader = loadFile("notfound.json");
-        final Result result = parser.parse(reader);
+        final DictEntry result = parser.parse(reader);
         Assert.assertEquals("No translation was found for foo.", result.getNote());
     }
 
@@ -74,7 +74,7 @@ public class DictJsonParserTest {
     public void noTranslationLeadsToEmptyCategories() {
         final JsonDictParser parser = new JsonDictParser();
         final Reader reader = loadFile("notranslation.json");
-        final Result result = parser.parse(reader);
+        final DictEntry result = parser.parse(reader);
         Assert.assertTrue("categories must be empty", result.getCategories().isEmpty());
     }
 

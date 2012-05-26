@@ -1,6 +1,6 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Dict;
 
 public class FailingDict implements Dict {
@@ -12,7 +12,7 @@ public class FailingDict implements Dict {
     }
 
     @Override
-    public Result lookup(String dict, String word) {
+    public DictEntry lookup(String dict, String word) {
         throw exception;
     }
 }

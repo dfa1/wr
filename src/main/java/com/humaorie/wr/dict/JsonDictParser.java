@@ -13,7 +13,7 @@ import org.json.JSONTokener;
 public class JsonDictParser implements DictParser {
 
     @Override
-    public Result parse(Reader reader) {
+    public DictEntry parse(Reader reader) {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
@@ -22,7 +22,7 @@ public class JsonDictParser implements DictParser {
             removeUselessKeys(rootJson);
             final String note = parseNote(rootJson);
             final List<Category> categories = parseMeanings(rootJson);
-            return Result.create(categories, note);
+            return DictEntry.create(categories, note);
         } catch (JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }

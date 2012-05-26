@@ -1,18 +1,18 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Dict;
 
 public class ConstantDict implements Dict {
 
-    private final Result result;
+    private final DictEntry result;
 
-    public ConstantDict(Result result) {
+    public ConstantDict(DictEntry result) {
         this.result = result;
     }
 
     @Override
-    public Result lookup(String dict, String word) {
+    public DictEntry lookup(String dict, String word) {
         return result;
     }
 }

@@ -2,7 +2,7 @@ package com.humaorie.wr.cli;
 
 import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Dict;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -62,7 +62,7 @@ public class CliTest {
 
     @Test
     public void returnSuccessWhenShowDefinitionOfAWord() {
-        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli(new ConstantDict(result), new ConstantThesaurus());
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -73,7 +73,7 @@ public class CliTest {
     @Test
     public void showDefinitionOfAWord() {
         final CapturingAppendable out = new CapturingAppendable();
-        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli(new ConstantDict(result), new ConstantThesaurus());
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);
@@ -84,7 +84,7 @@ public class CliTest {
     @Test
     public void showCopyrightMessage() {
         final CapturingAppendable out = new CapturingAppendable();
-        final Result result = Result.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli(new ConstantDict(result), new ConstantThesaurus());
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);

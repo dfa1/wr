@@ -3,7 +3,7 @@ package com.humaorie.wr.cli;
 import com.humaorie.wr.api.Preconditions;
 import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.dict.Result;
+import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Term;
 import com.humaorie.wr.dict.Translation;
 import com.humaorie.wr.dict.Dict;
@@ -67,7 +67,7 @@ public class Cli {
             printThesaurus(word);
             printCopyright("thesaurus", word);
         } else {
-            final Result result = this.dict.lookup(dict, word);
+            final DictEntry result = this.dict.lookup(dict, word);
             printResult(result);
             printCopyright(dict, word);
         }
@@ -78,7 +78,7 @@ public class Cli {
         println(out, "Original link: %s/%s/%s", WR, dict, word);
     }
 
-    private void printResult(Result result) {
+    private void printResult(DictEntry result) {
         for (Category category : result.getCategories()) {
             printCategory(category);
         }

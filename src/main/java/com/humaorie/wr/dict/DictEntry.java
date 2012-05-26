@@ -3,13 +3,13 @@ package com.humaorie.wr.dict;
 import java.util.List;
 
 // FIXME: rename
-public class Result {
+public class DictEntry {
 
     private List<Category> categories;
     private String note;
 
-    public static Result create(List<Category> categories, String note) {
-        final Result newResult = new Result();
+    public static DictEntry create(List<Category> categories, String note) {
+        final DictEntry newResult = new DictEntry();
         newResult.setCategories(categories);
         newResult.setNote(note);
         return newResult;

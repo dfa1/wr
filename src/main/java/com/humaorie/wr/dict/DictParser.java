@@ -4,5 +4,5 @@ import java.io.Reader;
 
 public interface DictParser {
 
-    Result parse(Reader reader);
+    DictEntry parse(Reader reader);
 }

@@ -80,7 +80,7 @@ public class DefaultDictTest {
     public static class NoopParser implements DictParser {
 
         @Override
-        public Result parse(Reader reader) {
+        public DictEntry parse(Reader reader) {
             return null;
         }
     }
@@ -102,18 +102,18 @@ public class DefaultDictTest {
     public static class FailingParser implements DictParser {
 
         @Override
-        public Result parse(Reader reader) {
+        public DictEntry parse(Reader reader) {
             throw new IllegalStateException("I'm a crappy parser");
         }
     }
 
     @Test
     public void canHandleRedirects() {
-        final Result expectedResult = Result.create(null, "expected");
+        final DictEntry expectedResult = DictEntry.create(null, "expected");
         final DictParser parser = new ConstantParser(expectedResult);
         final Repository repository = new RedirectOnceRepository();
         final DefaultDict wordReference = new DefaultDict(repository, parser);
-        final Result result = wordReference.lookup("iten", "drago");
+        final DictEntry result = wordReference.lookup("iten", "drago");
         Assert.assertSame(expectedResult, result); // TODO: weak test
     }
 
@@ -134,14 +134,14 @@ public class DefaultDictTest {
 
     public static class ConstantParser implements DictParser {
 
-        private final Result result;
+        private final DictEntry result;
 
-        public ConstantParser(Result result) {
+        public ConstantParser(DictEntry result) {
             this.result = result;
         }
 
         @Override
-        public Result parse(Reader reader) {
+        public DictEntry parse(Reader reader) {
             return result;
         }
     }
@@ -160,7 +160,7 @@ public class DefaultDictTest {
             }
         };
         final Repository repository = new ConstantRepository(failOnCloseReader);
-        final DefaultDict wr = new DefaultDict(repository, new ConstantParser(new Result()));
+        final DefaultDict wr = new DefaultDict(repository, new ConstantParser(new DictEntry()));
         wr.lookup("dict", "word");
     }
 }
