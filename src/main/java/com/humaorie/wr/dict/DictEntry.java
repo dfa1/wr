@@ -2,29 +2,28 @@ package com.humaorie.wr.dict;
 
 import java.util.List;
 
-// FIXME: rename
 public class DictEntry {
 
     private List<Category> categories;
     private String note;
 
     public static DictEntry create(List<Category> categories, String note) {
-        final DictEntry newResult = new DictEntry();
-        newResult.setCategories(categories);
-        newResult.setNote(note);
-        return newResult;
+        final DictEntry newEntry = new DictEntry();
+        newEntry.setCategories(categories);
+        newEntry.setNote(note);
+        return newEntry;
     }
 
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
-    public void setNote(String note) {
-        this.note = note;
-    }
-
     public List<Category> getCategories() {
         return categories;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
     }
 
     public String getNote() {

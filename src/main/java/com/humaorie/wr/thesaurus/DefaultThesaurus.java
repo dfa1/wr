@@ -4,7 +4,6 @@ import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.WordReferenceException;
 import java.io.IOException;
 import java.io.Reader;
-import java.util.List;
 
 public class DefaultThesaurus implements Thesaurus {
 
@@ -17,7 +16,7 @@ public class DefaultThesaurus implements Thesaurus {
     }
 
     @Override
-    public List<Sense> lookup(String word) {
+    public ThesaurusEntry lookup(String word) {
         try {
             return tryLookup(word);
         } catch (IOException ex) {
@@ -25,7 +24,7 @@ public class DefaultThesaurus implements Thesaurus {
         }
     }
 
-    private List<Sense> tryLookup(String word) throws IOException {
+    private ThesaurusEntry tryLookup(String word) throws IOException {
         Reader lookup = repository.lookup("thesaurus", word);
         try {
             return thesaurusParser.parse(lookup);

@@ -10,6 +10,7 @@ import com.humaorie.wr.dict.Dict;
 import com.humaorie.wr.thesaurus.Sense;
 import com.humaorie.wr.thesaurus.Synonym;
 import com.humaorie.wr.thesaurus.Thesaurus;
+import com.humaorie.wr.thesaurus.ThesaurusEntry;
 import java.io.IOException;
 import java.util.List;
 
@@ -64,11 +65,12 @@ public class Cli {
         final String dict = args[0];
         final String word = args[1];
         if ("thesaurus".startsWith(dict)) {
-            printThesaurus(word);
+            final ThesaurusEntry thesaurusEntry = this.thesaurus.lookup(word);
+            printThesaurus(thesaurusEntry);
             printCopyright("thesaurus", word);
         } else {
-            final DictEntry result = this.dict.lookup(dict, word);
-            printResult(result);
+            final DictEntry dictEntry = this.dict.lookup(dict, word);
+            printDictEntry(dictEntry);
             printCopyright(dict, word);
         }
     }
@@ -78,11 +80,11 @@ public class Cli {
         println(out, "Original link: %s/%s/%s", WR, dict, word);
     }
 
-    private void printResult(DictEntry result) {
-        for (Category category : result.getCategories()) {
+    private void printDictEntry(DictEntry dictEntry) {
+        for (Category category : dictEntry.getCategories()) {
             printCategory(category);
         }
-        final String note = result.getNote();
+        final String note = dictEntry.getNote();
         if (!note.isEmpty()) {
             println(out, "note: %s", note);
         }
@@ -124,9 +126,8 @@ public class Cli {
         }
     }
 
-    private void printThesaurus(final String word) {
-        final List<Sense> senses = this.thesaurus.lookup(word);
-        for (Sense sense : senses) {
+    private void printThesaurus(ThesaurusEntry entry) {
+        for (Sense sense : entry.getSenses()) {
             println(out, "as '%s'", sense.getText());
             final List<Synonym> synonyms = sense.getSynonyms();
             for (Synonym synonym : synonyms) {
@@ -134,6 +135,10 @@ public class Cli {
                 println(out, "  %s %s", synonym.getName(), context.isEmpty() ? "" : "(" + context + ")");
             }
             println(out, "");
+        }
+        final String note = entry.getNote();
+        if (!note.isEmpty()) {
+            println(out, "note: %s", note);
         }
     }
 }

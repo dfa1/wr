@@ -13,13 +13,13 @@ import org.json.JSONTokener;
 public class JsonThesaurusParser implements ThesaurusParser {
 
     @Override
-    public List<Sense> parse(Reader reader) {
+    public ThesaurusEntry parse(Reader reader) {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             assertValidApiKey(rootJson);
             removeUselessKeys(rootJson);
-            return parseTerms(rootJson);
+            return parseThesaurusEntry(rootJson);
         } catch (JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }
@@ -37,14 +37,19 @@ public class JsonThesaurusParser implements ThesaurusParser {
         }
     }
 
-    private List<Sense> parseTerms(JSONObject rootJson) throws JSONException {
+    private ThesaurusEntry parseThesaurusEntry(JSONObject rootJson) throws JSONException {
+        final String error = rootJson.optString("Error", "");
+        if (!error.isEmpty()) {
+            final String note = rootJson.optString("Note", "");
+            return ThesaurusEntry.create(new ArrayList<Sense>(), note);
+        }
         final List<Sense> senses = new ArrayList<Sense>();
         final Iterator terms = rootJson.keys();
         while (terms.hasNext()) {
             String term = (String) terms.next();
             senses.addAll(parseTerm(rootJson.getJSONObject(term)));
         }
-        return senses;
+        return ThesaurusEntry.create(senses, "");
     }
 
     private List<Sense> parseTerm(JSONObject termJson) throws JSONException {
