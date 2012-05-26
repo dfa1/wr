@@ -131,6 +131,27 @@ public class CliTest {
         Assert.assertEquals(0, status);
     }
 
+    @Test
+    public void showHelp() {
+        final CapturingAppendable out = new CapturingAppendable();
+        final WordReference wordReference = new ConstantWordReference(null);
+        final Cli cli = new Cli(wordReference);
+        cli.setErr(new CapturingAppendable());
+        cli.setOut(out);
+        cli.run("--help");
+        Assert.assertTrue(out.getCapture().contains("usage:"));
+    }
+
+    @Test
+    public void returnSuccessOnHelp() {
+        final WordReference wordReference = new ConstantWordReference(null);
+        final Cli cli = new Cli(wordReference);
+        cli.setErr(new CapturingAppendable());
+        cli.setOut(new CapturingAppendable());
+        final int status = cli.run("--help");
+        Assert.assertEquals(0, status);
+    }
+
     public static class CapturingAppendable implements Appendable {
 
         private final ByteArrayOutputStream capture = new ByteArrayOutputStream();

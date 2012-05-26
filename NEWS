@@ -1,3 +1,7 @@
+26 May 2012
+  - wrcli --help
+  - dropped useless classes
+
 25 May 2012
   - wrcli --version
 

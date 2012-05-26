@@ -27,6 +27,12 @@ public class Cli {
             print(out, "wrcli version %s%n", new VersionLoader().loadVersion());
             return 0;
         }
+        if (args.length == 1 && args[0].equals("--help")) {
+            print(out, "wrcli - word reference command line interface%n");
+            print(out, "by Davide Angelocola <davide.angelocola@gmail.com>%n");
+            print(out, "usage: wrcli dict word%n");
+            return 0;
+        }
         if (args.length != 2) {
             print(err, "error: you must provide dict and word (e.g. 'enit run')%n");
             return 1;
