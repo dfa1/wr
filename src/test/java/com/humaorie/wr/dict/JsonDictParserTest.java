@@ -8,7 +8,13 @@ import java.io.StringReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class DictJsonParserTest {
+public class JsonDictParserTest {
+
+    @Test(expected = IllegalArgumentException.class)
+    public void refuseToParseANullReader() {
+        final JsonDictParser parser = new JsonDictParser();
+        parser.parse(null);
+    }
 
     @Test
     public void canParseValidDocument() {
@@ -64,12 +70,7 @@ public class DictJsonParserTest {
         }
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void refuseToParseANullReader() {
-        final JsonDictParser parser = new JsonDictParser();
-        parser.parse(null);
-    }
-
+    
     @Test
     public void noTranslationLeadsToEmptyCategories() {
         final JsonDictParser parser = new JsonDictParser();
@@ -85,7 +86,7 @@ public class DictJsonParserTest {
     }
 
     private Reader loadFile(String filename) {
-        final InputStream inputStream = DictJsonParserTest.class.getResourceAsStream(filename);
+        final InputStream inputStream = JsonDictParserTest.class.getResourceAsStream(filename);
         return new InputStreamReader(inputStream);
     }
 }

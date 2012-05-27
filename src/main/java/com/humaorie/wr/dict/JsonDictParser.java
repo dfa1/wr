@@ -17,7 +17,7 @@ public class JsonDictParser implements DictParser {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
-            assertValidApiKey(rootJson);
+            assertNoError(rootJson);
             assertNoRedirect(rootJson);
             removeUselessKeys(rootJson);
             return parseDictEntry(rootJson);
@@ -39,9 +39,8 @@ public class JsonDictParser implements DictParser {
         }
     }
 
-    private void assertValidApiKey(JSONObject rootJson) {
+    private void assertNoError(JSONObject rootJson) {
         final String sorry = rootJson.optString("Sorry");
-
         if (!sorry.isEmpty()) {
             throw new WordReferenceException(sorry);
         }
@@ -97,7 +96,7 @@ public class JsonDictParser implements DictParser {
     }
 
     private Translation parseTranslation(JSONObject translationJson) {
-        final List<Term> translations = new ArrayList<Term>();
+        final List<Term> terms = new ArrayList<Term>();
         final String note = parseNote(translationJson);
         final Term originalTerm = parseTerm(translationJson.optJSONObject("OriginalTerm"));
         translationJson.remove("OriginalTerm");
@@ -106,9 +105,9 @@ public class JsonDictParser implements DictParser {
             final String termKey = (String) termKeys.next();
             final JSONObject termJson = translationJson.optJSONObject(termKey);
             final Term term = parseTerm(termJson);
-            translations.add(term);
+            terms.add(term);
         }
-        return Translation.create(originalTerm, translations, note);
+        return Translation.create(originalTerm, terms, note);
     }
 
     private Term parseTerm(JSONObject termJson) {
