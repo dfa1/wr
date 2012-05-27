@@ -20,11 +20,6 @@ public class DefaultDict implements Dict {
 
     @Override
     public DictEntry lookup(String dict, String word) {
-        // FIXME: when a dict is not of length 4 the response is an HTML with status 200
-        if (dict.length() != 4) {
-            throw new WordReferenceException("dict must be of length 4");
-        }
-
         try {
             return tryLookoup(dict, word);
         } catch (RedirectException redirect) {
@@ -49,6 +44,10 @@ public class DefaultDict implements Dict {
     }
 
     private Reader fetch(String dict, String word) throws IOException {
+        // XXX: when a dict is not of length 4 the response is an HTML document :/
+        if (dict.length() != 4) {
+            throw new WordReferenceException("dict must be of length 4");
+        }
         return repository.lookup(dict, word);
     }
 }

@@ -20,9 +20,7 @@ public class JsonDictParser implements DictParser {
             assertValidApiKey(rootJson);
             assertNoRedirect(rootJson);
             removeUselessKeys(rootJson);
-            final String note = parseNote(rootJson);
-            final List<Category> categories = parseMeanings(rootJson);
-            return DictEntry.create(categories, note);
+            return parseDictEntry(rootJson);
         } catch (JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }
@@ -49,54 +47,52 @@ public class JsonDictParser implements DictParser {
         }
     }
 
+    private DictEntry parseDictEntry(JSONObject rootJson) {
+        final String note = parseNote(rootJson);
+        final List<Category> categories = parseCategories(rootJson);
+        return DictEntry.create(categories, note);
+    }
+
     private String parseNote(JSONObject rootJson) {
         final String note = rootJson.optString("Note");
         rootJson.remove("Note");
         return note;
     }
 
-    private List<Category> parseMeanings(JSONObject rootJson) {
+    private List<Category> parseCategories(JSONObject rootJson) {
         final List<Category> categories = new ArrayList<Category>();
-
         if (rootJson.has("Error")) {
             return categories;
         }
-
         final Iterator meaningKeys = rootJson.keys();
-
         while (meaningKeys.hasNext()) {
             final String meaningKey = (String) meaningKeys.next();
             final JSONObject categoryJson = rootJson.optJSONObject(meaningKey);
             final Category category = parseCategory(meaningKey, categoryJson);
             categories.add(category);
         }
-
         return categories;
     }
 
     private Category parseCategory(String meaningKey, JSONObject categoryJson) {
         final Iterator translationsKeys = categoryJson.keys();
         final List<Translation> translations = new ArrayList<Translation>();
-
         while (translationsKeys.hasNext()) {
             final String translationKey = (String) translationsKeys.next();
             final JSONObject translationsJson = categoryJson.optJSONObject(translationKey);
             translations.addAll(parseTranslations(translationsJson));
         }
-
         return Category.create(meaningKey, translations);
     }
 
     private List<Translation> parseTranslations(JSONObject translationsJson) {
         final List<Translation> translations = new ArrayList<Translation>();
         final Iterator translationKeys = translationsJson.keys();
-
         while (translationKeys.hasNext()) {
             final String translationIndex = (String) translationKeys.next();
             final Translation translation = parseTranslation(translationsJson.optJSONObject(translationIndex));
             translations.add(translation);
         }
-
         return translations;
     }
 
@@ -106,14 +102,12 @@ public class JsonDictParser implements DictParser {
         final Term originalTerm = parseTerm(translationJson.optJSONObject("OriginalTerm"));
         translationJson.remove("OriginalTerm");
         final Iterator termKeys = translationJson.keys();
-
         while (termKeys.hasNext()) {
             final String termKey = (String) termKeys.next();
             final JSONObject termJson = translationJson.optJSONObject(termKey);
             final Term term = parseTerm(termJson);
             translations.add(term);
         }
-
         return Translation.create(originalTerm, translations, note);
     }
 

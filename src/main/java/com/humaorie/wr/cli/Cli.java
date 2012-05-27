@@ -1,8 +1,8 @@
 package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.Preconditions;
-import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
+import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Term;
 import com.humaorie.wr.dict.Translation;
