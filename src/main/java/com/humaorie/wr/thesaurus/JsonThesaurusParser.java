@@ -17,7 +17,7 @@ public class JsonThesaurusParser implements ThesaurusParser {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
-            assertValidApiKey(rootJson);
+            assertNoError(rootJson);
             removeUselessKeys(rootJson);
             return parseThesaurusEntry(rootJson);
         } catch (JSONException ex) {
@@ -30,7 +30,7 @@ public class JsonThesaurusParser implements ThesaurusParser {
         rootJson.remove("END");
     }
 
-    private void assertValidApiKey(JSONObject rootJson) {
+    private void assertNoError(JSONObject rootJson) {
         final String sorry = rootJson.optString("Sorry");
         if (!sorry.isEmpty()) {
             throw new WordReferenceException(sorry);
