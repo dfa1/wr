@@ -1,14 +1,17 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+import com.humaorie.wr.api.Preconditions;
+import com.humaorie.wr.api.Repository;
+import com.humaorie.wr.api.WordReferenceException;
 import java.io.IOException;
 import java.io.Reader;
 
-public class DefaultWordReference implements WordReference {
+public class DefaultDict implements Dict {
 
     private final Repository repository;
-    private final Parser parser;
+    private final DictParser parser;
 
-    public DefaultWordReference(Repository repository, Parser parser) {
+    public DefaultDict(Repository repository, DictParser parser) {
         Preconditions.require(repository != null, "repository cannot be null");
         Preconditions.require(parser != null, "parser cannot be null");
         this.repository = repository;
@@ -16,7 +19,7 @@ public class DefaultWordReference implements WordReference {
     }
 
     @Override
-    public Result lookup(String dict, String word) {
+    public DictEntry lookup(String dict, String word) {
         try {
             return tryLookoup(dict, word);
         } catch (RedirectException redirect) {
@@ -24,7 +27,7 @@ public class DefaultWordReference implements WordReference {
         }
     }
 
-    private Result tryLookoup(String dict, String word) {
+    private DictEntry tryLookoup(String dict, String word) {
         try {
             return parse(fetch(dict, word));
         } catch (IOException ex) {
@@ -32,7 +35,7 @@ public class DefaultWordReference implements WordReference {
         }
     }
 
-    private Result parse(Reader reader) throws IOException {
+    private DictEntry parse(Reader reader) throws IOException {
         try {
             return parser.parse(reader);
         } finally {
@@ -41,6 +44,10 @@ public class DefaultWordReference implements WordReference {
     }
 
     private Reader fetch(String dict, String word) throws IOException {
+        // XXX: when a dict is not of length 4 the response is an HTML document :/
+        if (dict.length() != 4) {
+            throw new WordReferenceException("dict must be of length 4");
+        }
         return repository.lookup(dict, word);
     }
 }

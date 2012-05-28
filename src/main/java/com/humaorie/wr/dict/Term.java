@@ -1,4 +1,4 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
 public class Term {
 

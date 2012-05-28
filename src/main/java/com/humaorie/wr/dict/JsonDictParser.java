@@ -1,5 +1,7 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
+import com.humaorie.wr.api.Preconditions;
+import com.humaorie.wr.api.WordReferenceException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -8,19 +10,17 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-public class DefaultJsonParser implements Parser {
+public class JsonDictParser implements DictParser {
 
     @Override
-    public Result parse(Reader reader) {
+    public DictEntry parse(Reader reader) {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
-            assertValidApiKey(rootJson);
+            assertNoError(rootJson);
             assertNoRedirect(rootJson);
             removeUselessKeys(rootJson);
-            final String note = parseNote(rootJson);
-            final List<Category> categories = parseMeanings(rootJson);
-            return Result.create(categories, note);
+            return parseDictEntry(rootJson);
         } catch (JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }
@@ -39,12 +39,17 @@ public class DefaultJsonParser implements Parser {
         }
     }
 
-    private void assertValidApiKey(JSONObject rootJson) {
+    private void assertNoError(JSONObject rootJson) {
         final String sorry = rootJson.optString("Sorry");
-
         if (!sorry.isEmpty()) {
             throw new WordReferenceException(sorry);
         }
+    }
+
+    private DictEntry parseDictEntry(JSONObject rootJson) {
+        final String note = parseNote(rootJson);
+        final List<Category> categories = parseCategories(rootJson);
+        return DictEntry.create(categories, note);
     }
 
     private String parseNote(JSONObject rootJson) {
@@ -53,66 +58,56 @@ public class DefaultJsonParser implements Parser {
         return note;
     }
 
-    private List<Category> parseMeanings(JSONObject rootJson) {
+    private List<Category> parseCategories(JSONObject rootJson) {
         final List<Category> categories = new ArrayList<Category>();
-
         if (rootJson.has("Error")) {
             return categories;
         }
-
         final Iterator meaningKeys = rootJson.keys();
-
         while (meaningKeys.hasNext()) {
             final String meaningKey = (String) meaningKeys.next();
             final JSONObject categoryJson = rootJson.optJSONObject(meaningKey);
             final Category category = parseCategory(meaningKey, categoryJson);
             categories.add(category);
         }
-
         return categories;
     }
 
     private Category parseCategory(String meaningKey, JSONObject categoryJson) {
         final Iterator translationsKeys = categoryJson.keys();
         final List<Translation> translations = new ArrayList<Translation>();
-
         while (translationsKeys.hasNext()) {
             final String translationKey = (String) translationsKeys.next();
             final JSONObject translationsJson = categoryJson.optJSONObject(translationKey);
             translations.addAll(parseTranslations(translationsJson));
         }
-
         return Category.create(meaningKey, translations);
     }
 
     private List<Translation> parseTranslations(JSONObject translationsJson) {
         final List<Translation> translations = new ArrayList<Translation>();
         final Iterator translationKeys = translationsJson.keys();
-
         while (translationKeys.hasNext()) {
             final String translationIndex = (String) translationKeys.next();
             final Translation translation = parseTranslation(translationsJson.optJSONObject(translationIndex));
             translations.add(translation);
         }
-
         return translations;
     }
 
     private Translation parseTranslation(JSONObject translationJson) {
-        final List<Term> translations = new ArrayList<Term>();
+        final List<Term> terms = new ArrayList<Term>();
         final String note = parseNote(translationJson);
         final Term originalTerm = parseTerm(translationJson.optJSONObject("OriginalTerm"));
         translationJson.remove("OriginalTerm");
         final Iterator termKeys = translationJson.keys();
-
         while (termKeys.hasNext()) {
             final String termKey = (String) termKeys.next();
             final JSONObject termJson = translationJson.optJSONObject(termKey);
             final Term term = parseTerm(termJson);
-            translations.add(term);
+            terms.add(term);
         }
-
-        return Translation.create(originalTerm, translations, note);
+        return Translation.create(originalTerm, terms, note);
     }
 
     private Term parseTerm(JSONObject termJson) {

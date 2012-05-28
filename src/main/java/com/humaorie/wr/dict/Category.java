@@ -1,4 +1,4 @@
-package com.humaorie.wr.api;
+package com.humaorie.wr.dict;
 
 import java.util.List;
 
@@ -14,16 +14,16 @@ public class Category {
         return newCategory;
     }
 
-    public void setTranslations(List<Translation> translations) {
-        this.translations = translations;
-    }
-
     public void setName(String name) {
         this.name = name;
     }
 
     public String getName() {
         return name;
+    }
+
+    public void setTranslations(List<Translation> translations) {
+        this.translations = translations;
     }
 
     public List<Translation> getTranslations() {
