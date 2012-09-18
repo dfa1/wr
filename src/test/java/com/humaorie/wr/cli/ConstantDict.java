@@ -1,7 +1,7 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.dict.DictEntry;
 import com.humaorie.wr.dict.Dict;
+import com.humaorie.wr.dict.DictEntry;
 
 public class ConstantDict implements Dict {
 

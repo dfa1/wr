@@ -1,15 +1,15 @@
 package com.humaorie.wr.cli;
 
+import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.FileApiKeyProvider;
+import com.humaorie.wr.api.HttpErrorAwareRepository;
+import com.humaorie.wr.api.HttpRepository;
+import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.Repository;
 import com.humaorie.wr.api.UrlFactory;
-import com.humaorie.wr.api.JsonUrlFactory;
-import com.humaorie.wr.api.HttpRepository;
-import com.humaorie.wr.api.ApiKeyProvider;
-import com.humaorie.wr.api.HttpErrorAwareRepository;
 import com.humaorie.wr.dict.DefaultDict;
-import com.humaorie.wr.dict.JsonDictParser;
 import com.humaorie.wr.dict.Dict;
+import com.humaorie.wr.dict.JsonDictParser;
 import com.humaorie.wr.thesaurus.DefaultThesaurus;
 import com.humaorie.wr.thesaurus.JsonThesaurusParser;
 import com.humaorie.wr.thesaurus.Thesaurus;
