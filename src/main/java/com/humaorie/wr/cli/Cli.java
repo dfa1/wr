@@ -38,26 +38,28 @@ public class Cli {
     }
 
     public int run(String... args) {
+        final int SUCCESS = 0;
+        final int FAILURE = 1;
         if (args.length == 1 && args[0].equals("--version")) {
             println(out, "wrcli version %s", new VersionLoader().loadVersion());
-            return 0;
+            return SUCCESS;
         }
         if (args.length == 1 && args[0].equals("--help")) {
             println(out, "wrcli - word reference command line interface");
             println(out, "by Davide Angelocola <davide.angelocola@gmail.com>");
             println(out, "usage: wrcli dict word");
-            return 0;
+            return SUCCESS;
         }
         if (args.length != 2) {
             println(err, "error: you must provide dict and word (e.g. 'enit run')");
-            return 1;
+            return FAILURE;
         }
         try {
             doLookup(args);
-            return 0;
+            return SUCCESS;
         } catch (WordReferenceException ex) {
             println(err, "error: %s", ex.getMessage());
-            return 1;
+            return FAILURE;
         }
     }
 
@@ -118,7 +120,7 @@ public class Cli {
         }
     }
 
-    private static void println(Appendable app, String fmt, Object... args) {
+    private void println(Appendable app, String fmt, Object... args) {
         try {
             app.append(String.format(fmt + "%n", args));
         } catch (IOException ex) {
