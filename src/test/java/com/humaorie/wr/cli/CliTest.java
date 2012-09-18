@@ -1,9 +1,9 @@
 package com.humaorie.wr.cli;
 
-import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.api.WordReferenceException;
-import com.humaorie.wr.dict.DictEntry;
+import com.humaorie.wr.dict.Category;
 import com.humaorie.wr.dict.Dict;
+import com.humaorie.wr.dict.DictEntry;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -38,7 +38,7 @@ public class CliTest {
         cli.setOut(new CapturingAppendable());
         cli.setErr(err);
         cli.run();
-        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", err.getCapture());
+        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')" + System.lineSeparator(), err.getCapture());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class CliTest {
         cli.setErr(err);
         cli.setOut(new CapturingAppendable());
         cli.run("enit");
-        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')\n", err.getCapture());
+        Assert.assertEquals("error: you must provide dict and word (e.g. 'enit run')" + System.lineSeparator(), err.getCapture());
     }
 
     @Test
