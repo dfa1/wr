@@ -3,15 +3,15 @@ Java Library for WordReference.com
 
 Java6 library and command line client for WordReference API:
  - supports API version 0.8
- - supports JSON over HTTP with GZIP  
+ - JSON over HTTPi, with optional GZIP compression 
 
 
 Prerequisites 
 -------------
 
 Build:
-- JDK 1.6 
-- Apache Maven 2.2 or 3 
+- JDK 1.6+ 
+- Apache Maven 2.2+ 
 
 Run:
 - JRE 1.6+
@@ -49,11 +49,4 @@ RPM
 
 $ mvn package assembly:single rpm:rpm
 
-an RPM will be built into the directory 'target/rpm/wrcli/RPMS/noarch'.
-
-
-TODO
-----
-
-- drop RedirectException
-- filtering translations by category 
+the RPM will be built into the directory 'target/rpm/wrcli/RPMS/noarch'.
