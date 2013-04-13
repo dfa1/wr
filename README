@@ -3,7 +3,7 @@ Java Library for WordReference.com
 
 Java6 library and command line client for WordReference API:
  - supports API version 0.8
- - JSON over HTTPi, with optional GZIP compression 
+ - JSON over HTTP with optional GZIP compression 
 
 
 Prerequisites 
