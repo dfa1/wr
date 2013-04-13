@@ -1,2 +1,2 @@
 #!/bin/bash
-java -jar /opt/wrcli/wrcli.jar $*
+java -jar /opt/wrcli/wrcli.jar "$@"
