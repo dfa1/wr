@@ -19,7 +19,6 @@ public class HttpRepository implements Repository {
     @Override
     public Reader lookup(String dict, String word) throws IOException {
         final URL url = urlFactory.createUrl(dict, word);
-        Preconditions.require("http".equals(url.getProtocol()), "url protocol must be http");
         final URLConnection connection = url.openConnection();
         final InputStream inputStream = connection.getInputStream();
         return new InputStreamReader(inputStream);

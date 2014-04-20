@@ -7,13 +7,18 @@ import java.io.InputStreamReader;
 
 public class VersionLoader {
 
-    public String loadVersion() {
-        try {
-            final InputStream stream = this.getClass().getClassLoader().getResourceAsStream("version");
-            final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
-            return bufferedReader.readLine();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+    public String loadVersion() throws IOException {
+    	BufferedReader reader = createReader();
+    	try {
+            return reader.readLine();
+    	} finally {
+    		reader.close();
+    	}
     }
+
+	private BufferedReader createReader() throws IOException {
+		final InputStream stream = this.getClass().getClassLoader().getResourceAsStream("version");
+		final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(stream));
+		return bufferedReader;
+	}
 }

@@ -31,7 +31,7 @@ public class DefaultDict implements Dict {
         try {
             return parse(fetch(dict, word));
         } catch (IOException ex) {
-            throw new WordReferenceException("I/O error", ex);
+            throw new WordReferenceException(String.format("I/O error: %s", ex.getMessage()), ex);
         }
     }
 
