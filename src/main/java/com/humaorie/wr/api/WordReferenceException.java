@@ -2,7 +2,9 @@ package com.humaorie.wr.api;
 
 public class WordReferenceException extends RuntimeException {
 
-    public WordReferenceException(String message, Throwable cause) {
+	private static final long serialVersionUID = 1L;
+
+	public WordReferenceException(String message, Throwable cause) {
         super(message, cause);
     }
 
