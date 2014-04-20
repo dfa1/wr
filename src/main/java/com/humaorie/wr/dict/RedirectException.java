@@ -1,9 +1,8 @@
 package com.humaorie.wr.dict;
 
-// TODO: flow control exception
-@Deprecated
 public class RedirectException extends RuntimeException {
 
+    private static final long serialVersionUID = 1L;
     private String newDict;
     private String newWord;
 
