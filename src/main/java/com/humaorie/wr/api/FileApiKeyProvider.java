@@ -28,7 +28,7 @@ public class FileApiKeyProvider implements ApiKeyProvider {
         try {
             final String apiKey = reader.readLine();
             if (apiKey == null) {
-                throw new WordReferenceException(String.format("please set your API key into file %s%nSee http://www.wordreference.com/docs/APIregistration.aspx", file));
+                throw new WordReferenceException(String.format("please set your API key into file %s%nSee http://www.wordreference.com/docs/api.aspx", file));
             }
             return apiKey;
         } finally {
