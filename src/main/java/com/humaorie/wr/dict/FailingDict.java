@@ -1,7 +1,4 @@
-package com.humaorie.wr.cli;
-
-import com.humaorie.wr.dict.Dict;
-import com.humaorie.wr.dict.DictEntry;
+package com.humaorie.wr.dict;
 
 public class FailingDict implements Dict {
 
