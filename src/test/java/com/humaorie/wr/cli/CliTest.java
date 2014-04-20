@@ -9,8 +9,11 @@ import org.junit.Test;
 
 import com.humaorie.wr.api.WordReferenceException;
 import com.humaorie.wr.dict.Category;
+import com.humaorie.wr.dict.ConstantDict;
 import com.humaorie.wr.dict.Dict;
 import com.humaorie.wr.dict.DictEntry;
+import com.humaorie.wr.dict.FailingDict;
+import com.humaorie.wr.thesaurus.ConstantThesaurus;
 
 public class CliTest {
 
@@ -181,12 +184,12 @@ public class CliTest {
         }
 
         @Override
-        public Appendable append(CharSequence csq, int start, int end) throws IOException {
+        public Appendable append(CharSequence csq, int start, int end) {
             return capture(csq, start, end);
         }
 
         @Override
-        public Appendable append(char c) throws IOException {
+        public Appendable append(char c) {
             capture.write(c);
             return this;
         }
