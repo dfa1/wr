@@ -2,7 +2,6 @@ package com.humaorie.wr.cli;
 
 import com.humaorie.wr.api.ApiKeyProvider;
 import com.humaorie.wr.api.FileApiKeyProvider;
-import com.humaorie.wr.api.HttpErrorAwareRepository;
 import com.humaorie.wr.api.HttpRepository;
 import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.Repository;
@@ -19,13 +18,14 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
+    	final String version = new VersionLoader().loadVersion();
         final File apiKeyFile = new File(System.getProperty("user.home"), ".wrcli");
         final ApiKeyProvider apiKeyProvider = new FileApiKeyProvider(apiKeyFile);
         final UrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
-        final Repository repository = new HttpErrorAwareRepository(new HttpRepository(urlFactory));
+        final Repository repository = new HttpRepository(urlFactory);
         final Dict dict = new DefaultDict(repository, new JsonDictParser());
         final Thesaurus thesaurus = new DefaultThesaurus(repository, new JsonThesaurusParser());
-        final Cli cli = new Cli(dict, thesaurus);
+        final Cli cli = new Cli(version, dict, thesaurus);
         final int status = cli.run(args);
         System.exit(status);
     }

@@ -17,14 +17,17 @@ import java.util.List;
 public class Cli {
 
     private static final String WR = "http://www.wordreference.com";
+    private final String version;
     private final Dict dict;
     private final Thesaurus thesaurus;
     private Appendable out = System.out;
     private Appendable err = System.err;
 
-    public Cli(Dict dict, Thesaurus thesaurus) {
+    public Cli(String version, Dict dict, Thesaurus thesaurus) {
+    	Preconditions.require(version != null, "version cannot be null");
         Preconditions.require(dict != null, "dict cannot be null");
         Preconditions.require(thesaurus != null, "thesausus cannot be null");
+        this.version = version;
         this.dict = dict;
         this.thesaurus = thesaurus;
     }
@@ -41,7 +44,7 @@ public class Cli {
         final int SUCCESS = 0;
         final int FAILURE = 1;
         if (args.length == 1 && args[0].equals("--version")) {
-            println(out, "wrcli version %s", new VersionLoader().loadVersion());
+            println(out, "wrcli version %s", version);
             return SUCCESS;
         }
         if (args.length == 1 && args[0].equals("--help")) {
