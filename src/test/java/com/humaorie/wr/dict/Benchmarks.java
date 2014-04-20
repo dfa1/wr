@@ -9,7 +9,7 @@ import org.junit.Test;
 
 public class Benchmarks {
 
-    private final String TESTING_API_KEY = "2f6ce"; // this is a real key, please don't abuse
+    private final String TESTING_API_KEY = "2f6ce";
 
     @Test
     public void lookupRepeatedly() {
@@ -19,14 +19,14 @@ public class Benchmarks {
         final DictParser parser = new JsonDictParser();
         final Dict wordReference = new DefaultDict(repository, parser);
         final long elapsed = benchmarkRepeatedLookup(wordReference);
-        System.out.printf("with HTTP/GZIP   : %sms%n", elapsed);
+        System.out.printf("with HTTP: %sms%n", elapsed);
     }
 
-    private long benchmarkRepeatedLookup(Dict sut) {
+    private long benchmarkRepeatedLookup(Dict dict) {
         final int repeat = 10;
         final long start = System.currentTimeMillis();
         for (int i = 0; i < repeat; i++) {
-            sut.lookup("enit", "word");
+            dict.lookup("enit", "word");
         }
         final long end = System.currentTimeMillis();
         final long elapsed = end - start;
