@@ -7,7 +7,6 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.zip.GZIPInputStream;
 
 public class HttpRepository implements Repository {
 
@@ -26,7 +25,6 @@ public class HttpRepository implements Repository {
         final HttpURLConnection httpConnection = (HttpURLConnection) connection;
         httpConnection.addRequestProperty("Accept-Encoding", "gzip");
         final InputStream inputStream = connection.getInputStream();
-        final GZIPInputStream gzipInputStream = new GZIPInputStream(inputStream);
-        return new InputStreamReader(gzipInputStream);
+        return new InputStreamReader(inputStream);
     }
 }
