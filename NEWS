@@ -8,7 +8,7 @@
 
 24 May 2012
   - JsonOverHttpRepository was renamed to UrlRepository since it can load documents from any URL, even local
-  - ditto for GzippedJsonOverHttpRepository 
+  - ditto for GzippedJsonOverHttpRepository
 
 23 May 2012
   - starting version 2.0
@@ -17,14 +17,14 @@
 
 19 Nov 2011
   - version 1.2
-  - improved installation 
+  - improved installation
 
 18 Nov 2011
   - RPM package
   - simplified api key configuration (introduced FileApiKeyProvider, deprecated EnvironmnetApiKeyProvider)
   - improved test suite
   - fix: NPE on NoTranslation response
- 
+
 23 Oct 2011
   - fix: urlencoding url fragments
   - print copyright and terms of service
@@ -33,10 +33,10 @@
 14 Aug 2011
   - version 1.1
   - 2x speedup by using gzip encoding
-  - bash command line script 
-  - improved test coverage  
+  - bash command line script
+  - improved test coverage
 
 7 Aug 2011
   - version 1.0
   - API + simple command line client (as executable jar)
- 
+
