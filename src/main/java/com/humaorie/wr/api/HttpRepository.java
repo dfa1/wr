@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -22,8 +21,6 @@ public class HttpRepository implements Repository {
         final URL url = urlFactory.createUrl(dict, word);
         Preconditions.require("http".equals(url.getProtocol()), "url protocol must be http");
         final URLConnection connection = url.openConnection();
-        final HttpURLConnection httpConnection = (HttpURLConnection) connection;
-        httpConnection.addRequestProperty("Accept-Encoding", "gzip");
         final InputStream inputStream = connection.getInputStream();
         return new InputStreamReader(inputStream);
     }
