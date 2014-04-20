@@ -1,7 +1,5 @@
-package com.humaorie.wr.cli;
+package com.humaorie.wr.thesaurus;
 
-import com.humaorie.wr.thesaurus.Thesaurus;
-import com.humaorie.wr.thesaurus.ThesaurusEntry;
 
 public class ConstantThesaurus implements Thesaurus {
 
