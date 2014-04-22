@@ -20,12 +20,13 @@ public class DefaultThesaurus implements Thesaurus {
         try {
             return tryLookup(word);
         } catch (IOException ex) {
-            throw new WordReferenceException("I/O error", ex);
+            throw new WordReferenceException(String.format("I/O error: %s", ex.getMessage()), ex);
         }
     }
 
     private ThesaurusEntry tryLookup(String word) throws IOException {
         Reader lookup = repository.lookup("thesaurus", word);
+        // web service yields a zero-len response when the word is not found (!)
         try {
             return thesaurusParser.parse(lookup);
         } finally {
