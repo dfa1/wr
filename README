@@ -5,16 +5,15 @@ Java6 library and command line client for WordReference API:
  - supports API version 0.8
  - JSON over HTTP with optional GZIP compression
 
-
 Prerequisites
 -------------
 
 Build:
-- JDK 1.6+
+- JDK 1.8+
 - Apache Maven 2.2+
 
 Run:
-- JRE 1.6+
+- JRE 1.8+
 - wordreference API key
     http://www.wordreference.com/docs/APIregistration.aspx
 
@@ -43,10 +42,3 @@ Manual installation
 $ sudo install -D -m755 target/wrcli.jar /opt/wrcli/wrcli.jar
 $ sudo install -m755 bin/wrcli /usr/local/bin/wrcli
 
-
-RPM
----
-
-$ mvn package assembly:single rpm:rpm
-
-the RPM will be built into the directory 'target/rpm/wrcli/RPMS/noarch'.
