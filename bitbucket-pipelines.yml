@@ -1,0 +1,10 @@
+image: maven:3-jdk-8-slim
+
+pipelines:
+  branches:
+    master:
+      - step:
+          caches:
+            - maven
+          script:
+            - mvn --batch-mode verify
