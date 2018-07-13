@@ -1,9 +1,0 @@
-target
-\.orig\..*$
-\.orig$
-\.chg\..*$
-\.rej$
-\.conflict\~$
-\.settings
-\.classpath
-\.project
