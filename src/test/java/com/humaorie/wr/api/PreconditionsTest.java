@@ -12,7 +12,8 @@ public class PreconditionsTest {
 
     @Test
     public void notFinal() {
-        final Preconditions iAmNotFinal = new Preconditions() {
+        @SuppressWarnings("unused")
+		final Preconditions iAmNotFinal = new Preconditions() {
         };
     }
 

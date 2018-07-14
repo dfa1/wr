@@ -63,7 +63,7 @@ public class JsonDictParser implements DictParser {
         if (rootJson.has("Error")) {
             return categories;
         }
-        final Iterator meaningKeys = rootJson.keys();
+        final Iterator<?> meaningKeys = rootJson.keys();
         while (meaningKeys.hasNext()) {
             final String meaningKey = (String) meaningKeys.next();
             final JSONObject categoryJson = rootJson.optJSONObject(meaningKey);
@@ -74,7 +74,7 @@ public class JsonDictParser implements DictParser {
     }
 
     private Category parseCategory(String meaningKey, JSONObject categoryJson) {
-        final Iterator translationsKeys = categoryJson.keys();
+        final Iterator<?> translationsKeys = categoryJson.keys();
         final List<Translation> translations = new ArrayList<Translation>();
         while (translationsKeys.hasNext()) {
             final String translationKey = (String) translationsKeys.next();
@@ -86,7 +86,7 @@ public class JsonDictParser implements DictParser {
 
     private List<Translation> parseTranslations(JSONObject translationsJson) {
         final List<Translation> translations = new ArrayList<Translation>();
-        final Iterator translationKeys = translationsJson.keys();
+        final Iterator<?> translationKeys = translationsJson.keys();
         while (translationKeys.hasNext()) {
             final String translationIndex = (String) translationKeys.next();
             final Translation translation = parseTranslation(translationsJson.optJSONObject(translationIndex));
@@ -100,7 +100,7 @@ public class JsonDictParser implements DictParser {
         final String note = parseNote(translationJson);
         final Term originalTerm = parseTerm(translationJson.optJSONObject("OriginalTerm"));
         translationJson.remove("OriginalTerm");
-        final Iterator termKeys = translationJson.keys();
+        final Iterator<?> termKeys = translationJson.keys();
         while (termKeys.hasNext()) {
             final String termKey = (String) termKeys.next();
             final JSONObject termJson = translationJson.optJSONObject(termKey);

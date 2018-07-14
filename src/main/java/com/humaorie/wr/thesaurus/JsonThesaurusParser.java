@@ -44,7 +44,7 @@ public class JsonThesaurusParser implements ThesaurusParser {
             return ThesaurusEntry.create(new ArrayList<Sense>(), note);
         }
         final List<Sense> senses = new ArrayList<Sense>();
-        final Iterator terms = rootJson.keys();
+        final Iterator<?> terms = rootJson.keys();
         while (terms.hasNext()) {
             String term = (String) terms.next();
             senses.addAll(parseTerm(rootJson.getJSONObject(term)));
@@ -55,7 +55,7 @@ public class JsonThesaurusParser implements ThesaurusParser {
     private List<Sense> parseTerm(JSONObject termJson) throws JSONException {
         final List<Sense> termSenses = new ArrayList<Sense>();
         final JSONObject sensesJson = termJson.getJSONObject("senses");
-        final Iterator senses = sensesJson.keys();
+        final Iterator<?> senses = sensesJson.keys();
         while (senses.hasNext()) {
             final String sense = (String) senses.next();
             termSenses.add(parseSense(sensesJson.getJSONObject(sense)));
@@ -71,7 +71,7 @@ public class JsonThesaurusParser implements ThesaurusParser {
 
     private List<Synonym> parseSynonyms(JSONObject synonymsJson) throws JSONException {
         final List<Synonym> synonyms = new ArrayList<Synonym>();
-        final Iterator keys = synonymsJson.keys();
+        final Iterator<?> keys = synonymsJson.keys();
         while (keys.hasNext()) {
             final String key = (String) keys.next();
             synonyms.add(parseSynonym(synonymsJson.getJSONObject(key)));
