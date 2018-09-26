@@ -18,25 +18,26 @@ public class JsonDictParser implements DictParser {
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
             this.assertNoError(rootJson);
-            this.assertNoRedirect(rootJson);
             this.removeUselessKeys(rootJson);
-            return this.parseDictEntry(rootJson);
+            if ("Redirect".equals(rootJson.optString("Response"))) {
+                return this.parseRedirect(rootJson);
+            } else {
+            	return this.parseDictEntry(rootJson);
+            }
         } catch (final JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }
     }
 
-    private void removeUselessKeys(JSONObject rootJson) {
+    private DictEntry parseRedirect(JSONObject rootJson) {
+        final String newUrl = rootJson.optString("URL");
+        final String[] newDictAndWord = newUrl.substring(1).split("/", 2);
+		return DictEntry.redirect(newDictAndWord[0], newDictAndWord[1]);
+	}
+
+	private void removeUselessKeys(JSONObject rootJson) {
         rootJson.remove("Lines");
         rootJson.remove("END");
-    }
-
-    private void assertNoRedirect(JSONObject rootJson) {
-        if ("Redirect".equals(rootJson.optString("Response"))) {
-            final String newUrl = rootJson.optString("URL");
-            final String[] newDictAndWord = newUrl.substring(1).split("/", 2);
-            throw new RedirectException(newDictAndWord[0], newDictAndWord[1]);
-        }
     }
 
     private void assertNoError(JSONObject rootJson) {
@@ -49,7 +50,7 @@ public class JsonDictParser implements DictParser {
     private DictEntry parseDictEntry(JSONObject rootJson) {
         final String note = this.parseNote(rootJson);
         final List<Category> categories = this.parseCategories(rootJson);
-        return DictEntry.create(categories, note);
+        return DictEntry.of(categories, note);
     }
 
     private String parseNote(JSONObject rootJson) {

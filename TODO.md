@@ -3,5 +3,4 @@
 - use new HTTP client
 - more immutable objects
 - modularize
-- remove RedirectedException, use return value
 - Junit5 + assertj

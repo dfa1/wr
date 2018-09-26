@@ -72,7 +72,7 @@ public class CliTest {
 
     @Test
     public void returnSuccessWhenShowDefinitionOfAWord() throws IOException {
-        final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry result = DictEntry.of(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(result), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -83,7 +83,7 @@ public class CliTest {
     @Test
     public void showDefinitionOfAWord() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
-        final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry result = DictEntry.of(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(result), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);
@@ -94,7 +94,7 @@ public class CliTest {
     @Test
     public void showCopyrightMessage() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
-        final DictEntry entry = DictEntry.create(new ArrayList<Category>(), "random note about mist");
+        final DictEntry entry = DictEntry.of(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(entry), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
         cli.setOut(out);

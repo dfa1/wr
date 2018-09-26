@@ -81,7 +81,7 @@ public class DefaultDictTest {
 
         @Override
         public DictEntry parse(Reader reader) {
-            return null;
+            return new DictEntry();
         }
     }
 
@@ -93,7 +93,8 @@ public class DefaultDictTest {
             final FailingParser parser = new FailingParser();
             final DefaultDict wordReference = new DefaultDict(repository, parser);
             wordReference.lookup("iten", "drago");
-        } catch (final RuntimeException ex) {
+        } catch (final IllegalStateException ex) {
+            // ignoring exception from failing parser
         }
 
         Assert.assertTrue(reader.isClosed());
@@ -103,13 +104,13 @@ public class DefaultDictTest {
 
         @Override
         public DictEntry parse(Reader reader) {
-            throw new IllegalStateException("I'm a crappy parser");
+            throw new IllegalStateException("simulated error");
         }
     }
 
     @Test
     public void canHandleRedirects() {
-        final DictEntry expectedResult = DictEntry.create(null, "expected");
+        final DictEntry expectedResult = DictEntry.of(null, "expected");
         final DictParser parser = new ConstantParser(expectedResult);
         final Repository repository = new RedirectOnceRepository();
         final DefaultDict wordReference = new DefaultDict(repository, parser);
@@ -125,7 +126,7 @@ public class DefaultDictTest {
         public Reader lookup(String dict, String word) {
             if (!this.alreadyRedirected) {
                 this.alreadyRedirected = true;
-                throw new RedirectException(dict, word);
+                return new StringReader("");
             }
 
             return new StringReader("");

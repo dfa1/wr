@@ -39,38 +39,16 @@ public class JsonDictParserTest {
         parser.parse(reader);
     }
 
-    @Test(expected = RedirectException.class)
-    public void redirectResponseLeadsToException() {
-        final JsonDictParser parser = new JsonDictParser();
-        final Reader reader = this.loadFile("redirect.json");
-        parser.parse(reader);
-    }
-
     @Test
     public void redirectResponseContainsNewDict() {
-        try {
-            final JsonDictParser parser = new JsonDictParser();
-            final Reader reader = this.loadFile("redirect.json");
-            parser.parse(reader);
-            Assert.fail("expected a RedirectException");
-        } catch (final RedirectException redirectException) {
-            Assert.assertEquals("iten", redirectException.getNewDict());
-        }
+        final JsonDictParser parser = new JsonDictParser();
+        final Reader reader = this.loadFile("redirect.json");
+        DictEntry parse = parser.parse(reader);
+        Assert.assertTrue(parse.isRedirect());
+        Assert.assertEquals("iten", parse.getNewDict());
+        Assert.assertEquals("drago", parse.getNewWord());
     }
 
-    @Test
-    public void redirectResponseContainsNewWord() {
-        try {
-            final JsonDictParser parser = new JsonDictParser();
-            final Reader reader = this.loadFile("redirect.json");
-            parser.parse(reader);
-            Assert.fail("expected a RedirectException");
-        } catch (final RedirectException redirectException) {
-            Assert.assertEquals("drago", redirectException.getNewWord());
-        }
-    }
-
-    
     @Test
     public void noTranslationLeadsToEmptyCategories() {
         final JsonDictParser parser = new JsonDictParser();

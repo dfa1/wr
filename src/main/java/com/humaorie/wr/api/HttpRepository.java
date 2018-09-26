@@ -7,6 +7,7 @@ import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
 
+
 public class HttpRepository implements Repository {
 
     private final UrlFactory urlFactory;
