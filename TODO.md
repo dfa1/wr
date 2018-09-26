@@ -1,6 +1,6 @@
 - remove test doubles: use mockito instead
-- use rule for temporary files in tests
 - use new HTTP client
 - more immutable objects
 - modularize
 - Junit5 + assertj
+- use JUnitArch

@@ -12,7 +12,7 @@ import org.junit.rules.TemporaryFolder;
 public class FileApiKeyProviderTest {
 
     @Rule
-    public TemporaryFolder tempDir = new TemporaryFolder();
+    public final TemporaryFolder tempDir = new TemporaryFolder();
 
     @Test(expected = IllegalArgumentException.class)
     public void nullFileLeadsToException() {
@@ -34,11 +34,11 @@ public class FileApiKeyProviderTest {
 
     @Test
     public void yieldsFileContents() throws IOException {
-        final File file = this.tempDir.newFile("apiKey");
-        final FileWriter writer = new FileWriter(file);
         final String expectedApiKey = "123456";
-        writer.append(expectedApiKey);
-        writer.close();
+        final File file = this.tempDir.newFile("apiKey");
+        try (FileWriter writer = new FileWriter(file)) {
+            writer.append(expectedApiKey);
+        }
 
         final FileApiKeyProvider provider = new FileApiKeyProvider(file);
         final String providedApiKey = provider.provideKey();
