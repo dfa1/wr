@@ -40,7 +40,7 @@ public class Cli {
         this.out = out;
     }
 
-    public int run(String... args) {
+    public int run(String... args) throws IOException {
         final int SUCCESS = 0;
         final int FAILURE = 1;
         if (args.length == 1 && args[0].equals("--version")) {
@@ -66,7 +66,7 @@ public class Cli {
         }
     }
 
-    private void doLookup(String... args) {
+    private void doLookup(String... args) throws IOException {
         final String dict = args[0];
         final String word = args[1];
         if ("thesaurus".startsWith(dict)) {
@@ -80,12 +80,12 @@ public class Cli {
         }
     }
 
-    private void printCopyright(String dict, String word) {
+    private void printCopyright(String dict, String word) throws IOException {
         this.println(this.out, "(C) WordReference.com");
         this.println(this.out, "Original link: %s/%s/%s", WR, dict, word);
     }
 
-    private void printDictEntry(DictEntry dictEntry) {
+    private void printDictEntry(DictEntry dictEntry) throws IOException {
         for (final Category category : dictEntry.getCategories()) {
             this.printCategory(category);
         }
@@ -95,7 +95,7 @@ public class Cli {
         }
     }
 
-    private void printCategory(Category category) {
+    private void printCategory(Category category) throws IOException {
         this.println(this.out, "category '%s':", category.getName());
         final List<Translation> translations = category.getTranslations();
         for (final Translation translation : translations) {
@@ -103,7 +103,7 @@ public class Cli {
         }
     }
 
-    private void printTranslation(Translation translation) {
+    private void printTranslation(Translation translation) throws IOException {
         final Term originalTerm = translation.getOriginalTerm();
         this.println(this.out, " %s %s %s %s",
                 originalTerm.getTerm(),
@@ -123,15 +123,11 @@ public class Cli {
         }
     }
 
-    private void println(Appendable app, String fmt, Object... args) {
-        try {
-            app.append(String.format(fmt + "%n", args));
-        } catch (final IOException ex) {
-            throw new RuntimeException(ex);
-        }
+    private void println(Appendable app, String fmt, Object... args) throws IOException {
+        app.append(String.format(fmt + "%n", args));
     }
 
-    private void printThesaurus(ThesaurusEntry entry) {
+    private void printThesaurus(ThesaurusEntry entry) throws IOException {
         for (final Sense sense : entry.getSenses()) {
             this.println(this.out, "as '%s'", sense.getText());
             final List<Synonym> synonyms = sense.getSynonyms();

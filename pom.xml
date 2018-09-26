@@ -57,10 +57,12 @@
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>3.1.0</version>
                 <configuration>
+                    <attach>false</attach>
                     <finalName>wrcli</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
+                    <outputDirectory>${project.build.directory}/dist</outputDirectory>
                     <archive>
                         <manifest>
                             <mainClass>com.humaorie.wr.cli.Main</mainClass>
@@ -70,7 +72,30 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>assemble-all</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 </project>
