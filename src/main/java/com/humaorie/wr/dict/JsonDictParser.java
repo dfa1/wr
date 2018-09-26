@@ -59,7 +59,7 @@ public class JsonDictParser implements DictParser {
     }
 
     private List<Category> parseCategories(JSONObject rootJson) {
-        final List<Category> categories = new ArrayList<Category>();
+        final List<Category> categories = new ArrayList<>();
         if (rootJson.has("Error")) {
             return categories;
         }
@@ -75,7 +75,7 @@ public class JsonDictParser implements DictParser {
 
     private Category parseCategory(String meaningKey, JSONObject categoryJson) {
         final Iterator<?> translationsKeys = categoryJson.keys();
-        final List<Translation> translations = new ArrayList<Translation>();
+        final List<Translation> translations = new ArrayList<>();
         while (translationsKeys.hasNext()) {
             final String translationKey = (String) translationsKeys.next();
             final JSONObject translationsJson = categoryJson.optJSONObject(translationKey);
@@ -85,7 +85,7 @@ public class JsonDictParser implements DictParser {
     }
 
     private List<Translation> parseTranslations(JSONObject translationsJson) {
-        final List<Translation> translations = new ArrayList<Translation>();
+        final List<Translation> translations = new ArrayList<>();
         final Iterator<?> translationKeys = translationsJson.keys();
         while (translationKeys.hasNext()) {
             final String translationIndex = (String) translationKeys.next();
@@ -96,7 +96,7 @@ public class JsonDictParser implements DictParser {
     }
 
     private Translation parseTranslation(JSONObject translationJson) {
-        final List<Term> terms = new ArrayList<Term>();
+        final List<Term> terms = new ArrayList<>();
         final String note = this.parseNote(translationJson);
         final Term originalTerm = this.parseTerm(translationJson.optJSONObject("OriginalTerm"));
         translationJson.remove("OriginalTerm");
