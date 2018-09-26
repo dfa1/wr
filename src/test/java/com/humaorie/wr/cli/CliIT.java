@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.junit.Test;
 import org.junit.Assert;
+import org.junit.Ignore;
 
 public class CliIT {
 
@@ -23,6 +24,7 @@ public class CliIT {
 		Assert.assertEquals(1, exitValue);
 	}
 
+	@Ignore("bitbucket pipelines forbid access to api.wordreference.com")
 	@Test
 	public void happyPath() throws IOException, InterruptedException {
 		ProcessBuilder processBuilder = new ProcessBuilder("java", "-jar", "target/dist/wrcli.jar", "enit", "word");
