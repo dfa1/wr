@@ -1,6 +1,5 @@
 package com.humaorie.wr.thesaurus;
 
-
 public class ConstantThesaurus implements Thesaurus {
 
     private final ThesaurusEntry entry;

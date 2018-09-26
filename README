@@ -9,11 +9,11 @@ Prerequisites
 -------------
 
 Build:
-- JDK 1.8+
+- JDK 11
 - Apache Maven 2.2+
 
 Run:
-- JRE 1.8+
+- JRE 11
 - wordreference API key
     http://www.wordreference.com/docs/APIregistration.aspx
 

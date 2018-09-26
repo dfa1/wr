@@ -1,5 +1,6 @@
 package com.humaorie.wr.dict;
 
+// TODO: remove
 public class FailingDict implements Dict {
 
     private final RuntimeException exception;
