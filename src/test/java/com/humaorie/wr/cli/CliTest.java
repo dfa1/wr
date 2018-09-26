@@ -33,7 +33,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnErrorWhenCalledWithoutArguments() {
+    public void returnErrorWhenCalledWithoutArguments() throws IOException {
         final Cli cli = new Cli("1.0", new ConstantDict(null), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -42,7 +42,7 @@ public class CliTest {
     }
 
     @Test
-    public void showErrorWhenCalledWithoutArguments() {
+    public void showErrorWhenCalledWithoutArguments() throws IOException {
         final CapturingAppendable err = new CapturingAppendable();
         final Cli cli = new Cli("1.0", new ConstantDict(null), new ConstantThesaurus(null));
         cli.setOut(new CapturingAppendable());
@@ -52,7 +52,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnErrorWhenCalledWithOneArgument() {
+    public void returnErrorWhenCalledWithOneArgument() throws IOException {
         final Cli cli = new Cli("1.0", new ConstantDict(null), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
         cli.setOut(new CapturingAppendable());
@@ -61,7 +61,7 @@ public class CliTest {
     }
 
     @Test
-    public void showErrorWhenCalledWithOneArgument() {
+    public void showErrorWhenCalledWithOneArgument() throws IOException {
         final CapturingAppendable err = new CapturingAppendable();
         final Cli cli = new Cli("1.0", new ConstantDict(null), new ConstantThesaurus(null));
         cli.setErr(err);
@@ -71,7 +71,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnSuccessWhenShowDefinitionOfAWord() {
+    public void returnSuccessWhenShowDefinitionOfAWord() throws IOException {
         final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(result), new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
@@ -81,7 +81,7 @@ public class CliTest {
     }
 
     @Test
-    public void showDefinitionOfAWord() {
+    public void showDefinitionOfAWord() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
         final DictEntry result = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(result), new ConstantThesaurus(null));
@@ -92,7 +92,7 @@ public class CliTest {
     }
 
     @Test
-    public void showCopyrightMessage() {
+    public void showCopyrightMessage() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
         final DictEntry entry = DictEntry.create(new ArrayList<Category>(), "random note about mist");
         final Cli cli = new Cli("1.0", new ConstantDict(entry), new ConstantThesaurus(null));
@@ -103,7 +103,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnErrorOnWordReferenceException() {
+    public void returnErrorOnWordReferenceException() throws IOException {
         final Dict dict = new FailingDict(new WordReferenceException("a message"));
         final Cli cli = new Cli("1.0", dict, new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
@@ -113,7 +113,7 @@ public class CliTest {
     }
 
     @Test
-    public void showErrorOnWordReferenceException() {
+    public void showErrorOnWordReferenceException() throws IOException {
         final CapturingAppendable err = new CapturingAppendable();
         final WordReferenceException exception = new WordReferenceException("a message");
         final Dict dict = new FailingDict(exception);
@@ -126,7 +126,7 @@ public class CliTest {
     }
 
     @Test
-    public void showVersion() {
+    public void showVersion() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
         final Dict dict = new ConstantDict(null);
         final Cli cli = new Cli("1.0", dict, new ConstantThesaurus(null));
@@ -137,7 +137,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnSuccessOnVersion() {
+    public void returnSuccessOnVersion() throws IOException {
         final Dict dict = new ConstantDict(null);
         final Cli cli = new Cli("1.0", dict, new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
@@ -147,7 +147,7 @@ public class CliTest {
     }
 
     @Test
-    public void showHelp() {
+    public void showHelp() throws IOException {
         final CapturingAppendable out = new CapturingAppendable();
         final Dict dict = new ConstantDict(null);
         final Cli cli = new Cli("1.0", dict, new ConstantThesaurus(null));
@@ -158,7 +158,7 @@ public class CliTest {
     }
 
     @Test
-    public void returnSuccessOnHelp() {
+    public void returnSuccessOnHelp() throws IOException {
         final Dict dict = new ConstantDict(null);
         final Cli cli = new Cli("1.0", dict, new ConstantThesaurus(null));
         cli.setErr(new CapturingAppendable());
