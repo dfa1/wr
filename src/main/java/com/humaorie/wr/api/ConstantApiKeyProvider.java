@@ -10,6 +10,6 @@ public class ConstantApiKeyProvider implements ApiKeyProvider {
 
     @Override
     public String provideKey() {
-        return key;
+        return this.key;
     }
 }

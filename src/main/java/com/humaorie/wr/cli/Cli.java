@@ -44,24 +44,24 @@ public class Cli {
         final int SUCCESS = 0;
         final int FAILURE = 1;
         if (args.length == 1 && args[0].equals("--version")) {
-            println(out, "wrcli version %s", version);
+            this.println(this.out, "wrcli version %s", this.version);
             return SUCCESS;
         }
         if (args.length == 1 && args[0].equals("--help")) {
-            println(out, "wrcli - word reference command line interface");
-            println(out, "by Davide Angelocola <davide.angelocola@gmail.com>");
-            println(out, "usage: wrcli dict word");
+            this.println(this.out, "wrcli - word reference command line interface");
+            this.println(this.out, "by Davide Angelocola <davide.angelocola@gmail.com>");
+            this.println(this.out, "usage: wrcli dict word");
             return SUCCESS;
         }
         if (args.length != 2) {
-            println(err, "error: you must provide dict and word (e.g. 'enit run')");
+            this.println(this.err, "error: you must provide dict and word (e.g. 'enit run')");
             return FAILURE;
         }
         try {
-            doLookup(args);
+            this.doLookup(args);
             return SUCCESS;
-        } catch (WordReferenceException ex) {
-            println(err, "error: %s", ex.getMessage());
+        } catch (final WordReferenceException ex) {
+            this.println(this.err, "error: %s", ex.getMessage());
             return FAILURE;
         }
     }
@@ -71,47 +71,47 @@ public class Cli {
         final String word = args[1];
         if ("thesaurus".startsWith(dict)) {
             final ThesaurusEntry thesaurusEntry = this.thesaurus.lookup(word);
-            printThesaurus(thesaurusEntry);
-            printCopyright("thesaurus", word);
+            this.printThesaurus(thesaurusEntry);
+            this.printCopyright("thesaurus", word);
         } else {
             final DictEntry dictEntry = this.dict.lookup(dict, word);
-            printDictEntry(dictEntry);
-            printCopyright(dict, word);
+            this.printDictEntry(dictEntry);
+            this.printCopyright(dict, word);
         }
     }
 
     private void printCopyright(String dict, String word) {
-        println(out, "(C) WordReference.com");
-        println(out, "Original link: %s/%s/%s", WR, dict, word);
+        this.println(this.out, "(C) WordReference.com");
+        this.println(this.out, "Original link: %s/%s/%s", WR, dict, word);
     }
 
     private void printDictEntry(DictEntry dictEntry) {
-        for (Category category : dictEntry.getCategories()) {
-            printCategory(category);
+        for (final Category category : dictEntry.getCategories()) {
+            this.printCategory(category);
         }
         final String note = dictEntry.getNote();
         if (!note.isEmpty()) {
-            println(out, "note: %s", note);
+            this.println(this.out, "note: %s", note);
         }
     }
 
     private void printCategory(Category category) {
-        println(out, "category '%s':", category.getName());
+        this.println(this.out, "category '%s':", category.getName());
         final List<Translation> translations = category.getTranslations();
-        for (Translation translation : translations) {
-            printTranslation(translation);
+        for (final Translation translation : translations) {
+            this.printTranslation(translation);
         }
     }
 
     private void printTranslation(Translation translation) {
         final Term originalTerm = translation.getOriginalTerm();
-        println(out, " %s %s %s %s",
+        this.println(this.out, " %s %s %s %s",
                 originalTerm.getTerm(),
                 originalTerm.getPos(),
                 originalTerm.getSense(),
                 originalTerm.getUsage());
-        for (Term term : translation.getTranslations()) {
-            println(out, "   %s %s %s %s",
+        for (final Term term : translation.getTranslations()) {
+            this.println(this.out, "   %s %s %s %s",
                     term.getTerm(),
                     term.getPos(),
                     term.getSense(),
@@ -119,31 +119,31 @@ public class Cli {
         }
         final String note = translation.getNote();
         if (!note.isEmpty()) {
-            println(out, " note: %s", note);
+            this.println(this.out, " note: %s", note);
         }
     }
 
     private void println(Appendable app, String fmt, Object... args) {
         try {
             app.append(String.format(fmt + "%n", args));
-        } catch (IOException ex) {
+        } catch (final IOException ex) {
             throw new RuntimeException(ex);
         }
     }
 
     private void printThesaurus(ThesaurusEntry entry) {
-        for (Sense sense : entry.getSenses()) {
-            println(out, "as '%s'", sense.getText());
+        for (final Sense sense : entry.getSenses()) {
+            this.println(this.out, "as '%s'", sense.getText());
             final List<Synonym> synonyms = sense.getSynonyms();
-            for (Synonym synonym : synonyms) {
+            for (final Synonym synonym : synonyms) {
                 final String context = synonym.getContext();
-                println(out, "  %s %s", synonym.getName(), context.isEmpty() ? "" : "(" + context + ")");
+                this.println(this.out, "  %s %s", synonym.getName(), context.isEmpty() ? "" : "(" + context + ")");
             }
-            println(out, "");
+            this.println(this.out, "");
         }
         final String note = entry.getNote();
         if (!note.isEmpty()) {
-            println(out, "note: %s", note);
+            this.println(this.out, "note: %s", note);
         }
     }
 }

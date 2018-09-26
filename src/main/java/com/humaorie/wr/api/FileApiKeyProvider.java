@@ -17,18 +17,18 @@ public class FileApiKeyProvider implements ApiKeyProvider {
     @Override
     public String provideKey() {
         try {
-            return tryLoad();
-        } catch (IOException ex) {
-            throw new WordReferenceException(String.format("cannot read api key from file %s", file), ex);
+            return this.tryLoad();
+        } catch (final IOException ex) {
+            throw new WordReferenceException(String.format("cannot read api key from file %s", this.file), ex);
         }
     }
 
     private String tryLoad() throws IOException {
-        final BufferedReader reader = new BufferedReader(new FileReader(file));
+        final BufferedReader reader = new BufferedReader(new FileReader(this.file));
         try {
             final String apiKey = reader.readLine();
             if (apiKey == null) {
-                throw new WordReferenceException(String.format("please set your API key into file %s%nSee http://www.wordreference.com/docs/api.aspx", file));
+                throw new WordReferenceException(String.format("please set your API key into file %s%nSee http://www.wordreference.com/docs/api.aspx", this.file));
             }
             return apiKey;
         } finally {

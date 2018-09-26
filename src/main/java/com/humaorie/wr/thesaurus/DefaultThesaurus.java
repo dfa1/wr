@@ -18,17 +18,17 @@ public class DefaultThesaurus implements Thesaurus {
     @Override
     public ThesaurusEntry lookup(String word) {
         try {
-            return tryLookup(word);
-        } catch (IOException ex) {
+            return this.tryLookup(word);
+        } catch (final IOException ex) {
             throw new WordReferenceException(String.format("I/O error: %s", ex.getMessage()), ex);
         }
     }
 
     private ThesaurusEntry tryLookup(String word) throws IOException {
-        Reader lookup = repository.lookup("thesaurus", word);
+        final Reader lookup = this.repository.lookup("thesaurus", word);
         // web service yields a zero-len response when the word is not found (!)
         try {
-            return thesaurusParser.parse(lookup);
+            return this.thesaurusParser.parse(lookup);
         } finally {
             lookup.close();
         }

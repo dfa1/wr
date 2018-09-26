@@ -29,14 +29,14 @@ public class Translation {
     }
 
     public Term getOriginalTerm() {
-        return originalTerm;
+        return this.originalTerm;
     }
 
     public List<Term> getTranslations() {
-        return translations;
+        return this.translations;
     }
 
     public String getNote() {
-        return note;
+        return this.note;
     }
 }

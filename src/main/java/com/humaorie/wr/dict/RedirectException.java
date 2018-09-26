@@ -3,8 +3,8 @@ package com.humaorie.wr.dict;
 public class RedirectException extends RuntimeException {
 
     private static final long serialVersionUID = 1L;
-    private String newDict;
-    private String newWord;
+    private final String newDict;
+    private final String newWord;
 
     public RedirectException(String newDict, String newWord) {
         this.newDict = newDict;
@@ -12,10 +12,10 @@ public class RedirectException extends RuntimeException {
     }
 
     public String getNewWord() {
-        return newWord;
+        return this.newWord;
     }
 
     public String getNewDict() {
-        return newDict;
+        return this.newDict;
     }
 }

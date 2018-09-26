@@ -19,7 +19,7 @@ public class Category {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setTranslations(List<Translation> translations) {
@@ -27,6 +27,6 @@ public class Category {
     }
 
     public List<Translation> getTranslations() {
-        return translations;
+        return this.translations;
     }
 }

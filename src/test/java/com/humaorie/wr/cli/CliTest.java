@@ -173,29 +173,29 @@ public class CliTest {
 
         private CapturingAppendable capture(CharSequence csq, int start, int end) {
             for (int i = start; i < end; i++) {
-                capture.write(csq.charAt(i));
+                this.capture.write(csq.charAt(i));
             }
             return this;
         }
 
         @Override
         public Appendable append(CharSequence csq) throws IOException {
-            return capture(csq, 0, csq.length());
+            return this.capture(csq, 0, csq.length());
         }
 
         @Override
         public Appendable append(CharSequence csq, int start, int end) {
-            return capture(csq, start, end);
+            return this.capture(csq, start, end);
         }
 
         @Override
         public Appendable append(char c) {
-            capture.write(c);
+            this.capture.write(c);
             return this;
         }
 
         public String getCapture() {
-            return capture.toString();
+            return this.capture.toString();
         }
     }
 }

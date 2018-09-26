@@ -19,8 +19,8 @@ public class JsonUrlFactory implements UrlFactory {
     public URL createUrl(String dict, String word) throws IOException {
         Preconditions.require(dict != null, "dict cannot be null");
         Preconditions.require(word != null, "word cannot be null");
-        final String apiKey = apiKeyProvider.provideKey();
-        final String url = String.format("%s/%s/%s/json/%s/%s", DEFAULT_API_URL, DEFAULT_API_VERSION, encode(apiKey), encode(dict), encode(word));
+        final String apiKey = this.apiKeyProvider.provideKey();
+        final String url = String.format("%s/%s/%s/json/%s/%s", DEFAULT_API_URL, DEFAULT_API_VERSION, this.encode(apiKey), this.encode(dict), this.encode(word));
         return new URL(url);
     }
 

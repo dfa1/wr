@@ -13,7 +13,7 @@ public class Synonym {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -21,7 +21,7 @@ public class Synonym {
     }
 
     public String getContext() {
-        return context;
+        return this.context;
     }
 
     public void setContext(String context) {

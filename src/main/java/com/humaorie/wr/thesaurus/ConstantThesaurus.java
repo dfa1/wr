@@ -10,6 +10,6 @@ public class ConstantThesaurus implements Thesaurus {
 
     @Override
     public ThesaurusEntry lookup(String word) {
-        return entry;
+        return this.entry;
     }
 }

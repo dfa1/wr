@@ -55,11 +55,11 @@ public class DefaultDictTest {
 
         @Override
         public void close() throws IOException {
-            closed = true;
+            this.closed = true;
         }
 
         public boolean isClosed() {
-            return closed;
+            return this.closed;
         }
     }
 
@@ -73,7 +73,7 @@ public class DefaultDictTest {
 
         @Override
         public Reader lookup(String dict, String word) {
-            return reader;
+            return this.reader;
         }
     }
 
@@ -93,7 +93,7 @@ public class DefaultDictTest {
             final FailingParser parser = new FailingParser();
             final DefaultDict wordReference = new DefaultDict(repository, parser);
             wordReference.lookup("iten", "drago");
-        } catch (RuntimeException ex) {
+        } catch (final RuntimeException ex) {
         }
 
         Assert.assertTrue(reader.isClosed());
@@ -123,8 +123,8 @@ public class DefaultDictTest {
 
         @Override
         public Reader lookup(String dict, String word) {
-            if (!alreadyRedirected) {
-                alreadyRedirected = true;
+            if (!this.alreadyRedirected) {
+                this.alreadyRedirected = true;
                 throw new RedirectException(dict, word);
             }
 
@@ -142,7 +142,7 @@ public class DefaultDictTest {
 
         @Override
         public DictEntry parse(Reader reader) {
-            return result;
+            return this.result;
         }
     }
 

@@ -12,8 +12,7 @@ public class PreconditionsTest {
 
     @Test
     public void notFinal() {
-        @SuppressWarnings("unused")
-		final Preconditions iAmNotFinal = new Preconditions() {
+        new Preconditions() {
         };
     }
 
@@ -28,7 +27,7 @@ public class PreconditionsTest {
         try {
             Preconditions.require(false, expectedErrorMessage);
             Assert.fail("an exception was expected");
-        } catch (IllegalArgumentException ex) {
+        } catch (final IllegalArgumentException ex) {
             Assert.assertEquals(expectedErrorMessage, ex.getMessage());
         }
     }

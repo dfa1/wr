@@ -13,12 +13,12 @@ public class Benchmarks {
 
     @Test
     public void lookupRepeatedly() {
-        final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider(TESTING_API_KEY);
+        final ApiKeyProvider apiKeyProvider = new ConstantApiKeyProvider(this.TESTING_API_KEY);
         final JsonUrlFactory urlFactory = new JsonUrlFactory(apiKeyProvider);
         final Repository repository = new HttpRepository(urlFactory);
         final DictParser parser = new JsonDictParser();
         final Dict wordReference = new DefaultDict(repository, parser);
-        final long elapsed = benchmarkRepeatedLookup(wordReference);
+        final long elapsed = this.benchmarkRepeatedLookup(wordReference);
         System.out.printf("with HTTP: %sms%n", elapsed);
     }
 

@@ -10,13 +10,13 @@ public class JsonThesaurusParserTest {
 
     @Test
     public void canParseRealDocument() {
-        final ThesaurusEntry entry = new JsonThesaurusParser().parse(loadFile("dog.json"));
+        final ThesaurusEntry entry = new JsonThesaurusParser().parse(this.loadFile("dog.json"));
         Assert.assertNotNull(entry);
     }
 
     @Test
     public void canParseNotFoundDocument() {
-        final ThesaurusEntry entry = new JsonThesaurusParser().parse(loadFile("notfound.json"));
+        final ThesaurusEntry entry = new JsonThesaurusParser().parse(this.loadFile("notfound.json"));
         Assert.assertTrue(entry.getNote().contains("No translation was found for"));
     }
 

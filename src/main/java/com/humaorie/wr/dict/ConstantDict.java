@@ -11,6 +11,6 @@ public class ConstantDict implements Dict {
 
     @Override
     public DictEntry lookup(String dict, String word) {
-        return result;
+        return this.result;
     }
 }

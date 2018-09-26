@@ -33,18 +33,18 @@ public class Term {
     }
 
     public String getPos() {
-        return pos;
+        return this.pos;
     }
 
     public String getSense() {
-        return sense;
+        return this.sense;
     }
 
     public String getTerm() {
-        return term;
+        return this.term;
     }
 
     public String getUsage() {
-        return usage;
+        return this.usage;
     }
 }

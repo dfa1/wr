@@ -21,23 +21,23 @@ public class DefaultDict implements Dict {
     @Override
     public DictEntry lookup(String dict, String word) {
         try {
-            return tryLookoup(dict, word);
-        } catch (RedirectException redirect) {
-            return tryLookoup(redirect.getNewDict(), redirect.getNewWord());
+            return this.tryLookoup(dict, word);
+        } catch (final RedirectException redirect) {
+            return this.tryLookoup(redirect.getNewDict(), redirect.getNewWord());
         }
     }
 
     private DictEntry tryLookoup(String dict, String word) {
         try {
-            return parse(fetch(dict, word));
-        } catch (IOException ex) {
+            return this.parse(this.fetch(dict, word));
+        } catch (final IOException ex) {
             throw new WordReferenceException(String.format("I/O error: %s", ex.getMessage()), ex);
         }
     }
 
     private DictEntry parse(Reader reader) throws IOException {
         try {
-            return parser.parse(reader);
+            return this.parser.parse(reader);
         } finally {
             reader.close();
         }
@@ -48,6 +48,6 @@ public class DefaultDict implements Dict {
         if (dict.length() != 4) {
             throw new WordReferenceException("dict must be of length 4");
         }
-        return repository.lookup(dict, word);
+        return this.repository.lookup(dict, word);
     }
 }

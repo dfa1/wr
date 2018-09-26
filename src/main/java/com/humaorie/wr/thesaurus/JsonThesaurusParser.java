@@ -17,10 +17,10 @@ public class JsonThesaurusParser implements ThesaurusParser {
         Preconditions.require(reader != null, "cannot use null as Reader");
         try {
             final JSONObject rootJson = new JSONObject(new JSONTokener(reader));
-            assertNoError(rootJson);
-            removeUselessKeys(rootJson);
-            return parseThesaurusEntry(rootJson);
-        } catch (JSONException ex) {
+            this.assertNoError(rootJson);
+            this.removeUselessKeys(rootJson);
+            return this.parseThesaurusEntry(rootJson);
+        } catch (final JSONException ex) {
             throw new WordReferenceException("cannot parse JSON", ex);
         }
     }
@@ -43,38 +43,38 @@ public class JsonThesaurusParser implements ThesaurusParser {
             final String note = rootJson.optString("Note", "");
             return ThesaurusEntry.create(new ArrayList<Sense>(), note);
         }
-        final List<Sense> senses = new ArrayList<Sense>();
+        final List<Sense> senses = new ArrayList<>();
         final Iterator<?> terms = rootJson.keys();
         while (terms.hasNext()) {
-            String term = (String) terms.next();
-            senses.addAll(parseTerm(rootJson.getJSONObject(term)));
+            final String term = (String) terms.next();
+            senses.addAll(this.parseTerm(rootJson.getJSONObject(term)));
         }
         return ThesaurusEntry.create(senses, "");
     }
 
     private List<Sense> parseTerm(JSONObject termJson) throws JSONException {
-        final List<Sense> termSenses = new ArrayList<Sense>();
+        final List<Sense> termSenses = new ArrayList<>();
         final JSONObject sensesJson = termJson.getJSONObject("senses");
         final Iterator<?> senses = sensesJson.keys();
         while (senses.hasNext()) {
             final String sense = (String) senses.next();
-            termSenses.add(parseSense(sensesJson.getJSONObject(sense)));
+            termSenses.add(this.parseSense(sensesJson.getJSONObject(sense)));
         }
         return termSenses;
     }
 
     private Sense parseSense(JSONObject senseJson) throws JSONException {
         final String text = senseJson.getString("sensetext");
-        final List<Synonym> synonyms = parseSynonyms(senseJson.getJSONObject("synonyms"));
+        final List<Synonym> synonyms = this.parseSynonyms(senseJson.getJSONObject("synonyms"));
         return Sense.create(text, synonyms);
     }
 
     private List<Synonym> parseSynonyms(JSONObject synonymsJson) throws JSONException {
-        final List<Synonym> synonyms = new ArrayList<Synonym>();
+        final List<Synonym> synonyms = new ArrayList<>();
         final Iterator<?> keys = synonymsJson.keys();
         while (keys.hasNext()) {
             final String key = (String) keys.next();
-            synonyms.add(parseSynonym(synonymsJson.getJSONObject(key)));
+            synonyms.add(this.parseSynonym(synonymsJson.getJSONObject(key)));
         }
         return synonyms;
     }

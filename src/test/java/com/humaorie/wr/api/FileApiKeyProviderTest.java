@@ -27,14 +27,14 @@ public class FileApiKeyProviderTest {
 
     @Test(expected = WordReferenceException.class)
     public void emptyFileLeadsToException() throws IOException {
-        final File file = tempDir.newFile("apiKey");
+        final File file = this.tempDir.newFile("apiKey");
         final FileApiKeyProvider provider = new FileApiKeyProvider(file);
         provider.provideKey();
     }
 
     @Test
     public void yieldsFileContents() throws IOException {
-        final File file = tempDir.newFile("apiKey");
+        final File file = this.tempDir.newFile("apiKey");
         final FileWriter writer = new FileWriter(file);
         final String expectedApiKey = "123456";
         writer.append(expectedApiKey);

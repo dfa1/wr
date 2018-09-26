@@ -15,7 +15,7 @@ public class ThesaurusEntry {
     }
 
     public List<Sense> getSenses() {
-        return senses;
+        return this.senses;
     }
 
     public void setSenses(List<Sense> senses) {
@@ -27,6 +27,6 @@ public class ThesaurusEntry {
     }
 
     public String getNote() {
-        return note;
+        return this.note;
     }
 }

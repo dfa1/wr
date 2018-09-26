@@ -15,7 +15,7 @@ public class Sense {
     }
     
     public String getText() {
-        return text;
+        return this.text;
     }
 
     public void setText(String text) {
@@ -23,7 +23,7 @@ public class Sense {
     }
     
     public List<Synonym> getSynonyms() {
-        return synonyms;
+        return this.synonyms;
     }
 
     public void setSynonyms(List<Synonym> synonyms) {

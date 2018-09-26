@@ -18,7 +18,7 @@ public class HttpRepository implements Repository {
 
     @Override
     public Reader lookup(String dict, String word) throws IOException {
-        final URL url = urlFactory.createUrl(dict, word);
+        final URL url = this.urlFactory.createUrl(dict, word);
         final URLConnection connection = url.openConnection();
         final InputStream inputStream = connection.getInputStream();
         return new InputStreamReader(inputStream);

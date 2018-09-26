@@ -8,7 +8,7 @@ import java.io.InputStreamReader;
 public class VersionLoader {
 
     public String loadVersion() throws IOException {
-    	BufferedReader reader = createReader();
+    	final BufferedReader reader = this.createReader();
     	try {
             return reader.readLine();
     	} finally {

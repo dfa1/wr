@@ -19,7 +19,7 @@ public class DictEntry {
     }
 
     public List<Category> getCategories() {
-        return categories;
+        return this.categories;
     }
 
     public void setNote(String note) {
@@ -27,6 +27,6 @@ public class DictEntry {
     }
 
     public String getNote() {
-        return note;
+        return this.note;
     }
 }
