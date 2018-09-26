@@ -5,6 +5,9 @@ import com.humaorie.wr.api.ConstantApiKeyProvider;
 import com.humaorie.wr.api.HttpRepository;
 import com.humaorie.wr.api.JsonUrlFactory;
 import com.humaorie.wr.api.Repository;
+
+import java.time.Duration;
+
 import org.junit.Test;
 
 public class Benchmarks {
@@ -18,18 +21,17 @@ public class Benchmarks {
         final Repository repository = new HttpRepository(urlFactory);
         final DictParser parser = new JsonDictParser();
         final Dict wordReference = new DefaultDict(repository, parser);
-        final long elapsed = this.benchmarkRepeatedLookup(wordReference);
-        System.out.printf("with HTTP: %sms%n", elapsed);
+        final Duration elapsed = this.benchmarkRepeatedLookup(wordReference);
+        System.out.printf("with HTTP: %sms%n", elapsed.toMillis());
     }
 
-    private long benchmarkRepeatedLookup(Dict dict) {
+    private Duration benchmarkRepeatedLookup(Dict dict) {
         final int repeat = 10;
-        final long start = System.currentTimeMillis();
+        final long start = System.nanoTime();
         for (int i = 0; i < repeat; i++) {
             dict.lookup("enit", "word");
         }
-        final long end = System.currentTimeMillis();
-        final long elapsed = end - start;
-        return elapsed;
+        final long end = System.nanoTime();
+        return Duration.ofNanos(end - start);
     }
 }
