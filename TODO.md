@@ -1,0 +1,8 @@
+- remove test doubles: use mockito instead
+- use rule for temporary files in tests
+- write integration test with the final package
+- use new HTTP client
+- more immutable objects
+- modularize
+- use UncheckedIOException
+- remove RedirectedException, use return value
